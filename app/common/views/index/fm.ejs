@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+
+	<% include ../tmpl/header_meta.ejs %>
+
+	<title><%= pageTitle %> - <%= settings.site.name %></title>
+
+	<% include ../tmpl/header_pub.ejs %>
+
+	<link rel="stylesheet" href="/public/css/css-page/index-fm.min.css">
+
+	<!-- GLOBAL JAVASCRIPT -->
+	<script>
+		JS_PAGE_NAME = 'index-fm';
+		PLAYLIST = <%= playList %>;
+	</script>
+
+	<% MENU_ACTIVE = 'Fm'; %>
+
+</head>
+<body>
+
+<div class="wrap">
+
+
+	<div class="mask"></div>
+	<div class="layout">
+
+		<% include ../tmpl/layout_header.ejs %>
+
+		<div class="main">
+			<div class="inner">
+		        <div class="player">
+					<div class="info">
+						<h2 class="title"></h2>
+					</div>
+					<div class="album">
+						<img src="" alt="">
+					</div>
+		            <div class="action">
+		                <a href="#" class="player-play-pause"><i class="fa fa-play"></i><i class="fa fa-pause hidden"></i></a>
+		                <input class="player-seekbar" type="range" min="0" max="10" value="5">
+						<a href="#" class="player-next"><i class="fa fa-forward"></i></a>
+		            </div>
+		            <div class="info">
+		                <span id="music_name"></span><span id="artist"></span>
+		            </div>
+		            <div id="lrc" class="lrc">
+		            </div>
+		        </div>
+			</div>
+		</div>
+
+		<% include ../tmpl/layout_footer.ejs %>
+
+	</div>
+
+</div>
+
+<% include ../tmpl/footer_pub.ejs %>
+<% include ../tmpl/footer_sea.ejs %>
+
+</body>
+</html>
+

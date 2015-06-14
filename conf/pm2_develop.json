@@ -1,0 +1,16 @@
+{
+  "apps" : [{
+    "name"        : "develop.mt.notes",
+    "script"      : "bin/autoload.js",
+    "args"        : [],
+    "log_date_format"  : "YYYY-MM-DD HH:mm Z",
+    "ignore_watch" : ["[\\/\\\\]\\./", "node_modules","static"],
+    "watch"       : true,
+    "node_args"   : "--harmony",
+    "cwd"         : "/Users/thonatos/workspace/localhost_thonatos",
+    "env": {
+      "NODE_ENV": "development",
+      "AWESOME_SERVICE_API_TOKEN": ""
+    }
+  }]
+}

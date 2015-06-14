@@ -1,0 +1,35 @@
+<% if(settings.config.WEB_SEA) { %>
+
+	<!-- SEA.JS CONFIG -->
+	<script>
+		var app_config = {
+			production: <%= settings.config.WEB_PRODUCTION %>,
+			development: <%= settings.config.WEB_DEVELOPMENT %>
+		};
+		var sea_config = {
+			app: '',
+			base: '',
+			suffix: ''
+		};
+		<!-- We Add dynamic base attribute by run_env-->
+		if (app_config.development) {
+			sea_config.suffix = '-debug';
+		} else {
+			sea_config.suffix = '';
+		}
+		<!-- We use different app-version by run_env-->
+		if (app_config.production) {
+			sea_config.app = '/public/js-spm/dist/MT.SPM/0.0.4/src/page/' + JS_PAGE_NAME + sea_config.suffix;
+			sea_config.base = '/public/js-spm/dist';
+		} else {
+			sea_config.app = '/public/js-spm/src/page/' + JS_PAGE_NAME;
+			sea_config.base = '/public/js-spm/spm_modules/';
+		}
+		seajs.config({base: sea_config.base});
+		seajs.use(sea_config.app, function (page) {
+			page.init();
+		});
+
+	</script>
+
+<% } %>

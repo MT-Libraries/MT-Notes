@@ -1,0 +1,70 @@
+<div class="header">
+    <div class="inner">
+        {{ title }}
+    </div>
+</div>
+<div class="main">
+
+    <div class="container">
+        <form class="form" name="postForm" ng-submit="submitPostForm(postForm.$valid)" novalidate>
+
+            <div class="row">
+                <div class="col-12 columns">
+                    <label>Name</label>
+                    <input type="text" name="name" ng-model="post.name" placeholder="please enter post name"
+                           required>
+                    <small class="error" ng-show="postForm.name.$invalid && !postForm.name.$pristine">Name is
+                        required.
+                    </small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 columns">
+                    <label>Description</label>
+                    <input type="text" name="desc" ng-model="post.desc"
+                           placeholder="please enter post description" required>
+                    <small class="error" ng-show="postForm.desc.$invalid && !postForm.desc.$pristine">Description
+                        is required.
+                    </small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 columns">
+                    <label>Tags</label>
+                    <input type="text" name="tags" ng-model="post.tags"
+                           placeholder="please enter post tags(split by dot)" required>
+                    <small class="error" ng-show="postForm.tags.$invalid && !postForm.tags.$pristine">Tags is
+                        required.
+                    </small>
+                </div>
+
+                <div class="col-6 columns">
+                    <label>Select Category</label>
+                    <select name="category"
+                            ng-model="post.category"
+                            ng-options="category for category in categories"></select>
+
+                    <small class="error" ng-show="postForm.category.$invalid && !postForm.category.$pristine">Tags is
+                        required.
+                    </small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 columns">
+                    <label>Content</label>
+                    <textarea ng-model="post.content" ng-minlength="20" rows="8" name="content"
+                              placeholder="please enter post content" required></textarea>
+                    <small class="error" ng-show="postForm.content.$error.minlength">Content is too short.</small>
+                    <!--<small class="error" ng-show="postForm.content.$invalid && !postForm.content.$pristine">Content is required.</small>-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 columns">
+                    <button type="reset" class="button right">Reset</button>
+                    <button type="submit" class="button right">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

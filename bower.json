@@ -1,0 +1,26 @@
+{
+  "name": "MT.BOWER",
+  "version": "0.0.1",
+  "authors": [
+    "Thonatos.Yang <thonatos.yang@gmail.com>"
+  ],
+  "description": "MT.BOWER",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "html5-boilerplate": "~4.3.0"
+  },
+  "dependencies": {
+    "font-awesome": "~4.2.0",
+    "marked": "~0.3.2",
+    "angular-ui-router": "~0.2.13",
+    "angular": "~1.3.11"
+  }
+}

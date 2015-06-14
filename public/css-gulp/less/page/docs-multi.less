@@ -1,0 +1,78 @@
+@import "../public/base";
+
+
+.main {
+
+    .document {
+        width: 100%;
+        padding: 1em;
+
+        .title{
+            margin: 0;
+            padding: 1em 0;
+            display: block;
+
+            font-size: 1em;
+            font-family: initial;
+
+            border-bottom: 1px solid #eeeeee;
+            box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            padding: 0.5em 0;
+
+            ul {
+
+                padding-left: 1em;
+                border-left: 0.2em solid rgb(116, 155, 64);
+
+                li {
+
+                    list-style: none;
+                    margin: .3em 0;
+                    margin-top: 5px;
+
+                    padding: 5px 0;
+                    font-size: 0.8em;
+                    border-bottom: 1px solid #eee;
+
+                    a {
+                        display: block;
+                        padding: 0.1em 0;
+                        text-decoration: none;
+                        color: @gray;
+                        font-weight: normal;
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 1024px){
+    .main{
+        .document {
+
+            .content {
+                padding: 2em 0;
+
+                ul {
+                    li {
+                        a {
+                            font-size: 0.8em;
+                        }
+                    }
+                }
+            }
+
+            hr {
+                border: none;
+                border-bottom: 1px solid #eeeeee;
+                box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+}

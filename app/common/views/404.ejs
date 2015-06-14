@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="页面仔的逗b世界,这是一个神奇的网站！">
+
+	<title>Not Found - <%= settings.site.name %></title>
+
+	<link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600&subset=latin,latin-ext' rel='stylesheet'
+	      type='text/css'>
+
+	<!-- GLOBAL JAVASCRIPT -->
+
+	<!-- INCLUDE STYLESHEET -->
+	<link rel="stylesheet" href="/public/css/css-page/error.min.css">
+	<link rel="stylesheet" href="/public/vendors/bower_components/font-awesome/css/font-awesome.min.css">
+
+	<!-- INCLUDE JAVASCRIPT -->
+	<script src="/public/vendors/bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+
+
+</head>
+<body>
+
+<div class="wrap">
+	<!--[if lt IE 7]>
+	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a
+			href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	<div class="layout">
+
+		<div class="main">
+			<div class="error">
+				<h2>Message: <%= message %></h2>
+
+				<h3>Status : <%= status %></h3>
+
+				<pre><%= stack %></pre>
+			</div>
+			<div class="info">
+				<h4>Bug Report:</h4>
+				<a class="button" href="http://weibo.com/thonatos"><i class="fa fa-weibo"> @Thonatos</i></a>
+				<a class="button" href="mailto://thonatos.yang@gmail.com"><i class="fa fa-mail-forward">
+						thonatos.yang@gmail.com</i></a>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+
+	<% include ../tmpl/header_meta.ejs %>
+
+	<title><%= pageTitle %> - <%= settings.site.name %></title>
+
+	<% include ../tmpl/header_pub.ejs %>
+
+	<link rel="stylesheet" href="/public/css/css-page/labs-mt-notes.min.css">
+
+	<!-- GLOBAL JAVASCRIPT -->
+	<script>
+		JS_PAGE_NAME = 'none';
+	</script>
+
+	<% MENU_ACTIVE = 'Labs'; %>
+
+</head>
+<body>
+
+<div class="wrap">
+
+	<div class="layout">
+
+		<% include ../tmpl/layout_header.ejs %>
+
+		<div class="main">
+			<div class="row inner">
+				<p class="title">MT.NOTES.</p>
+
+				<div class="col-12 info">
+					<p>A blog/documents Site Running on NodeJS Server.</p>
+
+					<ul>
+						<li>一个基于Github的文档站。</li>
+						<li>一个随手发发牢骚的轻博客。</li>
+						<li>一个前端学习过程的演示站。</li>
+					</ul>
+
+					<p>曾经是wordpress死忠，但日常学习工作中需要记录一些东西，每次登录去发布，实在是有点累；而随手记录的东西，日子长了又总会找不到，于是在本地建了一个文件夹，每次存储的时候按照分类保存，时间长了发现东西好像真的很多，但更新博客又变成一件很痛苦的事情，于是乎...</p>
+
+					<p>看到了hexo，也使用了一下，感觉很好，但我确实比较懒，于是想想要不自己找一种更方便自己的吧，怎么方便呢？直接存好了，然后push到Github上吧；然后，问题来了，博客呢，要不要更新呢，想了想，要不就用Github的Api吧...</p>
+
+					<p>再者，本人前端，经常会在本地写一些测试的东西——自定义H5播放器、低版本浏览器升级提示什么，直接在公司项目上改，错了也比较麻烦，另外，每次然后lessc也是真的累，干脆就搭了NodeJS本地服务器；东拼西凑，此站方成！</p>
+
+					<p>So，整个网站都是MT-Notes的Demo~\(≧▽≦)/~啦啦啦！</p>
+
+				</div>
+			</div>
+		</div>
+
+
+		<% include ../tmpl/layout_footer.ejs %>
+
+	</div>
+
+</div>
+
+<% include ../tmpl/footer_pub.ejs %>
+<% include ../tmpl/footer_sea.ejs %>
+
+</body>
+</html>
+

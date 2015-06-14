@@ -1,0 +1,61 @@
+{
+  "site": {
+    "name": "MT.NOTES",
+    "desc": "A blog/documents Site Running on NodeJS Server",
+    "docRepo": {
+      "github": {
+        "doc_user": "thonatos",
+        "doc_project": "Mt.Notes.And.Documents",
+        "access_token":""
+      },
+      "coding": {
+        "doc_user": "thonatos",
+        "doc_project": "Mt.Notes.And.Documents"
+      },
+      "GC": "C"
+    }
+  },
+  "auth": {
+    "cookie": {
+      "name": "MT.NOTES_"
+    },
+    "session": {
+      "name": "MT.Name",
+      "secret": "MT.Secret"
+    },
+    "database": {
+      "url": "mongodb://localhost:27017/tfme",
+      "options": {
+        "db": {
+          "native_parser": true
+        },
+        "server": {
+          "poolSize": 5
+        },
+        "user": "tfme",
+        "pass": "tfme2014"
+      }
+    },
+    "administrator": {
+      "email": "m@t.biu"
+    },
+    "upyun": {
+      "bucket": "bucket",
+      "operator": "operator",
+      "password": "password"
+    }
+  },
+  "env": {
+    "PORT": 8084,
+    "TRUST": false,
+    "APP_DEVELOPMENT": true,
+    "WEB_PRODUCTION": false,
+    "WEB_SEA": true,
+    "WEB_DEVELOPMENT": false
+  },
+  "ssl":{
+    "key":"/Users/thonatos/personal/doc/SSL/thonatos.com.key",
+    "cert":"/Users/thonatos/personal/doc/SSL/thonatos.com.ssl_bundle.crt",
+    "port":8443
+  }
+}

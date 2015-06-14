@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+
+	<% include ../tmpl/header_meta.ejs %>
+
+	<title><%= pageTitle %> - <%= settings.site.name %></title>
+
+	<% include ../tmpl/header_pub.ejs %>
+
+	<link rel="stylesheet" href="/public/css/css-page/user-profile.min.css">
+
+	<!-- GLOBAL JAVASCRIPT -->
+	<script>
+		JS_PAGE_NAME = 'none';
+	</script>
+
+</head>
+<body>
+
+<div class="wrap">
+
+	<div class="layout">
+
+		<div class="row">
+
+			<div class="side-box">
+				<div class="side-brand">
+					<a href="#">MT.NOTES</a>
+				</div>
+
+				<ul class="side-nav">
+					<li class="active"><a href="/"><i class="fa fa-circle-o ng-binding">Home</i></a></li>
+					<li><a href="/blog"><i class="fa fa-circle-o ng-binding">Blog</i></a></li>
+					<li><a href="/docs"><i class="fa fa-circle-o ng-binding">Docs</i></a></li>
+					<li><a href="/about"><i class="fa fa-circle-o ng-binding">About</i></a></li>
+				</ul>
+
+				<ul class="side-action">
+					<% if(pageContent.isAdministrator){ %>
+					<li>
+						<a href="/user/admin"><i class="fa fa-circle-o ng-binding">Management</i></a>
+					</li>
+					<% } %>
+
+					<li>
+						<a href="/user/signout"><i class="fa fa-circle-o ng-binding">Signout</i></a>
+					</li>
+				</ul>
+			</div>
+
+
+			<div class="main-box">
+
+				<div class="header">
+					<div class="row inner">
+						<div class="col-12 center text-left info">
+							MT.NOTES & Profile
+						</div>
+					</div>
+				</div>
+
+				<div class="row main">
+						<p>
+							更多功能正在开发中...
+						</p>
+				</div>
+
+				<div class="footer">
+					<div class="row inner">
+						<div class="col-12 center text-right">
+							@Arashi Vision.
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<% include ../tmpl/footer_pub.ejs %>
+<% include ../tmpl/footer_sea.ejs %>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Components Directory
+.idea/
+node_modules/
+public/js-spm/spm_modules/
+
+# Ignore Files
+*.DS_Store
+npm-debug.log
+
+bin/autoload.sh
+
+# Config App
+conf/config_product.json
+
+# Config Deploy
+conf/pm2_product.json

@@ -1,0 +1,66 @@
+form {
+    .columns {
+        padding: 0.5em 1em;
+
+        label {
+            width: 100%;
+            height: 1em;
+        }
+
+        input,
+        select,
+        textarea {
+            margin-top: 0.5em;
+            padding: 0.5em;
+            width: 100%;
+            max-width: 100%;
+            border: 1px solid #eeeeee;
+            border-radius: 0.3em;
+
+            &:focus {
+                border: 1px solid #f04b5f;
+                box-shadow: none;
+                outline: none;
+            }
+        }
+
+        input,
+        select,
+        button {
+            height: 2.4em;
+        }
+
+        small {
+            color: #f04b5f;
+            font-style: italic;
+            font-weight: bold;
+            margin-top: 0.5em;
+            padding: 0.5em 1em;
+            display: block;
+        }
+
+        .button {
+
+            padding: 0 2em;
+
+            line-height: 1em;
+
+            border: none;
+            border-radius: 2px;
+
+            font-size: 1em;
+            display: inline-block;
+            color: white;
+            background: #80AD56;
+
+            &.left {
+                margin-right: 1em;
+            }
+
+            &.right {
+                margin-left: 1em;
+            }
+        }
+
+    }
+}

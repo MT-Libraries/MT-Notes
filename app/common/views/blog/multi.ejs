@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+
+	<% include ../tmpl/header_meta.ejs %>
+
+	<title><%= pageTitle %> - <%= settings.site.name %></title>
+
+	<% include ../tmpl/header_pub.ejs %>
+
+	<link rel="stylesheet" href="/public/css/css-page/blog-posts.min.css">
+
+	<!-- GLOBAL JAVASCRIPT -->
+	<script>
+		JS_PAGE_NAME = 'none';
+	</script>
+
+	<% MENU_ACTIVE = 'Blog'; %>
+
+</head>
+<body>
+
+<div class="wrap">
+
+	<div class="layout">
+
+		<% include ../tmpl/layout_header.ejs %>
+
+		<div class="main">
+
+			<div class="inner row">
+
+				<div class="col-12 posts">
+
+					<% if(pageContent.posts.constructor === Array ){ %>
+
+					<!--Posts-List-->
+					<% pageContent.posts.forEach(function (post) { %>
+
+					<div class="post">
+						<div class="panel">
+							<div class="panel-header">
+								<div class="title"><%= post.tags[0] %></div>
+							</div>
+							<div class="panel-body">
+								<div class="post-title">
+									<h3><a href="/blog/post/<%= post._id %>"><%= post.name %></a></h3>
+								</div>
+								<div class="post-content">
+									<%- post.content %>
+								</div>
+							</div>
+							<div class="panel-footer">
+								<div class="post-meta">
+									<div class="inner">
+										<span class="post-date right"><%= post.date %></span>
+										<!--<span class="post-author right"><%= post.author %></span>-->
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<% }); %>
+
+					<% }else{ %>
+					<div class="info">
+						no post
+					</div>
+					<% } %>
+				</div>
+
+				<% if(pageContent.pageCount > 1){ %>
+
+				<div class="col-12 pager">
+					<% if(pageContent.currentPage > 1){ %>
+					<a class="prevPage left"
+					   href="/blog/page/<%= parseInt(pageContent.currentPage) - 1 %>">&larr; Prev</a>
+					<% } %>
+
+					<% if(pageContent.pageCount > pageContent.currentPage ){ %>
+					<a class="nextPage right"
+					   href="/blog/page/<%= parseInt(pageContent.currentPage) + 1 %>">Next &rarr;</a>
+					<% } %>
+				</div>
+
+				<% } %>
+			</div>
+
+		</div>
+
+		<% include ../tmpl/layout_footer.ejs %>
+
+	</div>
+
+</div>
+
+<% include ../tmpl/footer_pub.ejs %>
+<% include ../tmpl/footer_sea.ejs %>
+
+</body>
+</html>

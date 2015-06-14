@@ -1,0 +1,149 @@
+@import "../public/base";
+
+@import "../public/compoment/form";
+@import "../public/compoment/panel";
+@import "../public/compoment/post";
+@import "../public/compoment/pager";
+
+
+.header {
+
+    background-color: #ffffff;
+    color: #666666;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
+
+    .inner{
+        .nav {
+            a {
+                display: block;
+                color: #ffffff;
+                text-decoration: none;
+
+                font-size: 1.17em;
+                margin: 1em 0;
+
+                &:visited {
+                }
+
+                &:hover {
+
+                }
+            }
+        }
+    }
+}
+
+.side-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    min-width: 12em;
+
+    background-color: #2b303b;
+    box-shadow: 2px 0 1px rgba(0,0,0,.2);
+
+    .side-brand{
+        padding: 1.8em 1em;
+
+        background: #272b35;
+        border-bottom: 1px solid #232730;
+
+        color: @white;
+        text-align: center;
+
+        a{
+            display: inline-block;
+
+            font-size: 1em;
+            line-height: 1.2em;
+
+            color: #fff;
+            text-decoration: none;
+
+            &:before{
+                content: 'mT';
+
+                padding: 0em 0.5em;
+                margin-right: 1em;
+
+                font-size: 1em;
+                line-height: 1.2em;
+
+                background: #fff;
+                color: #000;
+
+                display: inline-block;
+            }
+        }
+    }
+
+    .side-nav,
+    .side-action{
+        padding: 0 1em;
+        list-style: none;
+
+        li{
+            padding: 0.5em 0;
+        }
+
+        a{
+
+            height: 1em;
+            line-height: 1em;
+
+            display: inline-block;
+
+            color: @white;
+            text-decoration: none;
+
+            .fa{
+                &:before{
+                    margin-right: 0.5em;
+                }
+            }
+        }
+    }
+    .side-action{
+        position: absolute;
+        bottom: 0;
+
+        padding: 1em;
+
+        width: 100%;
+        border-top: 1px solid #232730;
+    }
+
+}
+.main-box{
+
+
+
+    float: right;
+    width:100%;
+    min-width: 960px;
+    overflow: auto;
+    padding-left:12em;
+
+    .header{
+        padding: 1.8em 0;
+        font-size: 1em;
+    }
+
+    .main{
+        .form{
+            margin-top: 2em;
+        }
+    }
+}
+
+
+.delete-post-button,
+.rev-post-button{
+    display: inline-block;
+    color: @green-light !important;
+    margin: 0 .5em;
+}
+
+
+

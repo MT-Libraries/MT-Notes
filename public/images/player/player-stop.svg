@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.1.1 (8761) - http://www.bohemiancoding.com/sketch -->
+    <title>界面 + Rectangle 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="界面-+-Rectangle-1" sketch:type="MSLayerGroup">
+            <g id="界面" fill="#B4B4B4" sketch:type="MSShapeGroup">
+                <path d="M36,33 C36,34.7 34.7,36 33,36 L3,36 C1.3,36 0,34.7 0,33 L0,3 C0,1.3 1.3,0 3,0 L33,0 C34.7,0 36,1.3 36,3 L36,33 L36,33 Z" id="Shape"></path>
+            </g>
+            <rect id="Rectangle-1" sketch:type="MSShapeGroup" x="0" y="0" width="36" height="36"></rect>
+        </g>
+    </g>
+</svg>
