@@ -1,8 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-var blogController = require('../blog/blogController').blogController;
-var fmController  = require('../fm/fmController').fmController;
+var fmApi  = require('../fm/fmModule').Api;
+var blogApi = require('../blog/blogModule').Api;
+var moodApi = require('../mood/moodModule').Api;
+
+/*
+ * Show welcome message while path to root.
+ * @return:   {msg:''}
+ */
 
 router.route('/')
     .get(function (req, res) {
@@ -13,19 +19,28 @@ router.route('/')
         });
     });
 
+/*
+ * Return json object according to query string.
+ * @return:   {}
+ */
 
-//  API -- Blog
-router.route('/blog/page/:currentPage')
-    .get(blogController.getAll);
+router.route('/blog/get/:pid')
+    .get(blogApi.get);
 
-router.route('/blog/post/:pid')
-    .get(blogController.get);
+router.route('/blog/gets/:currentPage')
+    .get(blogApi.gets);
 
-// API -- FM
+router.route('/mood/get/:pid')
+    .get(moodApi.get);
+
+router.route('/mood/gets/:currentPage')
+    .get(moodApi.gets);
+
 router.route('/fm/playlist')
-    .get(fmController.getPlayList);
+    .get(fmApi.getPlayList);
     
 router.route('/fm/playlist/:plId')
-    .get(fmController.getPlayList);
+    .get(fmApi.getPlayList);
+
 
 module.exports = router;

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"> <!--<![endif]-->
+<head>
+
+	<% include ../tmpl/header_meta.ejs %>
+
+	<title><%= pageTitle %> - <%= settings.site.name %></title>
+
+	<% include ../tmpl/header_pub.ejs %>
+
+	<link rel="stylesheet" href="/public/css/css-page/blog-posts.min.css">
+
+	<!-- GLOBAL JAVASCRIPT -->
+	<script>
+		JS_PAGE_NAME = 'index-mood';
+	</script>
+
+	<% MENU_ACTIVE = 'Mood'; %>
+
+</head>
+<body>
+
+<div class="wrap">
+
+	<div class="layout">
+
+		<% include ../tmpl/layout_header.ejs %>
+
+		<div class="main">
+
+			<div class="inner row container">
+
+				<div class="col-12 timeline">
+
+					<!--Mood-List-->
+
+						<div class="item">
+							<div class="content">
+
+								<div class="post">
+									<div class="panel">
+										<div class="panel-header">
+											<div class="title">MOOD</div>
+										</div>
+										<div class="panel-body">
+											<div class="post-title">
+												<h3><a href="#"></a></h3>
+											</div>
+											<div class="post-content">
+												<p>
+													There is nothing to show?<br>
+													貌似没什么可以展示的么？
+												</p>
+
+											</div>
+										</div>
+										<div class="panel-footer">
+											<div class="post-meta">
+												<div class="inner">
+													<span class="post-date right"><%= new Date(); %></span>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+
+
+						</div>
+				</div>
+
+				<div class="col-12 posts">
+
+				</div>
+
+				<div class="col-12 pager">
+
+				</div>
+			</div>
+
+		</div>
+
+		<% include ../tmpl/layout_footer.ejs %>
+
+	</div>
+
+</div>
+
+<% include ../tmpl/footer_pub.ejs %>
+<% include ../tmpl/footer_sea.ejs %>
+
+</body>
+</html>

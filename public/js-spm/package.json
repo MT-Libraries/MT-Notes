@@ -16,14 +16,14 @@
   "spm": {
     "main": "index.js",
     "output": [
+      "src/page/index-fm.js",
       "src/page/index-index.js",
       "src/page/index-about.js",
-      "src/page/index-fm.js",
+      "src/page/index-mood.js",
       "src/page/labs-video.js",
       "src/page/labs-touch-event-mobile.js",
       "src/page/none.js",
-      "src/page/user-admin.js",
-      "src/page/blog-timeline.js"
+      "src/page/user-admin.js"
     ],
     "dependencies": {
       "seajs": "2.3.0",
