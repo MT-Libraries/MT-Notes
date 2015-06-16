@@ -5,7 +5,7 @@
 var express = require('express');
 var router = express.Router();
 
-var docsController = require('./docsController').docsController;
+var docsController = require('./docsModule').Controller;
 
 router.route('*')
     .all(function (req, res) {
@@ -25,12 +25,12 @@ router.route('*')
             if(url[url.length -1].match(/\.md$/g)){
 
                 // for document
-                docsController.getSingle(req,res,{category:category,document:document});
+                docsController.get(req,res,{category:category,document:document});
                 return false;
             }else{
 
                 // for category
-                docsController.getMulti(req,res,{category:category,document:document});
+                docsController.gets(req,res,{category:category,document:document});
                 return false;
             }
 
@@ -39,7 +39,7 @@ router.route('*')
             category = url;
             document = '';
 
-            docsController.getMulti(req,res,{category:category,document:document});
+            docsController.gets(req,res,{category:category,document:document});
             return false;
         }
 

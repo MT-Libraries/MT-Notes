@@ -5,7 +5,7 @@
 var express = require('express');
 var router = express.Router();
 
-var fileController = require('./fileController').fileController;
+var fileController = require('./fileModule').Controller;
 
 router.route('/')
     .get(fileController.listFiles);

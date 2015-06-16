@@ -6,7 +6,7 @@ var path = require('path');
 var fileService = require('../common/service/fileService').fileService;
 var upyunService = require('../common/service/upyunService').upyunService;
 
-exports.fileController = {
+exports.Controller = {
     listFiles: function (req, res) {
         var fileList = fileService.list('static');
         res.send(fileList);

@@ -8,9 +8,34 @@ var renderService = require('../common/service/renderService').renderService;
 var DOCUMENT = require('../common/conf/config_emu').docRepo();
 var TEMPLATE = '';
 
-exports.docsController = {
+exports.Controller = {
 
-    getMulti: function (req, res, mt) {
+
+
+    get: function (req, res, mt) {
+
+        // Query Single
+        var _category = mt.category;
+        var _document = decodeURI(mt.document.replace(/\.md$/, '')); // decodeURI for document named in chinese
+        var _path = _category;
+
+        if (DOCUMENT.host.indexOf('coding') !== -1) {
+            _path = 'blob/master/' + _path;
+        }
+
+        TEMPLATE = 'docs/single';
+
+        var query = {
+            host: DOCUMENT.host,
+            port: DOCUMENT.port,
+            path: DOCUMENT.path + _path,
+            access_token:DOCUMENT.access_token
+        };
+
+        renderData(_document, query, res);
+    },
+
+    gets: function (req, res, mt) {
 
         // Query Multi
         var _category = mt.category || '';
@@ -32,29 +57,6 @@ exports.docsController = {
 
         renderData(_document || 'Docs', query, res);
 
-    },
-
-    getSingle: function (req, res, mt) {
-
-        // Query Single
-        var _category = mt.category;
-        var _document = decodeURI(mt.document.replace(/\.md$/, '')); // decodeURI for document named in chinese
-        var _path = _category;
-
-        if (DOCUMENT.host.indexOf('coding') !== -1) {
-            _path = 'blob/master/' + _path;
-        }
-
-        TEMPLATE = 'docs/single';
-
-        var query = {
-            host: DOCUMENT.host,
-            port: DOCUMENT.port,
-            path: DOCUMENT.path + _path,
-            access_token:DOCUMENT.access_token
-        };
-
-        renderData(_document, query, res);
     }
 };
 

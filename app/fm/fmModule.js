@@ -4,9 +4,8 @@
 
 var fmService = require('../common/service/fmService').fmService;
 
-exports.fmController = {
-    
-    // Return Json
+// Api
+exports.Api = {
     get: function (req, res) {
         fmService.getMusicInfo(req.params.musicId, function (data) {
             console.log(data);

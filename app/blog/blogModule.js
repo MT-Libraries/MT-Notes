@@ -4,9 +4,8 @@
 
 var postService = require('../common/service/postService').postService;
 
-exports.blogController = {
-
-    // Return JSON
+// Api
+exports.Api = {
     get: function (req, res) {
 
         var pid = req.params.pid;
@@ -19,7 +18,7 @@ exports.blogController = {
             });
         });
     },
-    getAll: function (req, res) {
+    gets: function (req, res) {
         var perPageNum = req.params.perPageNum || 5,
             currentPage = req.params.currentPage || 1;
 
@@ -84,10 +83,12 @@ exports.blogController = {
             res.json(data);
         });
 
-    },
+    }
+};
 
-    // Return HTML
-    getSingle: function (req, res) {
+// Controller
+exports.Controller = {
+    get: function (req, res) {
 
         var pid = req.params.pid;
 
@@ -100,14 +101,14 @@ exports.blogController = {
         });
 
     },
-    getMulti: function (req, res) {
+    gets: function (req, res) {
 
         var perPageNum = req.params.perPageNum || 5;
         var currentPage = req.params.currentPage || 1;
 
         postService.getAll(currentPage, perPageNum, function (data) {
 
-            res.render('blog/timeline', {
+            res.render('blog/multi', {
                 pageTitle: 'Blog',
                 pageContent: data
             });

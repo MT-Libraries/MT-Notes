@@ -2,9 +2,7 @@
  * Created by thonatos on 14/12/16.
  */
 
-var fileService = require('../common/service/fileService').fileService;
-
-exports.labsController = {
+exports.Controller = {
     htmlVideo : function(req,res){
         res.render('labs/html-video', {
             pageTitle: 'Live',

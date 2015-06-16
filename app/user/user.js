@@ -5,7 +5,7 @@
 var express = require('express');
 var router = express.Router();
 
-var blogController = require('../blog/blogController').blogController;
+var blogApi = require('../blog/blogModule').Api;
 
 module.exports = function (passport) {
 
@@ -78,11 +78,11 @@ module.exports = function (passport) {
      * */
 
     router.route('/post')
-        .post(isAdministratorApi, blogController.add);
+        .post(isAdministratorApi, blogApi.add);
 
     router.route('/post/:pid')
-        .put(isAdministratorApi, blogController.put)
-        .delete(isAdministratorApi, blogController.del);
+        .put(isAdministratorApi, blogApi.put)
+        .delete(isAdministratorApi, blogApi.del);
 
     /*
      * === Private Function ===

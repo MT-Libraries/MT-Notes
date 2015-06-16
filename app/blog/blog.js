@@ -5,15 +5,15 @@
 var express = require('express');
 var router = express.Router();
 
-var blogController = require('./blogController').blogController;
+var blogController = require('./blogModule').Controller;
 
 router.route('/')
-    .get(blogController.getMulti);
+    .get(blogController.gets);
 
-router.route('/page/:currentPage')
-    .get(blogController.getMulti);
+router.route('/get/:pid')
+    .get(blogController.get);
 
-router.route('/post/:pid')
-    .get(blogController.getSingle);
+router.route('/gets/:currentPage')
+    .get(blogController.gets);
 
 module.exports = router;

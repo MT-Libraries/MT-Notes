@@ -6,7 +6,7 @@ var express = require('express');
 var router = express.Router();
 var MobileDetect = require('mobile-detect');
 
-var labsController = require('./labsController').labsController;
+var labsController = require('./labsModule').Controller;
 
 router.route('/')
     .get(function (req, res) {
