@@ -8,12 +8,15 @@ var router = express.Router();
 var fileController = require('./fileModule').Controller;
 
 router.route('/')
-    .get(fileController.listFiles);
+    .get(fileController.list);
 
 router.route('/remote')
     .get(fileController.remote);
 
 router.route('/download')
-    .post(fileController.downloadFile);
+    .post(fileController.download);
+
+router.route('/upload')
+    .post(fileController.upload);
 
 module.exports = router;

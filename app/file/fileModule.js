@@ -7,11 +7,29 @@ var fileService = require('../common/service/fileService').fileService;
 var upyunService = require('../common/service/upyunService').upyunService;
 
 exports.Controller = {
-    listFiles: function (req, res) {
+
+    list: function (req, res) {
         var fileList = fileService.list('static');
         res.send(fileList);
     },
-    downloadFile : function (req, res) {
+    upload: function (req,res) {
+
+        var rootPath = process.cwd();
+
+        var obj = req.files.filename;
+        var tmpPath = path.join(rootPath,obj.path);
+        var newPath = path.join(rootPath,'/static/',obj.name);
+
+        fileService.upload(tmpPath,newPath, function (response) {
+
+            if(response.code === 200){
+                res.send(response.data);
+            }
+        });
+
+
+    },
+    download : function (req, res) {
         var remoteUrl = req.body.url;
         fileService.download(remoteUrl,'static');
         res.send('Start Download File ... You can find it from /file/');
