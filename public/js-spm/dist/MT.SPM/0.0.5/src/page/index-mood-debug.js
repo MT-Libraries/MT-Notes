@@ -12,11 +12,10 @@ exports.init = function () {
     // For timeline items(DOM) & mood items(Json);
 
     var currentPage = 1,
-        pageCount = 1,
-        pageTotal = 1;
-
+        pageCount = 1;
 
     var $cleanItem = $('.item');
+    var $queryMoreBtn = $('.query-more');
 
 
     // Protected Functions
@@ -63,19 +62,19 @@ exports.init = function () {
     _protected.initPublic();
     _protected.initTimeline();
 
-
     _protected.queryMood(currentPage, function (data) {
 
         currentPage = data.currentPage;
         pageCount = data.pageCount;
-        var showNextBtn = pageCount > currentPage;
+        var showMoreBtn = pageCount > currentPage;
 
-        if(showNextBtn){
+        if(showMoreBtn){
             // show nextPage btn;
-            // add click event
+            $queryMoreBtn.show();
+
         }else{
             // hide nextPage btn;
-            // remove click event;
+            $queryMoreBtn.hide();
         }
 
         $('.item').remove();
@@ -93,6 +92,17 @@ exports.init = function () {
 
             blogTimeLine.render();
         }
+    });
+
+    $queryMoreBtn.click(function(e){
+        e.preventDefault();
+
+        if(pageCount > currentPage){
+            _protected.queryMood(currentPage+1);
+        }else{
+            alert('No more to load...');
+        }
+
     });
 
 };
