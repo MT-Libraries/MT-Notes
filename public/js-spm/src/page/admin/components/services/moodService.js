@@ -3,12 +3,12 @@
  */
 
 
-var API_PATH = '/api/blog';
+var API_PATH = '/api/moods';
 
 var cookieUtil = require('../../../../utils/cookie');
 
-var postService = angular.module('ASS.service.postService', [])
-    .factory('postService', ['ajaxService', function (ajaxService) {
+var moodService = angular.module('ASS.service.moodService', [])
+    .factory('moodService', ['ajaxService', function (ajaxService) {
 
         return ({
             add: add,
@@ -18,9 +18,9 @@ var postService = angular.module('ASS.service.postService', [])
             gets: gets
         });
 
-        function add(post) {
+        function add(mood) {
 
-            post.author = getAuthor();
+            mood.author = getAuthor();
 
             function getAuthor() {
 
@@ -35,19 +35,19 @@ var postService = angular.module('ASS.service.postService', [])
                 }
             }
 
-            return ajaxService.post(API_PATH + '/post', post);
+            return ajaxService.post(API_PATH + '/mood', mood);
         }
 
-        function del(pid) {
-            return ajaxService.del(API_PATH + '/post/' + pid);
+        function del(mid) {
+            return ajaxService.del(API_PATH + '/mood/' + mid);
         }
 
-        function rev(pid, post) {
-            return ajaxService.put(API_PATH + '/post/' + pid, post);
+        function rev(mid, mood) {
+            return ajaxService.put(API_PATH + '/mood/' + mid, mood);
         }
 
-        function get(pid) {
-            return ajaxService.get(API_PATH + '/get/' + pid);
+        function get(mid) {
+            return ajaxService.get(API_PATH + '/get/' + mid);
         }
 
         function gets(pager) {
@@ -56,4 +56,4 @@ var postService = angular.module('ASS.service.postService', [])
     }]);
 
 
-module.exports = postService;
+module.exports = moodService;

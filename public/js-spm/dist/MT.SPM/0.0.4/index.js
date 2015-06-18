@@ -1,1 +1,0 @@
-define("MT.SPM/0.0.4/index",[],function(e,n,i){var d;i.exports=d});

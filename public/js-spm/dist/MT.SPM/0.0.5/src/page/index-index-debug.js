@@ -1,4 +1,4 @@
-define("MT.SPM/0.0.4/src/page/index-index-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/page/index-index-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 14/11/27.
  */
@@ -6,7 +6,7 @@ define("MT.SPM/0.0.4/src/page/index-index-debug", [], function(require, exports,
 var init = function () {
 
 
-    var public = require("MT.SPM/0.0.4/src/page/public-debug");
+    var public = require("MT.SPM/0.0.5/src/page/public-debug");
     public.init();
 
     console.log("\n\n" +
@@ -20,22 +20,22 @@ var init = function () {
 exports.init = init;
 
 });
-define("MT.SPM/0.0.4/src/page/public-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/page/public-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/18.
  */
 
 exports.init = function () {
 
-    var updateBrowser = require("MT.SPM/0.0.4/src/components/update-browser-debug").create('',false);
+    var updateBrowser = require("MT.SPM/0.0.5/src/components/update-browser-debug").create('',false);
     updateBrowser.init();
 
-    var toggleNav = require("MT.SPM/0.0.4/src/components/toggle-nav-debug").create($('.nav-ul-toggle a'),$('.nav-ul'));
+    var toggleNav = require("MT.SPM/0.0.5/src/components/toggle-nav-debug").create($('.nav-ul-toggle a'),$('.nav-ul'));
     toggleNav.init();
 
 };
 });
-define("MT.SPM/0.0.4/src/components/update-browser-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/components/update-browser-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/16.
  */
@@ -232,7 +232,7 @@ var updateBrowser = {
 exports.create = updateBrowser.create;
 
 });
-define("MT.SPM/0.0.4/src/components/toggle-nav-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/components/toggle-nav-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/18.
  */

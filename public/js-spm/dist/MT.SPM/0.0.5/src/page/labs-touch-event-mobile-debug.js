@@ -1,4 +1,4 @@
-define("MT.SPM/0.0.4/src/page/labs-touch-event-mobile-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/page/labs-touch-event-mobile-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/2/11.
  */
@@ -124,7 +124,7 @@ function initAnimation() {
 
 exports.init = function () {
 
-    var public = require("MT.SPM/0.0.4/src/page/public-debug");
+    var public = require("MT.SPM/0.0.5/src/page/public-debug");
     public.init();
 
     var degreeX = 0;
@@ -132,7 +132,7 @@ exports.init = function () {
 
     //initImg(initAnimation());
 
-    var touchListener = require("MT.SPM/0.0.4/src/utils/touchListener-debug").create($('.box-3d'));
+    var touchListener = require("MT.SPM/0.0.5/src/utils/touchListener-debug").create($('.box-3d'));
 
     touchListener.registerSwipeLeftCallback(function () {
         degreeY -= 120;
@@ -168,22 +168,22 @@ exports.init = function () {
 
 };
 });
-define("MT.SPM/0.0.4/src/page/public-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/page/public-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/18.
  */
 
 exports.init = function () {
 
-    var updateBrowser = require("MT.SPM/0.0.4/src/components/update-browser-debug").create('',false);
+    var updateBrowser = require("MT.SPM/0.0.5/src/components/update-browser-debug").create('',false);
     updateBrowser.init();
 
-    var toggleNav = require("MT.SPM/0.0.4/src/components/toggle-nav-debug").create($('.nav-ul-toggle a'),$('.nav-ul'));
+    var toggleNav = require("MT.SPM/0.0.5/src/components/toggle-nav-debug").create($('.nav-ul-toggle a'),$('.nav-ul'));
     toggleNav.init();
 
 };
 });
-define("MT.SPM/0.0.4/src/components/update-browser-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/components/update-browser-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/16.
  */
@@ -380,7 +380,7 @@ var updateBrowser = {
 exports.create = updateBrowser.create;
 
 });
-define("MT.SPM/0.0.4/src/components/toggle-nav-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/components/toggle-nav-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/18.
  */
@@ -418,7 +418,7 @@ exports.create = toggleNav.create;
 
 
 });
-define("MT.SPM/0.0.4/src/utils/touchListener-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/utils/touchListener-debug", [], function(require, exports, module){
 /**
  * @fileOverview mobile touch event listener
  *               expose a series of callbacks

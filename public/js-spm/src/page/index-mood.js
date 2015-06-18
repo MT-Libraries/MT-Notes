@@ -27,7 +27,7 @@ exports.init = function () {
 
     _protected.queryMood = function(cPage,callback){
 
-        $.get('/api/mood/gets/'+cPage,function(data) {
+        $.get('/api/moods/gets/'+cPage,function(data) {
 
             if(data && data.code === 200){
 
@@ -76,6 +76,8 @@ exports.init = function () {
             // hide nextPage btn;
             // remove click event;
         }
+
+        $('.item').remove();
 
         var _moods = data.moods;
 

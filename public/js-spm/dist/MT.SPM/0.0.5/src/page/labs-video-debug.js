@@ -1,17 +1,17 @@
-define("MT.SPM/0.0.4/src/page/labs-video-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/page/labs-video-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 14/12/16.
  */
 
 var init = function () {
 
-    var public = require("MT.SPM/0.0.4/src/page/public-debug");
+    var public = require("MT.SPM/0.0.5/src/page/public-debug");
     public.init();
 
     console.log('Live Page');
 
     var SOURCE = 'http://media.html5media.info/video.mp4';
-    var html5Player = require("MT.SPM/0.0.4/src/components/html5-player-debug").create(
+    var html5Player = require("MT.SPM/0.0.5/src/components/html5-player-debug").create(
         $('.video-section'),
         $('.video-section video'),
         document.getElementById("html5-video"),
@@ -38,7 +38,7 @@ var init = function () {
     html5Player.init();
     html5Player.resume();
 
-    var updateBrowser = require("MT.SPM/0.0.4/src/components/update-browser-debug").create('',false);
+    var updateBrowser = require("MT.SPM/0.0.5/src/components/update-browser-debug").create('',false);
 
     updateBrowser.init();
 };
@@ -47,22 +47,22 @@ var init = function () {
 
 exports.init = init;
 });
-define("MT.SPM/0.0.4/src/page/public-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/page/public-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/18.
  */
 
 exports.init = function () {
 
-    var updateBrowser = require("MT.SPM/0.0.4/src/components/update-browser-debug").create('',false);
+    var updateBrowser = require("MT.SPM/0.0.5/src/components/update-browser-debug").create('',false);
     updateBrowser.init();
 
-    var toggleNav = require("MT.SPM/0.0.4/src/components/toggle-nav-debug").create($('.nav-ul-toggle a'),$('.nav-ul'));
+    var toggleNav = require("MT.SPM/0.0.5/src/components/toggle-nav-debug").create($('.nav-ul-toggle a'),$('.nav-ul'));
     toggleNav.init();
 
 };
 });
-define("MT.SPM/0.0.4/src/components/update-browser-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/components/update-browser-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/16.
  */
@@ -259,7 +259,7 @@ var updateBrowser = {
 exports.create = updateBrowser.create;
 
 });
-define("MT.SPM/0.0.4/src/components/toggle-nav-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/components/toggle-nav-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/18.
  */
@@ -297,7 +297,7 @@ exports.create = toggleNav.create;
 
 
 });
-define("MT.SPM/0.0.4/src/components/html5-player-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/components/html5-player-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 14/12/17.
  */

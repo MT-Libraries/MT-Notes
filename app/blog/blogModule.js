@@ -10,26 +10,18 @@ exports.Api = {
 
         var pid = req.params.pid;
 
-        postService.get(pid, function (data) {
+        postService.get(pid, function (response) {
 
-            res.json({
-                pageTitle: data.post.name,
-                pageContent: data
-            });
+            res.json(response);
         });
     },
     gets: function (req, res) {
         var perPageNum = req.params.perPageNum || 5,
             currentPage = req.params.currentPage || 1;
 
-        postService.getAll(currentPage, perPageNum, function (data) {
+        postService.gets(currentPage, perPageNum, function (response) {
 
-            res.json({
-                pageCount: data.pageCount,
-                currentPage: data.currentPage,
-                perPageNum: data.perPageNum,
-                posts: data.posts
-            });
+            res.json(response);
 
         });
     },
@@ -45,11 +37,9 @@ exports.Api = {
             category: req.body.category
         };
 
-        console.log(post);
+        postService.add(post, function (response) {
 
-        postService.add(post, function (data) {
-
-            res.json(data);
+            res.json(response);
         });
 
     },
@@ -67,8 +57,8 @@ exports.Api = {
             category: req.body.category
         };
 
-        postService.put(pid, post, function (data) {
-            res.json(data);
+        postService.put(pid, post, function (response) {
+            res.json(response);
         });
 
     },
@@ -76,11 +66,9 @@ exports.Api = {
 
         var pid = req.params.pid;
 
-        console.log(pid);
+        postService.del(pid, function (response) {
 
-        postService.del(pid, function (data) {
-
-            res.json(data);
+            res.json(response);
         });
 
     }
@@ -92,12 +80,19 @@ exports.Controller = {
 
         var pid = req.params.pid;
 
-        postService.get(pid, function (data) {
+        postService.get(pid, function (response) {
 
-            res.render('blog/single', {
-                pageTitle: data.post.name,
-                pageContent: data
-            });
+            if(response.code === 200) {
+
+                res.render('blog/single', {
+                    pageTitle: response.data.post.name,
+                    pageContent: response.data
+                });
+
+            }else{
+
+                res.send('Error .');
+            }
         });
 
     },
@@ -106,12 +101,22 @@ exports.Controller = {
         var perPageNum = req.params.perPageNum || 5;
         var currentPage = req.params.currentPage || 1;
 
-        postService.getAll(currentPage, perPageNum, function (data) {
+        postService.gets(currentPage, perPageNum, function (response) {
 
-            res.render('blog/multi', {
-                pageTitle: 'Blog',
-                pageContent: data
-            });
+            if(response.code === 200) {
+
+
+                res.render('blog/multi', {
+                    pageTitle: 'Blog',
+                    pageContent: response.data
+                });
+
+            }else{
+
+                res.send('Error .');
+            }
+
+
 
         });
 

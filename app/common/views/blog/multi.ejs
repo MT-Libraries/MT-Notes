@@ -51,7 +51,7 @@
 							</div>
 							<div class="panel-body">
 								<div class="post-title">
-									<h3><a href="/blog/post/<%= post._id %>"><%= post.name %></a></h3>
+									<h3><a href="/blog/get/<%= post._id %>"><%= post.name %></a></h3>
 								</div>
 								<div class="post-content">
 									<%- post.content %>
@@ -82,12 +82,12 @@
 				<div class="col-12 pager">
 					<% if(pageContent.currentPage > 1){ %>
 					<a class="prevPage left"
-					   href="/blog/page/<%= parseInt(pageContent.currentPage) - 1 %>">&larr; Prev</a>
+					   href="/blog/gets/<%= parseInt(pageContent.currentPage) - 1 %>">&larr; Prev</a>
 					<% } %>
 
 					<% if(pageContent.pageCount > pageContent.currentPage ){ %>
 					<a class="nextPage right"
-					   href="/blog/page/<%= parseInt(pageContent.currentPage) + 1 %>">Next &rarr;</a>
+					   href="/blog/gets/<%= parseInt(pageContent.currentPage) + 1 %>">Next &rarr;</a>
 					<% } %>
 				</div>
 

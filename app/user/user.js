@@ -5,8 +5,6 @@
 var express = require('express');
 var router = express.Router();
 
-var blogApi = require('../blog/blogModule').Api;
-
 module.exports = function (passport) {
 
     router.route('/')
@@ -69,45 +67,6 @@ module.exports = function (passport) {
             });
         });
 
-    /*
-     * === Private Function ===
-     * Function:
-     *          add/put/del A Post
-     * Return:
-     *          object.json
-     * */
-
-    router.route('/post')
-        .post(isAdministratorApi, blogApi.add);
-
-    router.route('/post/:pid')
-        .put(isAdministratorApi, blogApi.put)
-        .delete(isAdministratorApi, blogApi.del);
-
-    /*
-     * === Private Function ===
-     * Function:
-     *          auth before add/put/del a post.
-     * Return:
-     *          object.json
-     * */
-
-    function isAdministratorApi(req, res, next) {
-
-        if (req.isAuthenticated() && (req.user.local.role === 'administrator')) {
-            return next();
-        }
-
-        res.json({
-            auth: false,
-            data: {
-                req: '',
-                res: '',
-                msg: 'Auth Failed,Please Sign in, And Try Again'
-            }
-
-        });
-    }
 
     /*
      * === Private Function ===

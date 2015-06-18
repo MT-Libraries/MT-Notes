@@ -18,20 +18,16 @@ exports.Api = {
 
         var mid = req.params.mid;
 
-        moodService.get(mid, function (data) {
-
-            res.json({
-                pageTitle: data.post.name,
-                pageContent: data
-            });
+        moodService.get(mid, function (response) {
+            res.json(response);
         });
     },
     gets: function (req, res) {
         var perPageNum = req.params.perPageNum || 5,
             currentPage = req.params.currentPage || 1;
 
-        moodService.gets(currentPage, perPageNum, function (data) {
-            res.json(data);
+        moodService.gets(currentPage, perPageNum, function (response) {
+            res.json(response);
         });
     },
     add: function (req, res) {
@@ -42,61 +38,32 @@ exports.Api = {
             content: req.body.content
         };
 
-        console.log(mood);
-
-        moodService.add(mood, function (data) {
-            res.json(data);
+        moodService.add(mood, function (response) {
+            res.json(response);
         });
 
     },
     put: function (req, res) {
 
-        var pid = req.params.pid;
+        var mid = req.params.mid;
 
-        var post = {
-            name: req.body.name,
-            desc: req.body.desc,
-            tags: req.body.tags,
-            date: new Date(),
+        var mood = {
+            datetime: new Date(),
             author: req.body.author,
-            content: req.body.content,
-            category: req.body.category
+            content: req.body.content
         };
 
-        moodService.put(pid, post, function (data) {
-            res.json(data);
+        moodService.put(mid, mood, function (response) {
+            res.json(response);
         });
 
     },
     del: function (req, res) {
 
-        var pid = req.params.pid;
+        var mid = req.params.mid;
 
-        console.log(pid);
-
-        moodService.del(pid, function (data) {
-
-            res.json(data);
-        });
-
-    }
-};
-
-// Controller
-exports.Controller = {
-    // Return HTML
-    get: function (req, res) {
-
-        var perPageNum = req.params.perPageNum || 5;
-        var currentPage = req.params.currentPage || 1;
-
-        moodService.getAll(currentPage, perPageNum, function (data) {
-
-            res.render('mood/timeline', {
-                pageTitle: 'Mood',
-                pageContent: data
-            });
-
+        moodService.del(mid, function (response) {
+            res.json(response);
         });
 
     }

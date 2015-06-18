@@ -10,21 +10,25 @@ exports.moodService = {
 
         var _mood = new Mood(mood);
 
-        console.log(_mood);
-
         _mood.save(function (err) {
 
             if (err) {
-                callback(err);
+                callback({
+                    code: 500,
+                    data: err
+                });
                 return;
             }
 
             callback({
-                auth: true,
+                code: 200,
                 data: {
-                    req: '/mood',
-                    res: 'success',
-                    msg: mood._id + " Added."
+                    auth: true,
+                    data: {
+                        req: '/mood',
+                        res: 'success',
+                        msg: mood._id + " Added."
+                    }
                 }
             });
 
@@ -35,7 +39,10 @@ exports.moodService = {
         Mood.findById(mid, function (err, oldMood) {
 
             if (err) {
-                callback(err);
+                callback({
+                    code: 500,
+                    data: err
+                });
             }
 
             oldMood.author = mood.author;
@@ -45,17 +52,23 @@ exports.moodService = {
             oldMood.save(function (err) {
 
                 if (err) {
-                    callback(err);
+                    callback({
+                        code: 500,
+                        data: err
+                    });
                 }
 
                 callback({
-                    auth: true,
+                    code: 200,
                     data: {
-                        req: '/mood/' + mid,
-                        res: 'success',
-                        msg: mood._id + " Updated."
-                    }
+                        auth: true,
+                        data: {
+                            req: '/mood/' + mid,
+                            res: 'success',
+                            msg: mood._id + " Updated."
+                        }
 
+                    }
                 });
             });
         });
@@ -68,15 +81,21 @@ exports.moodService = {
         }, function (err, mood) {
 
             if (err) {
-                callback(err);
+                callback({
+                    code: 500,
+                    data: err
+                });
             }
 
             callback({
-                auth: true,
+                code: 200,
                 data: {
-                    req: '/mood/' + mid,
-                    res: 'success',
-                    msg: mid + " Removed."
+                    auth: true,
+                    data: {
+                        req: '/mood/' + mid,
+                        res: 'success',
+                        msg: mid + " Removed."
+                    }
                 }
             });
         });
@@ -87,12 +106,18 @@ exports.moodService = {
         Mood.findById(mid, function (err, mood) {
 
             if (err) {
-                callback(err);
+                callback({
+                    code: 500,
+                    data: err
+                });
                 return;
             }
 
             callback({
-                mood: mood
+                code: 200,
+                data: {
+                    mood: mood
+                }
             });
         });
 
@@ -105,15 +130,18 @@ exports.moodService = {
         Mood.count(function (err, totalRecords) {
 
             if (err) {
-                callback(err);
+                callback({
+                    code: 500,
+                    data: err
+                });
             }
 
             Mood.find().skip(( currentPage - 1 ) * perPageNum).limit(perPageNum).sort('-date').exec(function (err, moods) {
 
                 if (err) {
                     callback({
-                        code:500,
-                        data:err
+                        code: 500,
+                        data: err
                     });
                     return;
                 }
@@ -122,8 +150,8 @@ exports.moodService = {
                 pageCount = ( totalRecords > pageCount * perPageNum ) ? ( pageCount + 1 ) : pageCount;
 
                 callback({
-                    code:200,
-                    data:{
+                    code: 200,
+                    data: {
                         pageCount: pageCount,
                         currentPage: currentPage,
                         perPageNum: perPageNum,

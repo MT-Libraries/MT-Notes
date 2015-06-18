@@ -68,9 +68,10 @@ post.controller('postMainCtrl', ['$scope', 'postService', function ($scope, post
 
 post.controller('postListCtrl', ['$scope','$state','postService', function ($scope,$state, postService) {
 
-    $scope.title = 'List all posts';
 
     var _currentPage = 1;
+
+    $scope.title = 'List all posts';
 
     render();
 
@@ -94,21 +95,21 @@ post.controller('postListCtrl', ['$scope','$state','postService', function ($sco
             console.log(response);
 
             if (response.auth) {
-                alert(response.data.msg);
+                alert(response.data.data.msg);
                 $state.reload();
 
             } else {
-                alert(response.data.msg);
+                alert(response.data.data.msg);
             }
         })
     };
 
     function render() {
 
-        postService.getAll(_currentPage).then(function (response) {
+        postService.gets(_currentPage).then(function (response) {
 
-            $scope.post = response.posts;
-            $scope.pageCount = response.pageCount;
+            $scope.post = response.data.posts;
+            $scope.pageCount = response.data.pageCount;
 
             if ($scope.pageCount > _currentPage) {
                 $scope.Pager = true;
@@ -165,7 +166,7 @@ post.controller('postRevCtrl', ['$scope', '$stateParams', 'postService', functio
 
     postService.get(pid).then(function (response) {
         console.log(response);
-        $scope.post = response.pageContent.post;
+        $scope.post = response.data.pageContent.post;
     });
 
     $scope.submitPostForm = function (Valid) {
@@ -175,10 +176,10 @@ post.controller('postRevCtrl', ['$scope', '$stateParams', 'postService', functio
             postService.rev(pid, $scope.post).then(function (response) {
                 console.log(response);
 
-                if (response.auth) {
-                    alert(response.data.msg);
+                if (response.data.auth) {
+                    alert(response.data.data.msg);
                 } else {
-                    alert(response.data.msg);
+                    alert(response.data.data.msg);
                 }
 
             });

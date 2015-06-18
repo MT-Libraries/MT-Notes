@@ -1,4 +1,4 @@
-define("MT.SPM/0.0.4/src/page/user-admin-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/page/user-admin-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 14/12/15.
  */
@@ -8,7 +8,7 @@ var BASE_URL = '/user/admin/';
 var init = function () {
 
     // SET BASE_TAG
-    var util = require("MT.SPM/0.0.4/src/utils/common-debug");
+    var util = require("MT.SPM/0.0.5/src/utils/common-debug");
     util.addBaseTag(BASE_URL);
 
     //docCookies = require('../utils/cookie');
@@ -19,11 +19,13 @@ var init = function () {
     var AngularSeedSpm = angular.module('ASS', [
         'ui.router',
         'ASS.post',
+        'ASS.mood',
         'ASS.service'
     ]);
 
-    var post = require("MT.SPM/0.0.4/src/page/admin/post/post-debug");
-    var service = require("MT.SPM/0.0.4/src/page/admin/components/services/service-debug");
+    var post = require("MT.SPM/0.0.5/src/page/admin/post/post-debug");
+    var mood = require("MT.SPM/0.0.5/src/page/admin/mood/mood-debug");
+    var service = require("MT.SPM/0.0.5/src/page/admin/components/services/service-debug");
 
     AngularSeedSpm.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/post');
@@ -35,7 +37,7 @@ var init = function () {
 exports.init = init;
 
 });
-define("MT.SPM/0.0.4/src/utils/common-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/utils/common-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/12.
  */
@@ -47,7 +49,7 @@ exports.addBaseTag = function (url) {
     document.getElementsByTagName("head")[0].appendChild(_baseTag);
 };
 });
-define("MT.SPM/0.0.4/src/page/admin/post/post-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/page/admin/post/post-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/12.
  */
@@ -118,9 +120,10 @@ post.controller('postMainCtrl', ['$scope', 'postService', function ($scope, post
 
 post.controller('postListCtrl', ['$scope','$state','postService', function ($scope,$state, postService) {
 
-    $scope.title = 'List all posts';
 
     var _currentPage = 1;
+
+    $scope.title = 'List all posts';
 
     render();
 
@@ -144,21 +147,21 @@ post.controller('postListCtrl', ['$scope','$state','postService', function ($sco
             console.log(response);
 
             if (response.auth) {
-                alert(response.data.msg);
+                alert(response.data.data.msg);
                 $state.reload();
 
             } else {
-                alert(response.data.msg);
+                alert(response.data.data.msg);
             }
         })
     };
 
     function render() {
 
-        postService.getAll(_currentPage).then(function (response) {
+        postService.gets(_currentPage).then(function (response) {
 
-            $scope.post = response.posts;
-            $scope.pageCount = response.pageCount;
+            $scope.post = response.data.posts;
+            $scope.pageCount = response.data.pageCount;
 
             if ($scope.pageCount > _currentPage) {
                 $scope.Pager = true;
@@ -215,7 +218,7 @@ post.controller('postRevCtrl', ['$scope', '$stateParams', 'postService', functio
 
     postService.get(pid).then(function (response) {
         console.log(response);
-        $scope.post = response.pageContent.post;
+        $scope.post = response.data.pageContent.post;
     });
 
     $scope.submitPostForm = function (Valid) {
@@ -225,10 +228,10 @@ post.controller('postRevCtrl', ['$scope', '$stateParams', 'postService', functio
             postService.rev(pid, $scope.post).then(function (response) {
                 console.log(response);
 
-                if (response.auth) {
-                    alert(response.data.msg);
+                if (response.data.auth) {
+                    alert(response.data.data.msg);
                 } else {
-                    alert(response.data.msg);
+                    alert(response.data.data.msg);
                 }
 
             });
@@ -241,31 +244,225 @@ post.controller('postRevCtrl', ['$scope', '$stateParams', 'postService', functio
 
 module.exports = post;
 });
-define("MT.SPM/0.0.4/src/page/admin/components/services/service-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/page/admin/mood/mood-debug", [], function(require, exports, module){
+/**
+ * Created by thonatos on 15/1/12.
+ */
+
+var mood = angular.module('ASS.mood', ['ui.router']);
+
+mood.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state('mood', {
+            url: '/mood',
+            views: {
+                '': {
+                    templateUrl: '/public/js-spm/src/page/admin/mood/layout.html',
+                    controller: 'moodCtrl'
+                },
+                'side@mood': {
+                    templateUrl: '/public/js-spm/src/page/admin/mood/mood.side.html'
+                },
+                'main@mood': {
+                    templateUrl: '/public/js-spm/src/page/admin/mood/mood.main.html',
+                    controller: 'moodMainCtrl'
+                }
+            }
+        })
+        .state('mood.list', {
+            url: '/list',
+            views: {
+                'main@mood': {
+                    templateUrl: '/public/js-spm/src/page/admin/mood/mood.list.html',
+                    controller: 'moodListCtrl'
+                }
+            }
+        })
+        .state('mood.add', {
+            url: '/add',
+            views: {
+                'main@mood': {
+                    templateUrl: '/public/js-spm/src/page/admin/mood/mood.add.html',
+                    controller: 'moodAddCtrl'
+                }
+            }
+        })
+        .state('mood.rev', {
+            url: '/rev/:mid',
+            views: {
+                'main@mood': {
+                    templateUrl: '/public/js-spm/src/page/admin/mood/mood.rev.html',
+                    controller: 'moodRevCtrl'
+                }
+            }
+        });
+}]);
+
+mood.controller('moodCtrl', ['$scope', function ($scope) {
+
+    $scope.menuList = [
+        {name: 'List Mood', url: 'mood.list'},
+        {name: 'Add Mood', url: 'mood.add'}
+    ];
+
+}]);
+
+mood.controller('moodMainCtrl', ['$scope', 'moodService', function ($scope, moodService) {
+
+    $scope.title = 'Mood.Administrator';
+
+}]);
+
+mood.controller('moodListCtrl', ['$scope','$state','moodService', function ($scope,$state, moodService) {
+
+    $scope.title = 'List all moods';
+
+    var _currentPage = 1;
+
+    render();
+
+    $scope.prevPage = function () {
+        if (_currentPage > 1) {
+            _currentPage--;
+            render();
+        }
+    };
+
+    $scope.nextPage = function () {
+        if ($scope.pageCount > _currentPage) {
+            _currentPage++;
+            render();
+        }
+    };
+
+    $scope.del = function (mid) {
+        console.log(mid);
+        moodService.del(mid).then(function (response) {
+            console.log(response);
+
+            if (response.data.auth) {
+                alert(response.data.data.msg);
+                $state.reload();
+
+            } else {
+                alert(response.data.data.msg);
+            }
+        })
+    };
+
+    function render() {
+
+        moodService.gets(_currentPage).then(function (response) {
+
+            if(response.code === 200){
+                $scope.moods = response.data.moods;
+                $scope.pageCount = response.data.pageCount;
+            }
+
+            if ($scope.pageCount > _currentPage) {
+                $scope.Pager = true;
+                $scope.Next = true;
+            } else {
+                $scope.Next = false;
+            }
+
+            if (_currentPage > 1) {
+                $scope.Prev = true;
+            } else {
+                $scope.Prev = false;
+            }
+
+            console.log(response);
+
+        });
+    }
+
+}]);
+
+mood.controller('moodAddCtrl', ['$scope', 'moodService', function ($scope, moodService) {
+
+    $scope.title = 'Add a new mood';
+
+    $scope.mood = {};
+
+    $scope.submitMoodForm = function (Valid) {
+        if (Valid) {
+
+            console.log($scope.mood);
+            moodService.add($scope.mood).then(function (response) {
+                console.log(response);
+
+                alert('success');
+                $scope.mood = {};
+            });
+        } else {
+            alert('you need complete the form');
+        }
+    };
+
+}]);
+
+mood.controller('moodRevCtrl', ['$scope', '$stateParams', 'moodService', function ($scope, $stateParams, moodService) {
+
+    $scope.title = 'Revision an old mood';
+
+    var mid = $stateParams.mid;
+
+    moodService.get(mid).then(function (response) {
+        console.log(response);
+        $scope.mood = response.pageContent.mood;
+    });
+
+    $scope.submitMoodForm = function (Valid) {
+        if (Valid) {
+
+            console.log($scope.mood);
+            moodService.rev(mid, $scope.mood).then(function (response) {
+                console.log(response);
+
+                if (response.data.auth) {
+                    alert(response.data.data.msg);
+                } else {
+                    alert(response.data.data.msg);
+                }
+
+            });
+        } else {
+            alert('you need complete the form');
+        }
+    };
+
+}]);
+
+module.exports = mood;
+});
+define("MT.SPM/0.0.5/src/page/admin/components/services/service-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 14-10-31.
  */
 
 var service = angular.module('ASS.service', [
     'ASS.service.postService',
+    'ASS.service.moodService',
     'ASS.service.ajaxService'
 ]);
 
-var post = require("MT.SPM/0.0.4/src/page/admin/components/services/postService-debug");
-var ajax = require("MT.SPM/0.0.4/src/page/admin/components/services/ajaxService-debug");
+var post = require("MT.SPM/0.0.5/src/page/admin/components/services/postService-debug");
+var mood = require("MT.SPM/0.0.5/src/page/admin/components/services/moodService-debug");
+var ajax = require("MT.SPM/0.0.5/src/page/admin/components/services/ajaxService-debug");
 
 module.exports = service;
 
 });
-define("MT.SPM/0.0.4/src/page/admin/components/services/postService-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/page/admin/components/services/postService-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 14-11-8.
  */
 
-var PRIVATE_API = '/user/post';
-var PUBLIC_API = '/api/blog';
 
-var cookieUtil = require("MT.SPM/0.0.4/src/utils/cookie-debug");
+var API_PATH = '/api/blog';
+
+var cookieUtil = require("MT.SPM/0.0.5/src/utils/cookie-debug");
 
 var postService = angular.module('ASS.service.postService', [])
     .factory('postService', ['ajaxService', function (ajaxService) {
@@ -275,7 +472,7 @@ var postService = angular.module('ASS.service.postService', [])
             del: del,
             rev: rev,
             get: get,
-            getAll: getAll
+            gets: gets
         });
 
         function add(post) {
@@ -295,23 +492,23 @@ var postService = angular.module('ASS.service.postService', [])
                 }
             }
 
-            return ajaxService.post(PRIVATE_API, post);
+            return ajaxService.post(API_PATH + '/post', post);
         }
 
         function del(pid) {
-            return ajaxService.del(PRIVATE_API + '/' + pid);
+            return ajaxService.del(API_PATH + '/post/' + pid);
         }
 
         function rev(pid, post) {
-            return ajaxService.put(PRIVATE_API + '/' + pid, post);
+            return ajaxService.put(API_PATH + '/post/' + pid, post);
         }
 
         function get(pid) {
-            return ajaxService.get(PUBLIC_API + '/post/' + pid);
+            return ajaxService.get(API_PATH + '/get/' + pid);
         }
 
-        function getAll(pager) {
-            return ajaxService.get(PUBLIC_API + '/page/' + pager);
+        function gets(pager) {
+            return ajaxService.get(API_PATH + '/gets/' + pager);
         }
     }]);
 
@@ -319,7 +516,7 @@ var postService = angular.module('ASS.service.postService', [])
 module.exports = postService;
 
 });
-define("MT.SPM/0.0.4/src/utils/cookie-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/utils/cookie-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/17.
  */
@@ -390,7 +587,69 @@ var docCookies = {
 
 module.exports = docCookies;
 });
-define("MT.SPM/0.0.4/src/page/admin/components/services/ajaxService-debug", [], function(require, exports, module){
+define("MT.SPM/0.0.5/src/page/admin/components/services/moodService-debug", [], function(require, exports, module){
+/**
+ * Created by thonatos on 14-11-8.
+ */
+
+
+var API_PATH = '/api/moods';
+
+var cookieUtil = require("MT.SPM/0.0.5/src/utils/cookie-debug");
+
+var moodService = angular.module('ASS.service.moodService', [])
+    .factory('moodService', ['ajaxService', function (ajaxService) {
+
+        return ({
+            add: add,
+            del: del,
+            rev: rev,
+            get: get,
+            gets: gets
+        });
+
+        function add(mood) {
+
+            mood.author = getAuthor();
+
+            function getAuthor() {
+
+                var _cookie = JSON.parse(cookieUtil.getItem('MT.User').replace('j:',''));
+
+                if(_cookie && _cookie.email){
+
+                    console.log(_cookie.email);
+                    return _cookie.email;
+                }else{
+                    return 'anonymous';
+                }
+            }
+
+            return ajaxService.post(API_PATH + '/mood', mood);
+        }
+
+        function del(mid) {
+            return ajaxService.del(API_PATH + '/mood/' + mid);
+        }
+
+        function rev(mid, mood) {
+            return ajaxService.put(API_PATH + '/mood/' + mid, mood);
+        }
+
+        function get(mid) {
+            return ajaxService.get(API_PATH + '/get/' + mid);
+        }
+
+        function gets(pager) {
+            return ajaxService.get(API_PATH + '/gets/' + pager);
+        }
+    }]);
+
+
+module.exports = moodService;
+
+});
+define("MT.SPM/0.0.5/src/page/admin/components/services/ajaxService-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 14-11-14.
  */

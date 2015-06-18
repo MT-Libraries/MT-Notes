@@ -20,6 +20,7 @@ router.route('/')
     });
 
 /*
+ * Public Function
  * Return json object according to query string.
  * @return:   {}
  */
@@ -30,11 +31,12 @@ router.route('/blog/get/:pid')
 router.route('/blog/gets/:currentPage')
     .get(blogApi.gets);
 
-router.route('/mood/get/:pid')
+router.route('/moods/get/:mid')
     .get(moodApi.get);
 
-router.route('/mood/gets/:currentPage')
+router.route('/moods/gets/:currentPage')
     .get(moodApi.gets);
+
 
 router.route('/fm/playlist')
     .get(fmApi.getPlayList);
@@ -42,5 +44,46 @@ router.route('/fm/playlist')
 router.route('/fm/playlist/:plId')
     .get(fmApi.getPlayList);
 
+/*
+ * Private Function
+ * Return json object according to query string.
+ * @return:   {}
+ */
+
+
+router.route('/blog/post')
+    .post(isAdministratorApi, blogApi.add);
+
+router.route('/blog/post/:pid')
+    .put(isAdministratorApi, blogApi.put)
+    .delete(isAdministratorApi, blogApi.del);
+
+router.route('/moods/mood')
+    .post(isAdministratorApi, moodApi.add);
+
+router.route('/moods/mood/:mid')
+    .put(isAdministratorApi, moodApi.put)
+    .delete(isAdministratorApi, moodApi.del);
+
+/*
+ * Protected Function
+ */
+
+function isAdministratorApi(req, res, next) {
+
+    if (req.isAuthenticated() && (req.user.local.role === 'administrator')) {
+        return next();
+    }
+
+    res.json({
+        auth: false,
+        data: {
+            req: '',
+            res: '',
+            msg: 'Auth Failed,Please Sign in, And Try Again'
+        }
+
+    });
+}
 
 module.exports = router;

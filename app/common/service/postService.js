@@ -15,16 +15,22 @@ exports.postService = {
         _post.save(function (err) {
 
             if (err) {
-                callback(err);
+                callback({
+                    code: 500,
+                    data: err
+                });
                 return;
             }
 
             callback({
-                auth: true,
+                code: 200,
                 data: {
-                    req: '/post',
-                    res: 'success',
-                    msg: post.name + " Added."
+                    auth: true,
+                    data: {
+                        req: '/post',
+                        res: 'success',
+                        msg: post.name + " Added."
+                    }
                 }
             });
 
@@ -35,7 +41,10 @@ exports.postService = {
         Post.findById(pid, function (err, oldPost) {
 
             if (err) {
-                callback(err);
+                callback({
+                    code: 500,
+                    data: err
+                });
             }
 
             oldPost.name = post.name;
@@ -48,17 +57,23 @@ exports.postService = {
             oldPost.save(function (err) {
 
                 if (err) {
-                    callback(err);
+                    callback({
+                        code: 500,
+                        data: err
+                    });
                 }
 
                 callback({
-                    auth: true,
+                    code: 200,
                     data: {
-                        req: '/post/' + pid,
-                        res: 'success',
-                        msg: post.name + " Updated."
-                    }
+                        auth: true,
+                        data: {
+                            req: '/post/' + pid,
+                            res: 'success',
+                            msg: post.name + " Updated."
+                        }
 
+                    }
                 });
             });
         });
@@ -71,15 +86,20 @@ exports.postService = {
         }, function (err, post) {
 
             if (err) {
-                callback(err);
+                callback({
+                    code: 500,
+                    data: err
+                });
             }
 
             callback({
-                auth: true,
-                data: {
-                    req: '/post/' + pid,
-                    res: 'success',
-                    msg: pid + " Removed."
+                code: 200, data: {
+                    auth: true,
+                    data: {
+                        req: '/post/' + pid,
+                        res: 'success',
+                        msg: pid + " Removed."
+                    }
                 }
             });
         });
@@ -90,17 +110,23 @@ exports.postService = {
         Post.findById(pid, function (err, post) {
 
             if (err) {
-                callback(err);
+                callback({
+                    code: 500,
+                    data: err
+                });
                 return;
             }
 
             callback({
-                post: post
+                code: 200,
+                data: {
+                    post: post
+                }
             });
         });
 
     },
-    getAll: function (currentPage, perPageNum, callback) {
+    gets: function (currentPage, perPageNum, callback) {
 
         var perPageNum = perPageNum;
         var currentPage = currentPage;
@@ -108,13 +134,19 @@ exports.postService = {
         Post.count(function (err, totalRecords) {
 
             if (err) {
-                callback(err);
+                callback({
+                    code: 500,
+                    data: err
+                });
             }
 
             Post.find().skip(( currentPage - 1 ) * perPageNum).limit(perPageNum).sort('-date').exec(function (err, posts) {
 
                 if (err) {
-                    callback(err);
+                    callback({
+                        code: 500,
+                        data: err
+                    });
                     return;
                 }
 
@@ -122,10 +154,13 @@ exports.postService = {
                 pageCount = ( totalRecords > pageCount * perPageNum ) ? ( pageCount + 1 ) : pageCount;
 
                 callback({
-                    pageCount: pageCount,
-                    currentPage: currentPage,
-                    perPageNum: perPageNum,
-                    posts: posts
+                    code: 200,
+                    data: {
+                        pageCount: pageCount,
+                        currentPage: currentPage,
+                        perPageNum: perPageNum,
+                        posts: posts
+                    }
                 });
             });
         });

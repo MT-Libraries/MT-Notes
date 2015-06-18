@@ -18,10 +18,12 @@ var init = function () {
     var AngularSeedSpm = angular.module('ASS', [
         'ui.router',
         'ASS.post',
+        'ASS.mood',
         'ASS.service'
     ]);
 
     var post = require("./admin/post/post");
+    var mood = require("./admin/mood/mood");
     var service = require('./admin/components/services/service');
 
     AngularSeedSpm.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
