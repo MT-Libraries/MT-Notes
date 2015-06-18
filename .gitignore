@@ -7,6 +7,9 @@ public/js-spm/spm_modules/
 *.DS_Store
 npm-debug.log
 
+# Ignore Dirs
+static/
+
 bin/autoload.sh
 
 # Config App
