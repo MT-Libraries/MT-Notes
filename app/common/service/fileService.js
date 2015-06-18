@@ -9,6 +9,7 @@ var path = require('path');
 exports.fileService = {
 
     list: function (localPath) {
+
         var dir = path.join(process.cwd(), localPath);
 
         var walkSync = function (dir, filelist) {
@@ -40,6 +41,65 @@ exports.fileService = {
         };
 
         return walkSync(dir, '');
+
+    },
+    upload: function (oPath,dPath,callback) {
+
+            if(fs.existsSync(oPath)) {
+
+                if(fs.existsSync(dPath)){
+
+                    // Overwrite old file.
+
+                    fs.unlink(dPath, function (err) {
+                        if(err) {
+                            throw err;
+                        }
+
+                        fs.rename(oPath,dPath,function(err){
+                            if(err){
+                                throw err;
+                            }
+
+
+                            callback({
+                                code:200,
+                                data:{
+                                    msg:'Old file has been overwrote by new file.'
+                                }
+                            });
+                        });
+
+                    });
+
+                }else{
+
+                    fs.rename(oPath,dPath,function(err){
+                        if(err){
+                            throw err;
+                        }
+
+                        callback({
+                            code:200,
+                            data:{
+                                msg:'Successful uploaded.'
+                            }
+                        });
+
+                    });
+                }
+
+            }else{
+
+                // Original file not exist
+
+                callback({
+                    code:500,
+                    data:{
+                        msg:'Upload failed. Please Try again.'
+                    }
+                });
+            }
 
     },
     download: function (remoteUrl, localPath) {
