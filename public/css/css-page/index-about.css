@@ -468,6 +468,7 @@ table {
 }
 .center {
   margin: 0 auto;
+  float: none !important;
 }
 .text-right {
   text-align: right;
