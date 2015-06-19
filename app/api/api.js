@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var fmApi  = require('../fm/fmModule').Api;
+var fmApi = require('../fm/fmModule').Api;
 var blogApi = require('../blog/blogModule').Api;
 var moodApi = require('../mood/moodModule').Api;
 
@@ -40,7 +40,7 @@ router.route('/moods/gets/:currentPage')
 
 router.route('/fm/playlist')
     .get(fmApi.getPlayList);
-    
+
 router.route('/fm/playlist/:plId')
     .get(fmApi.getPlayList);
 
@@ -76,13 +76,15 @@ function isAdministratorApi(req, res, next) {
     }
 
     res.json({
-        auth: false,
+        code: 400,
         data: {
-            req: '',
-            res: '',
-            msg: 'Auth Failed,Please Sign in, And Try Again'
+            auth: false,
+            data: {
+                req: '',
+                res: '',
+                msg: 'Auth Failed,Please Sign in, And Try Again'
+            }
         }
-
     });
 }
 

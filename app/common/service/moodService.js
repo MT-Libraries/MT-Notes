@@ -65,7 +65,7 @@ exports.moodService = {
                         data: {
                             req: '/mood/' + mid,
                             res: 'success',
-                            msg: mood._id + " Updated."
+                            msg: mid + " Updated."
                         }
 
                     }
