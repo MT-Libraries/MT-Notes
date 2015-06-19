@@ -89,9 +89,12 @@ mood.controller('moodListCtrl', ['$scope','$state','moodService', function ($sco
     };
 
     $scope.del = function (mid) {
-        console.log(mid);
+
+        //console.log(mid);
+
         moodService.del(mid).then(function (response) {
-            console.log(response);
+
+            // console.log(response);
 
             if (response.data.auth) {
                 alert(response.data.data.msg);
@@ -125,7 +128,7 @@ mood.controller('moodListCtrl', ['$scope','$state','moodService', function ($sco
                 $scope.Prev = false;
             }
 
-            console.log(response);
+            // console.log(response);
 
         });
     }
@@ -141,7 +144,7 @@ mood.controller('moodAddCtrl', ['$scope', 'moodService', function ($scope, moodS
     $scope.submitMoodForm = function (Valid) {
         if (Valid) {
 
-            console.log($scope.mood);
+            // console.log($scope.mood);
             moodService.add($scope.mood).then(function (response) {
                 console.log(response);
 
@@ -162,16 +165,24 @@ mood.controller('moodRevCtrl', ['$scope', '$stateParams', 'moodService', functio
     var mid = $stateParams.mid;
 
     moodService.get(mid).then(function (response) {
-        console.log(response);
-        $scope.mood = response.pageContent.mood;
+        if(response.code === 200){
+            $scope.mood = response.data.mood;
+        }else{
+            $scope.mood = {
+                author:'none',
+                content:response.data.status,
+                datetime:new Date()
+            }
+        }
+
     });
 
     $scope.submitMoodForm = function (Valid) {
         if (Valid) {
 
-            console.log($scope.mood);
+            // console.log($scope.mood);
+
             moodService.rev(mid, $scope.mood).then(function (response) {
-                console.log(response);
 
                 if (response.data.auth) {
                     alert(response.data.data.msg);
