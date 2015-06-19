@@ -313,7 +313,7 @@ mood.controller('moodMainCtrl', ['$scope', 'moodService', function ($scope, mood
 
 }]);
 
-mood.controller('moodListCtrl', ['$scope','$state','moodService', function ($scope,$state, moodService) {
+mood.controller('moodListCtrl', ['$scope', '$state', 'moodService', function ($scope, $state, moodService) {
 
     $scope.title = 'List all moods';
 
@@ -357,7 +357,7 @@ mood.controller('moodListCtrl', ['$scope','$state','moodService', function ($sco
 
         moodService.gets(_currentPage).then(function (response) {
 
-            if(response.code === 200){
+            if (response.code === 200) {
                 $scope.moods = response.data.moods;
                 $scope.pageCount = response.data.pageCount;
             }
@@ -412,13 +412,13 @@ mood.controller('moodRevCtrl', ['$scope', '$stateParams', 'moodService', functio
     var mid = $stateParams.mid;
 
     moodService.get(mid).then(function (response) {
-        if(response.code === 200){
+        if (response.code === 200) {
             $scope.mood = response.data.mood;
-        }else{
+        } else {
             $scope.mood = {
-                author:'none',
-                content:response.data.status,
-                datetime:new Date()
+                author: 'none',
+                content: response.data.status,
+                datetime: new Date()
             }
         }
 
@@ -427,14 +427,17 @@ mood.controller('moodRevCtrl', ['$scope', '$stateParams', 'moodService', functio
     $scope.submitMoodForm = function (Valid) {
         if (Valid) {
 
-            // console.log($scope.mood);
-
             moodService.rev(mid, $scope.mood).then(function (response) {
 
-                if (response.data.auth) {
-                    alert(response.data.data.msg);
-                } else {
-                    alert(response.data.data.msg);
+                if (response.code === 200) {
+
+                    if (response.data.auth) {
+                        alert(response.data.data.msg);
+                    } else {
+                        alert(response.data.data.msg);
+                    }
+                }else{
+                    alert(response.data);
                 }
 
             });
