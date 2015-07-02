@@ -11,7 +11,6 @@ exports.Api = {
         var pid = req.params.pid;
 
         postService.get(pid, function (response) {
-
             res.json(response);
         });
     },

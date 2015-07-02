@@ -4,6 +4,7 @@ var router = express.Router();
 var fmApi = require('../fm/fmModule').Api;
 var blogApi = require('../blog/blogModule').Api;
 var moodApi = require('../mood/moodModule').Api;
+var apiApi = require('../api/apiModule').Api;
 
 /*
  * Show welcome message while path to root.
@@ -24,6 +25,9 @@ router.route('/')
  * Return json object according to query string.
  * @return:   {}
  */
+
+router.route('/media/audio/:text')
+    .get(apiApi.text2audio);
 
 router.route('/blog/get/:pid')
     .get(blogApi.get);
