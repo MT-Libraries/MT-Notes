@@ -732,6 +732,7 @@ body,
 .layout {
   position: relative;
   top: 0;
+  left: 0;
   display: table;
 }
 .header {
@@ -746,7 +747,7 @@ body,
   vertical-align: middle;
 }
 .main .player {
-  width: 375px;
+  width: 340px;
   margin: 0 auto;
 }
 .main .player .info {
@@ -781,7 +782,7 @@ body,
 }
 .main .player .action input[type=range].player-seekbar {
   -webkit-appearance: none;
-  width: 80%;
+  width: 78%;
   margin: 2.05px 0;
 }
 .main .player .action input[type=range].player-seekbar:focus {

@@ -753,7 +753,6 @@ a {
   position: relative;
   width: 100%;
   max-width: 1280px;
-  min-width: 480px;
   overflow: hidden;
 }
 .timeline {
