@@ -133,10 +133,12 @@ exports.Api = {
 
             var WECHAT_CONFIG = CONFIG_APP.weixin;
 
-            var signature = req.params.signature;
-            var timestamp = req.params.timestamp;
-            var nonce = req.params.nonce;
-            var echostr = req.params.echostr;
+            var signature = req.query.signature;
+            var timestamp = req.query.timestamp;
+            var nonce = req.query.nonce;
+            var echostr = req.query.echostr;
+
+            console.log(req.query);
 
             var shasum = crypto.createHash('sha1');
             var arr = [WECHAT_CONFIG.token, timestamp, nonce].sort();
