@@ -16,7 +16,8 @@ router.route('/')
         res.json({
             req: '/',
             res: '',
-            msg: 'Welcome to NOTES@MT!'
+            msg: 'Welcome to NOTES@MT!',
+            ott: redis.client.get('name')
         });
     });
 
@@ -26,12 +27,15 @@ router.route('/')
  * @return:   {}
  */
 
-
 router.route('/wechat/signature')
-    .get(apiApi.wechat.checkSignature);
+    .get(apiApi.wechat().checkSignature);
 
-router.route('/wechat/get/token')
-    .get(apiApi.wechat.getToken);
+router.route('/wechat/signature/gen')
+    .get(apiApi.wechat().genSignature);
+
+router.route('/wechat/token/get')
+    .get(apiApi.wechat().getToken);
+
 
 router.route('/media/audio/:text')
     .get(apiApi.text2audio);

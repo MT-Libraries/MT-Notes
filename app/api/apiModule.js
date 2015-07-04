@@ -4,12 +4,16 @@
 
 var crypto = require('crypto');
 var request = require('request');
+var moment = require('moment');
+var redis = require('redis');
+
 var CONFIG_APP = require('../common/conf/config_app')('api','module_api');
 
 var auth_token = '';
 var auth_flag = false;
 
 exports.Api = {
+
     text2audio: function (req, res) {
 
         var BAIDU_CONFIG = CONFIG_APP.baidu.yuyin;
@@ -128,8 +132,14 @@ exports.Api = {
         }
 
     },
-    wechat:{
-        checkSignature:function(req,res){
+
+    wechat: function () {
+
+        var obj = {};
+
+        obj.checkSignature = function (req,res){
+
+            // http://localhost:8084/api/wechat/signature?signature=c175cd41c98cc358f59a9664b5f3910df74d244e&echostr=2127777743056099306&timestamp=1435980616&nonce=425529478
 
             var WECHAT_CONFIG = CONFIG_APP.weixin;
 
@@ -142,62 +152,265 @@ exports.Api = {
             var arr = [WECHAT_CONFIG.token, timestamp, nonce].sort();
             shasum.update(arr.join(''));
 
-            //return shasum.digest('hex') === signature;
-
             if(shasum.digest('hex') === signature){
                 res.send(echostr);
             }else {
                 res.send('err');
             }
-        },
-        getToken: function (req, res) {
+        };
+
+        obj.getToken = function (req,res) {
 
             var WECHAT_CONFIG = CONFIG_APP.weixin;
 
-            var _authUrl = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+WECHAT_CONFIG.appid+'&secret='+WECHAT_CONFIG.appSec;
+            var _protected = {};
 
-            var options = {
-                url: _authUrl,
-                json: true,
-                method: 'GET'
+            _protected.localStore = function(){
+
+                var client = redis.createClient();
+                    client.unref();
+                    client.hgetall('weixin',function(err,response){
+
+                            // Connect Err
+                            if(err){
+
+                                console.log('Redis connect err:',err);
+                                _protected.remoteStore();
+                                return;
+
+                            }else{
+
+                                // Connect Successful
+                                if(response){
+                                    // not null
+                                    console.log('Redis connected,response not null,',response);
+
+                                    if(moment().diff(response.start,'seconds') > response.expires_in){
+
+                                        client.del('weixin', function(err, reply) {
+                                            if(err){
+                                                console.log(err);
+                                                return;
+                                            }
+                                            console.log(reply);
+                                        });
+
+                                        _protected.remoteStore();
+
+                                    }else{
+                                        res.json({code:200,data:response});
+                                    }
+
+                                }else{
+
+                                    console.log('response null');
+                                    _protected.remoteStore();
+
+                                }
+
+                            }
+                        }
+                    );
             };
 
-            request(options, function (err, response, json) {
+            _protected.remoteStore = function(){
 
-                if (!err && response.statusCode === 200) {
+                var client = redis.createClient();
 
-                    // Connect Successful
+                var _authUrl = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+WECHAT_CONFIG.appid+'&secret='+WECHAT_CONFIG.appSec;
 
-                    if (json.access_token) {
+                var _options = {
+                    url: _authUrl,
+                    json: true,
+                    method: 'GET'
+                };
 
-                        //{"access_token":"ACCESS_TOKEN","expires_in":7200}
+                request(_options, function (err, response, json) {
 
-                        res.json({
-                            code:200,
-                            data:json
-                        });
+                    if (!err && response.statusCode === 200) {
+
+                        // Connect Successful
+                        if (json.access_token) {
+
+                            json.start = moment().format();
+
+                            client.unref();
+                            client.hmset('weixin',json, function (err,response) {
+
+                                if(err){
+                                    console.log('Redis err: ',err);
+                                    return;
+                                }
+
+                                console.log('Redis store: ',response);
+                            });
+
+                            res.json({
+                                code:200,
+                                data:json
+                            });
+
+                        } else {
+
+                            res.json({
+                                code:500,
+                                data:json
+                            });
+                        }
 
                     } else {
 
+                        // Connect Failed
                         res.json({
                             code:500,
-                            data:json
+                            data:{
+                                msg:'Remote server connect Failed.'
+                            }
                         });
                     }
 
-                } else {
+                });
 
-                    // Connect Failed
+            };
 
-                    res.json({
-                        code:500,
-                        data:{
-                            msg:'Connect Failed.'
+            _protected.localStore();
+
+        };
+
+        obj.genSignature = function (req,res) {
+
+            var WECHAT_CONFIG = CONFIG_APP.weixin;
+
+            var _Access_Token = req.query.access_token;
+
+            var _protected = {};
+
+            _protected.localStore = function(){
+
+                var client = redis.createClient();
+                    client.unref();
+                    client.hgetall('jsApiTicket',function(err,response){
+
+                            // Connect Err
+                            if(err){
+                                console.log('Redis connect err:',err);
+                                _protected.remoteStore();
+                                return;
+                            }else{
+
+                                // Connect Successful
+                                if(response){
+                                    // not null
+                                    console.log('Redis connected,response not null,',response);
+
+                                    if(moment().diff(response.start,'seconds') > response.expires_in){
+
+                                        client.del('jsApiTicket', function(err, reply) {
+                                            if(err){
+                                                console.log(err);
+                                                return;
+                                            }
+                                            console.log(reply);
+                                        });
+
+                                        _protected.remoteStore();
+
+                                    }else{
+
+                                        res.json({code:200,data:_protected.gen(response)});
+
+                                    }
+
+                                }else{
+                                    console.log('response null');
+                                    _protected.remoteStore();
+                                }
+
+                            }
                         }
-                    });
-                }
+                    );
+            };
 
-            });
-        }
+            _protected.remoteStore = function(callback){
+
+                var client = redis.createClient();
+
+                var _jsApiTicketUrl = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token='+_Access_Token+'&type=jsapi';
+
+                var _options = {
+                    url: _jsApiTicketUrl,
+                    json: true,
+                    method: 'GET'
+                };
+
+                request(_options, function (err, response, json) {
+
+                    if (!err && response.statusCode === 200) {
+
+                        // Connect Successful
+                        if (json.ticket) {
+
+                            json.start = moment().format();
+                            json.url = req.protocol+'://'+req.hostname+req.originalUrl;
+
+                            client.unref();
+                            client.hmset('jsApiTicket',json, function (err,response) {
+
+                                if(err){
+                                    console.log('Redis err: ',err);
+                                }
+
+                                console.log('Redis store: ',response);
+                            });
+
+                            // res.json({code:200,data:json});
+
+                            res.json({code:200,data:_protected.gen(response)});
+
+                        } else {
+
+                            res.json({code:500, data:json});
+                        }
+
+                    } else {
+
+                        // Connect Failed
+                        res.json({
+                            code:500,
+                            data:{
+                                msg:'Remote server connect Failed.'
+                            }
+                        });
+                    }
+
+                });
+
+            };
+
+            _protected.gen = function(signArr){
+
+                var url = signArr.url,
+                    noncestr = WECHAT_CONFIG.encodingAESKey,
+                    timestamp = moment(signArr.start).unix(),
+                    jsapi_ticket = signArr.ticket;
+
+                var shasum = crypto.createHash('sha1');
+                var arr = [noncestr, timestamp, url,jsapi_ticket].sort();
+                shasum.update(arr.join(''));
+
+                var _rs = {
+                    timestamp:timestamp,
+                    noncestr:noncestr,
+                    signature:shasum.digest('hex')
+                };
+
+                return _rs;
+            };
+
+            _protected.localStore();
+
+        };
+
+        return obj;
     }
 };
