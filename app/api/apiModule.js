@@ -390,7 +390,7 @@ exports.Api = {
 
                 var _suffix = '';
 
-                if(req.query.isappinstalled !== null){
+                if(req.query.isappinstalled !== undefined){
                     _suffix = "&isappinstalled="+req.query.isappinstalled;
                 }else{
                     _suffix = '';
