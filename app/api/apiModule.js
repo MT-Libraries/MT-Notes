@@ -420,9 +420,9 @@ exports.Api = {
                 //    timestamp = moment(signArr.start).unix(),
                 //    jsapi_ticket = signArr.ticket;
                 //
-                //var _string = 'jsapi_ticket='+ jsapi_ticket +'&noncestr='+ nonceStr + '&timestamp='+ timestamp + '&url='+ url;
+                var _string = 'jsapi_ticket='+ _result.jsapi_ticket +'&noncestr='+ _result.nonceStr + '&timestamp='+ _result.timestamp + '&url='+ _result.url;
 
-                var _string = raw(_result);
+                //var _string = raw(_result);
                 var _signature = crypto.createHash('sha1').update(_string).digest('hex');
 
                 _result.appId = WECHAT_CONFIG.appid;
