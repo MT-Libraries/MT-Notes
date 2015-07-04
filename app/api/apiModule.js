@@ -388,43 +388,47 @@ exports.Api = {
 
             _protected.gen = function(signArr){
 
+                var _suffix = '';
+
+                if(req.query.isappinstalled !== null){
+                    _suffix = "&isappinstalled="+req.query.isappinstalled;
+                }
+
                 var createNonceStr = function () {
                     return Math.random().toString(36).substr(2, 15);
                 };
 
-                //var raw = function (args) {
-                //    var keys = Object.keys(args);
-                //    keys = keys.sort()
-                //    var newArgs = {};
-                //    keys.forEach(function (key) {
-                //        newArgs[key.toLowerCase()] = args[key];
-                //    });
-                //
-                //    var string = '';
-                //    for (var k in newArgs) {
-                //        string += '&' + k + '=' + newArgs[k];
-                //    }
-                //    string = string.substr(1);
-                //    return string;
-                //};
+                var raw = function (args) {
+                    var keys = Object.keys(args);
+                    keys = keys.sort();
+                    var newArgs = {};
+                    keys.forEach(function (key) {
+                        newArgs[key.toLowerCase()] = args[key];
+                    });
+
+                    var string = '';
+                    for (var k in newArgs) {
+                        string += '&' + k + '=' + newArgs[k];
+                    }
+                    string = string.substr(1);
+                    return string;
+                };
 
                 var _result = {
                     jsapi_ticket: signArr.ticket,
                     nonceStr: createNonceStr(),
                     timestamp: moment(signArr.start).unix(),
-                    url: _url
+                    url: _url+_suffix
                 };
 
-                console.log(_url);
-
-                //var url = _url,
+                // var url = _url,
                 //    nonceStr = createNonceStr(),
                 //    timestamp = moment(signArr.start).unix(),
                 //    jsapi_ticket = signArr.ticket;
                 //
-                var _string = 'jsapi_ticket='+ _result.jsapi_ticket +'&noncestr='+ _result.nonceStr + '&timestamp='+ _result.timestamp + '&url='+ _result.url;
+                // var _string = 'jsapi_ticket='+ _result.jsapi_ticket +'&noncestr='+ _result.nonceStr + '&timestamp='+ _result.timestamp + '&url='+ _result.url;
 
-                //var _string = raw(_result);
+                var _string = raw(_result);
                 var _signature = crypto.createHash('sha1').update(_string).digest('hex');
 
                 _result.appId = WECHAT_CONFIG.appid;

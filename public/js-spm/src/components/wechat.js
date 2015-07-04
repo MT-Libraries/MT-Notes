@@ -86,9 +86,7 @@ var Wechat = {
 
             var _url = window.location.href.split('#')[0];
 
-            var _a = _url.split('?')[0];
-
-            $.get('/api/wechat/signature/gen?access_token='+token+'&url='+ _a ,function(data) {
+            $.get('/api/wechat/signature/gen?access_token='+token+'&url='+ _url ,function(data) {
 
                 if(data && data.code === 200){
 
