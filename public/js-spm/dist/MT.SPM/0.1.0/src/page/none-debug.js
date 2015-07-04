@@ -279,19 +279,6 @@ var Wechat = {
 
         wx.ready(function(){
             console.log('ready');
-
-            (function(){
-                wx.checkJsApi({
-                    jsApiList: [
-                        'getNetworkType',
-                        'previewImage'
-                    ],
-                    success: function (res) {
-                        alert(JSON.stringify(res));
-                    }
-                });
-            })();
-
         });
 
 
