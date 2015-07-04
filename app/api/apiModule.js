@@ -392,6 +392,8 @@ exports.Api = {
 
                 if(req.query.isappinstalled !== null){
                     _suffix = "&isappinstalled="+req.query.isappinstalled;
+                }else{
+                    _suffix = '';
                 }
 
                 var createNonceStr = function () {
