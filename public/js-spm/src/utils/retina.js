@@ -35,7 +35,6 @@
             }
 
 
-
             var url = allImgs[i].getAttribute(DATA_ENUM.URL);
             if(url) {
                 var dataImgType = allImgs[i].getAttribute(DATA_ENUM.IMG_TYPE);

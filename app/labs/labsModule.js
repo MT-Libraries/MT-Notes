@@ -13,10 +13,5 @@ exports.Controller = {
         res.render('labs/update-browser', {
             pageTitle: 'Update Browser'
         });
-    },
-    mtNotes : function(req,res){
-        res.render('labs/mt-notes', {
-            pageTitle: 'MT Notes'
-        });
     }
 };

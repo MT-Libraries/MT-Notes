@@ -18,13 +18,10 @@ router.route('/')
 router.route('/html-video')
     .get(labsController.htmlVideo);
 
-router.route('/mt-notes')
-    .get(labsController.mtNotes);
-
 router.route('/update-browser')
     .get(labsController.updateBrowser);
 
-router.route('/touch-event')
+router.route('/mobile-detect')
     .get(function (req, res) {
 
         var mobileDetect = new MobileDetect(req.headers['user-agent'], 768);
@@ -32,22 +29,15 @@ router.route('/touch-event')
         if (mobileDetect.mobile()) {
 
             if (mobileDetect.tablet() && !mobileDetect.is('AndroidOS')) {
-                res.render('labs/touch-event', {
-                    pageTitle: 'Touch Event'
-                });
+                res.send('tablet');
             } else {
-                res.render('labs/touch-event-mobile', {
-                    pageTitle: 'Touch Event'
-                });
+                res.send('mobile');
             }
 
         } else {
             // Desktop
-            res.render('labs/touch-event', {
-                pageTitle: 'Touch Event'
-            });
+            res.send('desktop');
         }
-
 
     });
 
