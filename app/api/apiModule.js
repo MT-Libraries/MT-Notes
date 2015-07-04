@@ -2,6 +2,7 @@
  * Created by thonatos on 15/6/27.
  */
 
+var crypto = require('crypto');
 var request = require('request');
 var CONFIG_APP = require('../common/conf/config_app')('api','module_api');
 
