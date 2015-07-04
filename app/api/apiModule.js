@@ -282,6 +282,7 @@ exports.Api = {
             var WECHAT_CONFIG = CONFIG_APP.weixin;
 
             var _Access_Token = req.query.access_token;
+            var _Url = req.query.url || req.protocol+'://'+req.hostname+req.originalUrl;
 
             var _protected = {};
 
@@ -351,7 +352,7 @@ exports.Api = {
                         if (json.ticket) {
 
                             json.start = moment().format();
-                            json.url = req.protocol+'://'+req.hostname+req.originalUrl;
+                            json.url = _Url;
 
                             client.unref();
                             client.hmset('jsApiTicket',json, function (err,response) {
@@ -390,13 +391,13 @@ exports.Api = {
             _protected.gen = function(signArr){
 
                 var url = signArr.url,
-                    nonceStr = WECHAT_CONFIG.encodingAESKey,
+                    nonceStr = 'Wm3WZYTPz0wzcmtW',
                     timestamp = moment(signArr.start).unix(),
                     jsapi_ticket = signArr.ticket;
 
+                var _string = 'jsapi_ticket='+ jsapi_ticket +'&noncestr='+ nonceStr + '&timestamp='+ timestamp + '&url='+ url;
                 var shasum = crypto.createHash('sha1');
-                var arr = [nonceStr, timestamp, url,jsapi_ticket].sort();
-                shasum.update(arr.join(''));
+                shasum.update(_string);
 
                 var _rs = {
                     appId: WECHAT_CONFIG.appid,

@@ -353,7 +353,9 @@ var Wechat = {
 
         _protected.getSignature = function(token){
 
-            $.get('/api/wechat/signature/gen?access_token='+token ,function(data) {
+            var _url = window.location.href.split('#')[0];
+
+            $.get('/api/wechat/signature/gen?access_token='+token+'&url='+ _url ,function(data) {
 
                 if(data && data.code === 200){
 
