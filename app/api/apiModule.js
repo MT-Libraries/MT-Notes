@@ -390,17 +390,18 @@ exports.Api = {
             _protected.gen = function(signArr){
 
                 var url = signArr.url,
-                    noncestr = WECHAT_CONFIG.encodingAESKey,
+                    nonceStr = WECHAT_CONFIG.encodingAESKey,
                     timestamp = moment(signArr.start).unix(),
                     jsapi_ticket = signArr.ticket;
 
                 var shasum = crypto.createHash('sha1');
-                var arr = [noncestr, timestamp, url,jsapi_ticket].sort();
+                var arr = [nonceStr, timestamp, url,jsapi_ticket].sort();
                 shasum.update(arr.join(''));
 
                 var _rs = {
+                    appId: WECHAT_CONFIG.appid,
+                    nonceStr:nonceStr,
                     timestamp:timestamp,
-                    noncestr:noncestr,
                     signature:shasum.digest('hex')
                 };
 

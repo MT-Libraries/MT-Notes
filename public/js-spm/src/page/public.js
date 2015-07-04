@@ -10,4 +10,7 @@ exports.init = function () {
     var toggleNav = require('../components/toggle-nav').create($('.nav-ul-toggle a'),$('.nav-ul'));
     toggleNav.init();
 
+    var wechat = require('../components/wechat').create();
+    wechat.init();
+
 };
