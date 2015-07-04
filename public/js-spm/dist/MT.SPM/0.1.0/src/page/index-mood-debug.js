@@ -491,9 +491,7 @@ exports.create = Wechat.create;
 });
 define("MT.SPM/0.1.0/src/utils/jweixin-1.0.0-debug", [], function(require, exports, module){
 ! function(a, b) {
-    "function" == typeof define && (define.amd || define.cmd) ? define(function() {
-        return b(a)
-    }) : b(a, !0)
+    "function" == typeof define && (define.amd || define.cmd) ? module.exports=b(a):(a, !0)
 }(this, function(a, b) {
     function c(b, c, d) {
         a.WeixinJSBridge ? WeixinJSBridge.invoke(b, e(c), function(a) {
