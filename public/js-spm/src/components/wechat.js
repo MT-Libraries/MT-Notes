@@ -12,17 +12,6 @@ var Wechat = {
         var _interface = bundleInterface || {};
         var _protected = bundleProtected || {};
 
-
-        wx.ready(function(){
-            console.log('ready');
-        });
-
-
-        wx.error(function (res) {
-            alert(res.errMsg);
-        });
-
-
         _protected.init = function(options){
 
             var _options = options || {} ;
@@ -36,6 +25,14 @@ var Wechat = {
                 jsApiList: []
             });
 
+            wx.ready(function(){
+                console.log('ready');
+            });
+
+
+            wx.error(function (res) {
+                alert(res.errMsg);
+            });
 
         };
 
