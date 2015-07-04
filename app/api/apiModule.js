@@ -3,11 +3,7 @@
  */
 
 var request = require('request');
-
-var BAIDU_CONFIG = {
-    'API_Key': '7gtIXK7MHus1DLNLN39QjIz7',
-    'Secret_Key': 'hAGuKsSeama7RzknQbY77d3DFl1TkvPG'
-};
+var CONFIG_APP = require('../common/conf/config_app')('api','module_api');
 
 var auth_token = '';
 var auth_flag = false;
@@ -15,8 +11,8 @@ var auth_flag = false;
 exports.Api = {
     text2audio: function (req, res) {
 
+        var BAIDU_CONFIG = CONFIG_APP.baidu.yuyin;
         var _text = req.params.text;
-
         var _protected = {};
 
         _protected.initAuth = function (ak, sk ,callback) {
@@ -117,6 +113,8 @@ exports.Api = {
         if (auth_flag) {
             _protected.get(_text);
         } else {
+
+
             _protected.initAuth(BAIDU_CONFIG.API_Key, BAIDU_CONFIG.Secret_Key, function (error,response) {
 
                 if(error){
@@ -128,5 +126,28 @@ exports.Api = {
             });
         }
 
+    },
+    wechat:{
+        checkSignature:function(req,res){
+
+            var WECHAT_CONFIG = CONFIG_APP.weixin;
+
+            var signature = req.params.signature;
+            var timestamp = req.params.timestamp;
+            var nonce = req.params.nonce;
+            var echostr = req.params.echostr;
+
+            var shasum = crypto.createHash('sha1');
+            var arr = [WECHAT_CONFIG.token, timestamp, nonce].sort();
+            shasum.update(arr.join(''));
+
+            //return shasum.digest('hex') === signature;
+
+            if(shasum.digest('hex') === signature){
+                res.send(echostr);
+            }else {
+                res.send('err');
+            }
+        }
     }
 };

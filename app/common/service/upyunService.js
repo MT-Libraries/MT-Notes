@@ -4,7 +4,7 @@
 
 var path = require('path');
 
-var CONFIG_APP = require('../conf/config_app')('UPYUN').auth.upyun;
+var CONFIG_APP = require('../conf/config_app')('api','service_upyun').upyun;
 
 var UPYUN = require('ez-upyun').Upyun;
 var upyun = new UPYUN(CONFIG_APP.bucket, CONFIG_APP.operator, CONFIG_APP.password);

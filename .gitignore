@@ -12,8 +12,11 @@ static/
 
 bin/autoload.sh
 
+# Config Api
+conf/api_product.json
+
 # Config App
-conf/config_product.json
+conf/app_product.json
 
 # Config Deploy
 conf/pm2_product.json

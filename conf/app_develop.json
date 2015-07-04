@@ -38,11 +38,6 @@
     },
     "administrator": {
       "email": "m@t.biu"
-    },
-    "upyun": {
-      "bucket": "bucket",
-      "operator": "operator",
-      "password": "password"
     }
   },
   "env": {

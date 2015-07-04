@@ -1,0 +1,31 @@
+{
+  "config":{
+    "docs_source":"C"
+  },
+  "baidu":{
+    "yuyin":{
+      "API_Key": "",
+      "Secret_Key": ""
+    }
+  },
+  "weixin":{
+    "token":"",
+    "encodingAESKey":"",
+    "appid":"",
+    "appSec":""
+  },
+  "github":{
+    "doc_user": "thonatos",
+    "doc_project": "Mt.Notes.And.Documents",
+    "access_token":""
+  },
+  "coding": {
+    "doc_user": "thonatos",
+    "doc_project": "Mt.Notes.And.Documents"
+  },
+  "upyun": {
+    "bucket": "bucket",
+    "operator": "operator",
+    "password": "password"
+  }
+}

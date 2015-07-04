@@ -26,6 +26,10 @@ router.route('/')
  * @return:   {}
  */
 
+
+router.route('/weixin/checkSignature')
+    .get(apiApi.wechat.checkSignature);
+
 router.route('/media/audio/:text')
     .get(apiApi.text2audio);
 
@@ -53,7 +57,6 @@ router.route('/fm/playlist/:plId')
  * Return json object according to query string.
  * @return:   {}
  */
-
 
 router.route('/blog/post')
     .post(isAdministratorApi, blogApi.add);

@@ -5,33 +5,42 @@
 var fs = require('fs');
 var path = require('path');
 
+module.exports = function (configType , info) {
 
-// CONFIG_LOCAL
-var CONFIG_PRODUCT = path.join(process.cwd(), '/conf/config_product.json');
-var CONFIG_DEVELOP = path.join(process.cwd(), '/conf/config_develop.json');
+    var _configType = configType || '' ;
+    var _info = info || 'default';
 
-module.exports = function (from) {
+    var _init = function(config,info){
 
-    // LOG_MSG
-    var LOG_MSG = {
-        success: '## MT-NOTES: ' + from + ', Find Private Config File, Use the Config.',
-        failed: '## MT-NOTES: ' + from + ', Cant Find Private Config File, Use default Config.'
+        // CONFIG_LOCAL
+        var CONFIG_PRODUCT = path.join(process.cwd(), '/conf/'+config+'_product.json');
+        var CONFIG_DEVELOP = path.join(process.cwd(), '/conf/'+config+'_develop.json');
+
+        // LOG_MSG
+        var LOG_MSG = {
+            main: '## MT-NOTES: ' + config + ', ' + info,
+            success: 'Find Private Config File, Use the Config.',
+            failed:  'Cant Find Private Config File, Use default Config.'
+        };
+
+        // READ CONF
+        var privateConf = {};
+
+        if (fs.existsSync(CONFIG_PRODUCT)) {
+
+            console.log(LOG_MSG.main + ', ' + LOG_MSG.success);
+            privateConf = JSON.parse(fs.readFileSync(CONFIG_PRODUCT, 'utf-8'));
+
+        } else {
+
+            console.log(LOG_MSG.main + ', ' + LOG_MSG.failed);
+            privateConf = JSON.parse(fs.readFileSync(CONFIG_DEVELOP, 'utf-8'));
+        }
+
+        return privateConf;
     };
 
-    // READ CONF
-    var privateConf = {};
+    return _init(_configType,_info);
 
-    if (fs.existsSync(CONFIG_PRODUCT)) {
-
-        console.log(LOG_MSG.success);
-        privateConf = JSON.parse(fs.readFileSync(CONFIG_PRODUCT, 'utf-8'));
-
-    } else {
-
-        console.log(LOG_MSG.failed);
-        privateConf = JSON.parse(fs.readFileSync(CONFIG_DEVELOP, 'utf-8'));
-    }
-
-    return privateConf;
 };
 

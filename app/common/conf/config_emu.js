@@ -5,43 +5,50 @@
 var fs      = require('fs');
 var path    = require('path');
 
-var CONFIG_APP = require('./config_app')('EMU').site.docRepo;
-var UTIL = require('../utils/obj');
-
-var CODING = {
-    host: 'coding.net',
-    port: 443,
-    path: '/api/user/MTTUSER/project/MTTPROJECT/git/',
-    access_token:''
-};
-
-var GITHUB = {
-    host: 'api.github.com',
-    port: 443,
-    path: '/repos/MTTUSER/MTTPROJECT/contents/',
-    access_token:CONFIG_APP.github.access_token
-};
+var CONFIG_APP = require('./config_app')('api','config_emu');
+var SOURCE_DOC = CONFIG_APP.config.docs_source;
 
 module.exports = {
 
     docRepo: function () {
 
-        if (CONFIG_APP.GC === "G") {
+        var _source = 'C' || SOURCE_DOC;
 
-            var _g = UTIL.cloneObj(GITHUB);
+        if(_source === 'C'){
 
-            _g.path = _g.path.replace(/MTTUSER/g, CONFIG_APP.github.doc_user);
-            _g.path = _g.path.replace(/MTTPROJECT/g, CONFIG_APP.github.doc_project);
+            var _coding = CONFIG_APP.coding;
 
-            return _g;
+            var CODING = {
+                host: 'coding.net',
+                port: 443,
+                // path: '/api/user/MTTUSER/project/MTTPROJECT/git/',
+                access_token:''
+            };
 
-        } else {
+            var _path = '/api/user/' + _coding.doc_user + '/project/' + _coding.doc_project + '/git/';
 
-            var _c = UTIL.cloneObj(CODING);
-            _c.path = _c.path.replace(/MTTUSER/g, CONFIG_APP.coding.doc_user);
-            _c.path = _c.path.replace(/MTTPROJECT/g, CONFIG_APP.coding.doc_project);
+            CODING.path = _path;
 
-            return _c;
+            return CODING;
+
+        }else{
+
+            var _github = CONFIG_APP.github;
+
+            var GITHUB = {
+                host: 'api.github.com',
+                port: 443,
+                // path: '/repos/MTTUSER/MTTPROJECT/contents/',
+                // access_token:CONFIG_APP.github.access_token
+            };
+
+            var _path = '/repos/' + _github.doc_user + '/' + _github.doc_project + '/contents/';
+
+            GITHUB.path = _path;
+            GITHUB.access_token = _github.access_token;
+
+            return GITHUB;
+
         }
     }
 };

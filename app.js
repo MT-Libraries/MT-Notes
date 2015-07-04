@@ -28,7 +28,7 @@ var mtt = {
     getConf: function () {
 
         // READ CONF
-        var privateConf = require('./app/common/conf/config_app')('APP');
+        var privateConf = require('./app/common/conf/config_app')('app','APP');
 
         CONFIG_ENV = privateConf.env;
         CONFIG_SITE = privateConf.site;
