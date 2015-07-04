@@ -282,7 +282,7 @@ exports.Api = {
             var WECHAT_CONFIG = CONFIG_APP.weixin;
 
             var _Access_Token = req.query.access_token;
-            var _Url = req.query.url || req.protocol+'://'+req.hostname+req.originalUrl;
+            var _url = req.query.url || req.protocol+'://'+req.hostname+req.originalUrl;
 
             var _protected = {};
 
@@ -332,7 +332,7 @@ exports.Api = {
                     );
             };
 
-            _protected.remoteStore = function(callback){
+            _protected.remoteStore = function(){
 
                 var client = redis.createClient();
 
@@ -352,8 +352,6 @@ exports.Api = {
                         if (json.ticket) {
 
                             json.start = moment().format();
-                            json.url = _Url;
-
                             client.unref();
                             client.hmset('jsApiTicket',json, function (err,response) {
 
@@ -390,7 +388,7 @@ exports.Api = {
 
             _protected.gen = function(signArr){
 
-                var url = signArr.url,
+                var url = _url,
                     nonceStr = 'Wm3WZYTPz0wzcmtW',
                     timestamp = moment(signArr.start).unix(),
                     jsapi_ticket = signArr.ticket;
