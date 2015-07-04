@@ -310,6 +310,7 @@ var wx = require("MT.SPM/0.1.0/src/utils/jweixin-1.0.0-debug");
 var Wechat = {
 
     create : function(bundleInterface, bundleProtected){
+
         var obj = {};
 
         var _interface = bundleInterface || {};
@@ -320,7 +321,7 @@ var Wechat = {
             var _options = options || {} ;
 
             wx.config({
-                debug: true,
+                debug: false,
                 appId: _options.appId,
                 timestamp: _options.timestamp,
                 nonceStr: _options.nonceStr,
@@ -362,7 +363,6 @@ var Wechat = {
             });
 
             wx.ready(function(){
-                console.log('ready');
 
                 var shareData = {
                     title: '微信JS-SDK Demo',
@@ -390,12 +390,12 @@ var Wechat = {
 
                 if(data && data.code === 200){
 
-                    console.log(data);
-
                     _protected.init(data.data);
 
                 }else{
-                    console.log('err');
+                    console.log('getSignature err, we will try again in 10 seconds.');
+
+                    setTimeout(_protected.getSignature(token),10000);
                 }
             });
         };
@@ -406,22 +406,19 @@ var Wechat = {
 
                 if(data && data.code === 200){
 
-                    console.log(data);
-
-                    var _access_token = data.data.access_token;
-
-
-                    _protected.getSignature(_access_token);
+                    _protected.getSignature(data.data.access_token);
 
                 }else{
-                    console.log('err');
+
+                    console.log('getToken err, we will try again in 10 seconds.');
+
+                    setTimeout(_protected.getToken,10000);
                 }
             });
 
         };
         
         obj.init = function () {
-
             _protected.getToken();
         };
 
