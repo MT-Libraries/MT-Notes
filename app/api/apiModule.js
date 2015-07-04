@@ -388,23 +388,47 @@ exports.Api = {
 
             _protected.gen = function(signArr){
 
-                var url = _url,
-                    nonceStr = 'Wm3WZYTPz0wzcmtW',
-                    timestamp = moment(signArr.start).unix(),
-                    jsapi_ticket = signArr.ticket;
-
-                var _string = 'jsapi_ticket='+ jsapi_ticket +'&noncestr='+ nonceStr + '&timestamp='+ timestamp + '&url='+ url;
-                var shasum = crypto.createHash('sha1');
-                shasum.update(_string);
-
-                var _rs = {
-                    appId: WECHAT_CONFIG.appid,
-                    nonceStr:nonceStr,
-                    timestamp:timestamp,
-                    signature:shasum.digest('hex')
+                var createNonceStr = function () {
+                    return Math.random().toString(36).substr(2, 15);
                 };
 
-                return _rs;
+                var raw = function (args) {
+                    var keys = Object.keys(args);
+                    keys = keys.sort()
+                    var newArgs = {};
+                    keys.forEach(function (key) {
+                        newArgs[key.toLowerCase()] = args[key];
+                    });
+
+                    var string = '';
+                    for (var k in newArgs) {
+                        string += '&' + k + '=' + newArgs[k];
+                    }
+                    string = string.substr(1);
+                    return string;
+                };
+
+                var _result = {
+                    jsapi_ticket: signArr.ticket,
+                    nonceStr: createNonceStr(),
+                    timestamp: moment(signArr.start).unix(),
+                    url: _url
+                };
+
+                //var url = _url,
+                //    nonceStr = createNonceStr(),
+                //    timestamp = moment(signArr.start).unix(),
+                //    jsapi_ticket = signArr.ticket;
+                //
+                //var _string = 'jsapi_ticket='+ jsapi_ticket +'&noncestr='+ nonceStr + '&timestamp='+ timestamp + '&url='+ url;
+
+                var _string = raw(_result);
+                var _signature = crypto.createHash('sha1').update(_string).digest('hex');
+
+                _result.appId = WECHAT_CONFIG.appid;
+                _result.signature = _signature;
+
+                return _result;
             };
 
             _protected.localStore();
