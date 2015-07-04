@@ -424,7 +424,7 @@ var Wechat = {
 
             wx.ready(function(){
 
-                var $img = '<div style="display: none;"><img src="http://www.thonatos.com/public/images/other/kira.png">';
+                var $img = '<div style="display: none;"><img src="https://www.thonatos.com/public/images/other/kira.png">';
                 $('body').prepend($img);
 
                 //var shareData = {
