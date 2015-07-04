@@ -27,7 +27,7 @@ router.route('/')
  */
 
 
-router.route('/weixin/checkSignature')
+router.route('/wechat/signature')
     .get(apiApi.wechat.checkSignature);
 
 router.route('/media/audio/:text')
