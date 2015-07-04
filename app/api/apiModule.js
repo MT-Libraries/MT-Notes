@@ -392,21 +392,21 @@ exports.Api = {
                     return Math.random().toString(36).substr(2, 15);
                 };
 
-                var raw = function (args) {
-                    var keys = Object.keys(args);
-                    keys = keys.sort()
-                    var newArgs = {};
-                    keys.forEach(function (key) {
-                        newArgs[key.toLowerCase()] = args[key];
-                    });
-
-                    var string = '';
-                    for (var k in newArgs) {
-                        string += '&' + k + '=' + newArgs[k];
-                    }
-                    string = string.substr(1);
-                    return string;
-                };
+                //var raw = function (args) {
+                //    var keys = Object.keys(args);
+                //    keys = keys.sort()
+                //    var newArgs = {};
+                //    keys.forEach(function (key) {
+                //        newArgs[key.toLowerCase()] = args[key];
+                //    });
+                //
+                //    var string = '';
+                //    for (var k in newArgs) {
+                //        string += '&' + k + '=' + newArgs[k];
+                //    }
+                //    string = string.substr(1);
+                //    return string;
+                //};
 
                 var _result = {
                     jsapi_ticket: signArr.ticket,
@@ -414,6 +414,8 @@ exports.Api = {
                     timestamp: moment(signArr.start).unix(),
                     url: _url
                 };
+
+                console.log(_url);
 
                 //var url = _url,
                 //    nonceStr = createNonceStr(),
