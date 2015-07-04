@@ -293,67 +293,68 @@ var Wechat = {
 
             var _options = options || {} ;
 
-            wx.config({
-                debug: false,
-                appId: _options.appId,
-                timestamp: _options.timestamp,
-                nonceStr: _options.nonceStr,
-                signature: _options.signature ,
-                jsApiList: ['checkJsApi',
-                    'onMenuShareTimeline',
-                    'onMenuShareAppMessage',
-                    'onMenuShareQQ',
-                    'onMenuShareWeibo',
-                    'hideMenuItems',
-                    'showMenuItems',
-                    'hideAllNonBaseMenuItem',
-                    'showAllNonBaseMenuItem',
-                    'translateVoice',
-                    'startRecord',
-                    'stopRecord',
-                    'onRecordEnd',
-                    'playVoice',
-                    'pauseVoice',
-                    'stopVoice',
-                    'uploadVoice',
-                    'downloadVoice',
-                    'chooseImage',
-                    'previewImage',
-                    'uploadImage',
-                    'downloadImage',
-                    'getNetworkType',
-                    'openLocation',
-                    'getLocation',
-                    'hideOptionMenu',
-                    'showOptionMenu',
-                    'closeWindow',
-                    'scanQRCode',
-                    'chooseWXPay',
-                    'openProductSpecificView',
-                    'addCard',
-                    'chooseCard',
-                    'openCard']
-            });
+            try {
 
-            wx.ready(function(){
+                wx.config({
+                    debug: false,
+                    appId: _options.appId,
+                    timestamp: _options.timestamp,
+                    nonceStr: _options.nonceStr,
+                    signature: _options.signature ,
+                    jsApiList: ['checkJsApi',
+                        'onMenuShareTimeline',
+                        'onMenuShareAppMessage',
+                        'onMenuShareQQ',
+                        'onMenuShareWeibo',
+                        'hideMenuItems',
+                        'showMenuItems',
+                        'hideAllNonBaseMenuItem',
+                        'showAllNonBaseMenuItem',
+                        'translateVoice',
+                        'startRecord',
+                        'stopRecord',
+                        'onRecordEnd',
+                        'playVoice',
+                        'pauseVoice',
+                        'stopVoice',
+                        'uploadVoice',
+                        'downloadVoice',
+                        'chooseImage',
+                        'previewImage',
+                        'uploadImage',
+                        'downloadImage',
+                        'getNetworkType',
+                        'openLocation',
+                        'getLocation',
+                        'hideOptionMenu',
+                        'showOptionMenu',
+                        'closeWindow',
+                        'scanQRCode',
+                        'chooseWXPay',
+                        'openProductSpecificView',
+                        'addCard',
+                        'chooseCard',
+                        'openCard']
+                });
 
-                var $img = '<div style="display: none;"><img src="https://www.thonatos.com/public/images/other/kira.png">';
-                $('body').prepend($img);
+                wx.ready(function(){
 
-                //var shareData = {
-                //    title: '微信JS-SDK Demo',
-                //    desc: '微信JS-SDK,帮助第三方为用户提供更优质的移动web服务',
-                //    link: 'http://demo.open.weixin.qq.com/jssdk/',
-                //    imgUrl: 'http://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRt8Qia4lv7k3M9J1SKqKCImxJCt7j9rHYicKDI45jRPBxdzdyREWnk0ia0N5TMnMfth7SdxtzMvVgXg/0'
-                //};
-                //wx.onMenuShareAppMessage(shareData);
-                //wx.onMenuShareTimeline(shareData);
-            });
+                    var $img = '<div style="display: none;"><img src="https://www.thonatos.com/public/images/other/kira.png">';
+                    $('body').prepend($img);
+
+                });
 
 
-            wx.error(function (res) {
-                alert(res.errMsg);
-            });
+                wx.error(function (res) {
+                    alert(res.errMsg);
+                });
+
+
+            } catch (err) {
+                console.error(err);
+            }
+
+
 
         };
 

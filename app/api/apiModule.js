@@ -396,7 +396,7 @@ exports.Api = {
                     _suffix = '';
                 }
 
-                console.log('_suffix:'+_suffix+_suffix.length);
+                // console.log('_suffix:'+_suffix+_suffix.length);
 
                 var createNonceStr = function () {
                     return Math.random().toString(36).substr(2, 15);
