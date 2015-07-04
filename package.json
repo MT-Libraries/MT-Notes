@@ -19,7 +19,6 @@
     "ez-upyun": "0.0.6",
     "marked": "^0.3.3",
     "mobile-detect": "^0.4.3",
-    "moment": "^2.9.0",
     "mongoose": "^3.8.21",
     "morgan": "^1.5.1",
     "passport": "^0.2.1",

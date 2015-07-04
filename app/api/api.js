@@ -30,6 +30,9 @@ router.route('/')
 router.route('/wechat/signature')
     .get(apiApi.wechat.checkSignature);
 
+router.route('/wechat/get/token')
+    .get(apiApi.wechat.getToken);
+
 router.route('/media/audio/:text')
     .get(apiApi.text2audio);
 

@@ -138,8 +138,6 @@ exports.Api = {
             var nonce = req.query.nonce;
             var echostr = req.query.echostr;
 
-            console.log(req.query);
-
             var shasum = crypto.createHash('sha1');
             var arr = [WECHAT_CONFIG.token, timestamp, nonce].sort();
             shasum.update(arr.join(''));
@@ -151,6 +149,55 @@ exports.Api = {
             }else {
                 res.send('err');
             }
+        },
+        getToken: function (req, res) {
+
+            var WECHAT_CONFIG = CONFIG_APP.weixin;
+
+            var _authUrl = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+WECHAT_CONFIG.appid+'&secret='+WECHAT_CONFIG.appSec;
+
+            var options = {
+                url: _authUrl,
+                json: true,
+                method: 'GET'
+            };
+
+            request(options, function (err, response, json) {
+
+                if (!err && response.statusCode === 200) {
+
+                    // Connect Successful
+
+                    if (json.access_token) {
+
+                        //{"access_token":"ACCESS_TOKEN","expires_in":7200}
+
+                        res.json({
+                            code:200,
+                            data:json
+                        });
+
+                    } else {
+
+                        res.json({
+                            code:500,
+                            data:json
+                        });
+                    }
+
+                } else {
+
+                    // Connect Failed
+
+                    res.json({
+                        code:500,
+                        data:{
+                            msg:'Connect Failed.'
+                        }
+                    });
+                }
+
+            });
         }
     }
 };
