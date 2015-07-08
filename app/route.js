@@ -9,9 +9,6 @@ module.exports = function (app, passport) {
     var blog = require('./blog/blog');
     var docs = require('./doc/docs');
     var user = require('./user/user');
-    var labs = require('./labs/labs');
-    var file = require('./file/file');
-
 
     // Api
     var api   = require('./api/api');
@@ -21,8 +18,6 @@ module.exports = function (app, passport) {
     //app.use(/^\/doc\w{0,1}/, docs);
     app.use('/docs', docs);
     app.use('/blog', blog);
-    app.use('/labs', labs);
-    app.use('/file', file);
     app.use('/user', user(passport));
     app.use('/api',api);
 

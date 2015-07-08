@@ -117,7 +117,7 @@ var updateBrowser = {
                     <div class="update-browser-box">\
                         <div class="update-browser-icon"><img src="/public/images/icons/'+_PixRatio+'x/icon-update-browser.png'+'" alt=""></div>\
                         <div class="update-browser-info"><p>马上升级您的浏览器，获得更流畅的访问体验</p></div>\
-                        <div class="update-browser-action"><a href="/labs/update-browser">免费更新</a></div>\
+                        <div class="update-browser-action"><a href="/public/html/update-browser.html">免费更新</a></div>\
                     </div>\
                     <div class="update-browser-close"><a id="update-browser-button-close" href="#">残忍拒绝</a></div></div>';
 

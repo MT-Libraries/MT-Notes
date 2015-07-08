@@ -1,4 +1,4 @@
-define("MT.SPM/0.1.0/src/page/index-index-debug", [], function(require, exports, module){
+define("MT.SPM/0.1.1/src/page/index-index-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 14/11/27.
  */
@@ -6,7 +6,7 @@ define("MT.SPM/0.1.0/src/page/index-index-debug", [], function(require, exports,
 var init = function () {
 
 
-    var public = require("MT.SPM/0.1.0/src/page/public-debug");
+    var public = require("MT.SPM/0.1.1/src/page/public-debug");
     public.init();
 
     console.log("\n\n" +
@@ -20,25 +20,25 @@ var init = function () {
 exports.init = init;
 
 });
-define("MT.SPM/0.1.0/src/page/public-debug", [], function(require, exports, module){
+define("MT.SPM/0.1.1/src/page/public-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/18.
  */
 
 exports.init = function () {
 
-    var updateBrowser = require("MT.SPM/0.1.0/src/components/update-browser-debug").create('',false);
+    var updateBrowser = require("MT.SPM/0.1.1/src/components/update-browser-debug").create('',false);
     updateBrowser.init();
 
-    var toggleNav = require("MT.SPM/0.1.0/src/components/toggle-nav-debug").create($('.nav-ul-toggle a'),$('.nav-ul'));
+    var toggleNav = require("MT.SPM/0.1.1/src/components/toggle-nav-debug").create($('.nav-ul-toggle a'),$('.nav-ul'));
     toggleNav.init();
 
-    var wechat = require("MT.SPM/0.1.0/src/components/wechat-debug").create();
+    var wechat = require("MT.SPM/0.1.1/src/components/wechat-debug").create();
     wechat.init();
 
 };
 });
-define("MT.SPM/0.1.0/src/components/update-browser-debug", [], function(require, exports, module){
+define("MT.SPM/0.1.1/src/components/update-browser-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/16.
  */
@@ -235,7 +235,7 @@ var updateBrowser = {
 exports.create = updateBrowser.create;
 
 });
-define("MT.SPM/0.1.0/src/components/toggle-nav-debug", [], function(require, exports, module){
+define("MT.SPM/0.1.1/src/components/toggle-nav-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/1/18.
  */
@@ -273,12 +273,12 @@ exports.create = toggleNav.create;
 
 
 });
-define("MT.SPM/0.1.0/src/components/wechat-debug", [], function(require, exports, module){
+define("MT.SPM/0.1.1/src/components/wechat-debug", [], function(require, exports, module){
 /**
  * Created by thonatos on 15/7/4.
  */
 
-var wx = require("MT.SPM/0.1.0/src/utils/jweixin-1.0.0-debug");
+var wx = require("MT.SPM/0.1.1/src/utils/jweixin-1.0.0-debug");
 
 var Wechat = {
 
@@ -405,7 +405,7 @@ var Wechat = {
 
 exports.create = Wechat.create;
 });
-define("MT.SPM/0.1.0/src/utils/jweixin-1.0.0-debug", [], function(require, exports, module){
+define("MT.SPM/0.1.1/src/utils/jweixin-1.0.0-debug", [], function(require, exports, module){
 ! function(a, b) {
     "function" == typeof define && (define.amd || define.cmd) ? module.exports=b(a) : b(a, !0)
 }(this, function(a, b) {

@@ -33,7 +33,6 @@ exports.fileService = {
 
                     fileList.push(_file);
 
-
                 }
             });
 

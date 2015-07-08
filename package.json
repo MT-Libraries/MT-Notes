@@ -27,7 +27,8 @@
     "passport-local": "^1.0.0",
     "redis": "^0.12.1",
     "request": "^2.51.0",
-    "serve-favicon": "~2.2.0"
+    "serve-favicon": "~2.2.0",
+    "serve-index": "^1.7.1"
   },
   "devDependencies": {
     "del": "^0.1.3",

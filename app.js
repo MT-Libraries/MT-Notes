@@ -2,9 +2,10 @@ var fs = require('fs');
 var path = require('path');
 
 var morgan = require('morgan');
+var express = require('express');
+var index = require('serve-index');
 var favicon = require('serve-favicon');
 var session = require('express-session');
-var express = require('express');
 
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -39,13 +40,14 @@ var mtt = {
 
     setConf: function () {
 
-        // MONGOOSE FOR OUR API
+        // MONGOOSE CONFIG
         var connect = function () {
             mongoose.connect(CONFIG_AUTH.database.url, CONFIG_AUTH.database.options);
         };
         connect();
 
-        //mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
+        // MOOGOOSE EVENT
+        // mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
         mongoose.connection.on('error', console.log);
         mongoose.connection.on('disconnected', connect);
         mongoose.connection.once('open', function () {
@@ -61,6 +63,13 @@ var mtt = {
         }));
 
         app.use('/public', express.static(path.join(__dirname, 'public')));
+        
+        // INDEX STATIC DIR & FILES
+        app.use('/public', index(path.join(__dirname, 'public'),{
+            stylesheet:'./public/css/css-page/static.min.css',
+            view:'details'
+        }));
+
         app.use(favicon(__dirname + '/public/favicon.ico'));
 
         app.set('site', CONFIG_SITE);

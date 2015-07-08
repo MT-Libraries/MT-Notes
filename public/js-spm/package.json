@@ -1,6 +1,6 @@
 {
   "name": "MT.SPM",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Bigger b..b..g..g..b..",
   "keywords": ["MT-Notes","Thonatos.Yang"],
   "homepage": "https://www.thonatos.com",
@@ -20,7 +20,6 @@
       "src/page/index-index.js",
       "src/page/index-about.js",
       "src/page/index-mood.js",
-      "src/page/labs-video.js",
       "src/page/none.js",
       "src/page/user-admin.js"
     ],

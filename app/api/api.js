@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+var apiApi = require('../api/apiModule').Api;
 var fmApi = require('../fm/fmModule').Api;
 var blogApi = require('../blog/blogModule').Api;
 var moodApi = require('../mood/moodModule').Api;
-var apiApi = require('../api/apiModule').Api;
 
 /*
  * Show welcome message while path to root.
@@ -36,9 +36,9 @@ router.route('/wechat/signature/gen')
 router.route('/wechat/token/get')
     .get(apiApi.wechat().getToken);
 
-
 router.route('/media/audio/:text')
     .get(apiApi.text2audio);
+
 
 router.route('/blog/get/:pid')
     .get(blogApi.get);
@@ -58,6 +58,7 @@ router.route('/fm/playlist')
 
 router.route('/fm/playlist/:plId')
     .get(fmApi.getPlayList);
+
 
 /*
  * Private Function
