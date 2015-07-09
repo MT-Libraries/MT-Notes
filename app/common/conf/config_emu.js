@@ -19,8 +19,7 @@ module.exports = {
             var _coding = CONFIG_APP.coding;
 
             var CODING = {
-                host: 'coding.net',
-                port: 443,
+                url:'https://coding.net',
                 // path: '/api/user/MTTUSER/project/MTTPROJECT/git/',
                 access_token:''
             };
@@ -36,8 +35,7 @@ module.exports = {
             var _github = CONFIG_APP.github;
 
             var GITHUB = {
-                host: 'api.github.com',
-                port: 443,
+                url:'https://api.github.com'
                 // path: '/repos/MTTUSER/MTTPROJECT/contents/',
                 // access_token:CONFIG_APP.github.access_token
             };

@@ -65,7 +65,8 @@ var mtt = {
         app.use('/public', express.static(path.join(__dirname, 'public')));
         
         // INDEX STATIC DIR & FILES
-        app.use('/public', index(path.join(__dirname, 'public'),{
+        app.use('/static', express.static(path.join(__dirname, 'static')));
+        app.use('/static', index(path.join(__dirname, 'static'),{
             stylesheet:'./public/css/css-page/static.min.css',
             view:'details'
         }));

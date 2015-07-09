@@ -31,14 +31,20 @@
 
 		<div class="main">
 			<div class="document">
+
 				<% if (pageContent.render){ %>
 
 				<!--<h2 class="title">Documents - <%= pageContent.title %> </h2>-->
 				<p class="title">List For Documents & Directory</p>
 
 				<div class="content">
+
 					<% if(pageContent.content.constructor == Array){ %>
 					<ul>
+						<li>
+							<a href="/docs/<%= encodeURI(pageContent.category) %>">..</a>
+						</li>
+
 						<% pageContent.content.forEach(function(obj){ %>
 							<% if(obj.name !== '.gitignore'){ %>
 								<li>
@@ -50,6 +56,7 @@
 					<% }else{ %>
 					<%= pageContent.content.message + ' . From ' + pageContent.content.documentation_url %>
 					<% } %>
+
 				</div>
 
 				<% }else{ %>

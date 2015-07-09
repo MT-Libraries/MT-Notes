@@ -43,7 +43,12 @@
 
 			})();
 
-			seajs.config({base: app_config.sea.base});
+			seajs.config({
+				base: app_config.sea.base,
+				map: [
+					[ /^(.*\.(?:css|js))(.*)$/i, '$1?ver='+app_config.ver ]
+				]
+			});
 			seajs.use(app_config.sea.app, function (page) {
 				page.init();
 			});

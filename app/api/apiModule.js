@@ -183,7 +183,8 @@ exports.Api = {
                                 // Connect Successful
                                 if(response){
                                     // not null
-                                    console.log('Redis connected,response not null,',response);
+
+                                    //console.log('Redis connected,response not null,',response);
 
                                     if(moment().diff(response.start,'seconds') > response.expires_in){
 
@@ -302,7 +303,7 @@ exports.Api = {
                                 // Connect Successful
                                 if(response){
                                     // not null
-                                    console.log('Redis connected,response not null,',response);
+                                    // console.log('Redis connected,response not null,',response);
 
                                     if(moment().diff(response.start,'seconds') > response.expires_in){
 
