@@ -27,10 +27,18 @@ A blog/documents Site Running on NodeJS Server.
 使用文档包含在 docs 目录中，这里只是稍作说明。
 The document is under the directory of docs.
 
-- 本地安装：
-		npm install
-		npm install pm2 -g # 本地依赖pm2负责服务自启动
-        
+### Install
+
+	npm install
+	npm install pm2 -g # 本地依赖pm2负责服务自启动
+    
+### Config
+
+    backend/app_run.json
+    {
+        "run":"dev"||"pro"
+    }        
+    
 ### Commands
 
 - npm start 非守护方式启动进程
