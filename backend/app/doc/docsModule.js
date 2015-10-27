@@ -113,7 +113,7 @@ function renderData(options, res) {
             }
         }
 
-        res.locals.layout = 'docs/layout';
+        res.locals.layout = 'docs/_layout';
         res.render(options.template, {
             title: options.document,
             pageContent: {

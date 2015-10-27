@@ -14,7 +14,7 @@ module.exports = function (passport) {
 
     router.route('/signin')
         .get(function (req, res) {
-            res.locals.layout = 'user/layout';
+            res.locals.layout = 'user/_layout';
             res.render('user/signin', {
                 title: 'Signin',
                 message: req.flash('signInMessage')
@@ -28,7 +28,7 @@ module.exports = function (passport) {
 
     router.route('/signup')
         .get(function (req, res) {
-            res.locals.layout = 'user/layout';
+            res.locals.layout = 'user/_layout';
             res.render('user/signup', {
                 title: 'Signup',
                 message: req.flash('signUpMessage')
@@ -53,7 +53,7 @@ module.exports = function (passport) {
 
             var isAdministrator = req.user.local.role === 'administrator';
 
-            res.locals.layout = 'user/layout_admin';
+            res.locals.layout = 'user/_layout_admin';
             res.render('user/profile', {
                 title: 'Profile',
                 pageContent: {
