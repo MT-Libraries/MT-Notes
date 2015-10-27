@@ -1,0 +1,44 @@
+{
+  "site": {
+    "name": "MT.NOTES",
+    "desc": "A blog/documents Site Running on NodeJS Server",
+    "logo":"/public/images/other/kira.png",
+    "docRepo": {
+      "github": {
+        "doc_user": "thonatos",
+        "doc_project": "Mt.Notes.And.Documents",
+        "access_token":""
+      },
+      "coding": {
+        "doc_user": "thonatos",
+        "doc_project": "Mt.Notes.And.Documents"
+      },
+      "GC": "C"
+    }
+  },
+  "auth": {
+    "cookie": {
+      "name": "MT.NOTES_"
+    },
+    "session": {
+      "name": "MT.Name",
+      "secret": "MT.Secret"
+    },
+    "database": {
+      "url": "mongodb://localhost:27017/tfme",
+      "options": {
+        "db": {
+          "native_parser": true
+        },
+        "server": {
+          "poolSize": 5
+        },
+        "user": "tfme",
+        "pass": "tfme2014"
+      }
+    },
+    "administrator": {
+      "email": "m@t.biu"
+    }
+  }
+}

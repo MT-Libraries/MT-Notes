@@ -1,0 +1,51 @@
+<div class="header">
+    <div class="inner">
+        {{ title }}
+    </div>
+</div>
+<div class="main">
+    <div class="container">
+
+        <section class="main-section">
+
+            <div class="row posts">
+
+                <!--Post-Content-->
+                <div class="col-12 post" ng-repeat="p in post">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div class="title left"><span class="small-text-left" ng-repeat="t in p.tags || null">{{ t || "Default"}}</span>
+                            </div>
+                            <a class="rev-post-button right" ui-sref="blog.rev({ pid: p._id })">Revision</a>
+                            <a class="delete-post-button right" href="" ng-click="del(p._id)">Delete</a>
+                        </div>
+                        <div class="panel-body">
+                            <div class="post-title">
+                                <h3><a href="/blog/post/{{p._id}}">{{ p.name }}</a></h3>
+                            </div>
+                            <div class="post-content">
+                                {{ p.desc }}
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="post-meta">
+                                <div class="inner">
+                                    <span class="post-date left">{{ p.date }}</span>
+                                    <span class="post-author right">{{ p.author }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12" ng-show="Pager">
+                    <div class="pager">
+                        <a ng-click="prevPage()" class="prevPage left" href="" ng-show="Prev">&larr; Prev</a>
+                        <a ng-click="nextPage()" class="nextPage right" href="" ng-show="Next">Next &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>

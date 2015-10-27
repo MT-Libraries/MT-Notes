@@ -1,0 +1,37 @@
+.docs .document {
+  width: 100%;
+  padding: 1em;
+}
+.docs .document .title {
+  margin: 0;
+  padding: 0.5em 0;
+  margin: 0.5em 0;
+  display: block;
+  font-size: 2.074em;
+  border-bottom: 1px solid #eeeeee;
+}
+.docs .document .content {
+  padding: 0.5em 0;
+}
+.docs .document .content ul {
+  padding-left: 1em;
+  border-left: 0.2em solid #C6CCBF;
+}
+.docs .document .content ul li {
+  list-style: none;
+  margin: .3em 0;
+  margin-top: 0.3em;
+  padding: 0.3em 0;
+  font-size: 0.8em;
+  border-bottom: 1px solid #eee;
+}
+.docs .document .content ul li a {
+  display: block;
+  padding: 0.3em;
+  text-decoration: none;
+  color: #555555;
+  font-weight: normal;
+}
+.docs .document .content ul li a:hover {
+  background-color: #eeeeee;
+}

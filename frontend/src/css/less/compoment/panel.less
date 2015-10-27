@@ -1,0 +1,40 @@
+.panel {
+    margin-top: 1em;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+
+    .panel-header {
+        padding: .7em 1em;
+        border-bottom: 1px solid #F7F2F2;;
+
+        &:before{
+            content: ' ';
+            display: table;
+        }
+
+        &:after{
+            content: ' ';
+            clear: both;
+            display: table;
+        }
+    }
+
+    .panel-body {
+        padding: .5em 1em;
+    }
+
+    .panel-footer {
+        padding: .7em 1em;
+        border-top: 1px solid #F7F2F2;;
+
+        .inner {
+            padding: 0;
+            
+            &:after{
+                content: ' ';
+                display: table;
+                clear: both;
+            }            
+        }
+    }
+}

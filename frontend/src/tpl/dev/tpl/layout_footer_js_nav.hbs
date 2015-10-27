@@ -1,0 +1,37 @@
+    <script>
+       
+        
+        $(document).ready(function(){
+        
+            $(window).resize(function(){
+                                    
+                    if($(window).width() > 750){
+                        $('header.nav-side').attr('style','');
+                        $('.main').attr('style','');
+                    }                
+            });
+                    
+            function initNav(){
+                var navActived = false;
+                $('.nav-reorder').click(function(ev){
+                    ev.preventDefault();
+                                        
+                    if(navActived){
+                        $('header.nav-side').stop().animate({'left':'-12em'});
+                        $('.main').animate({'paddingLeft':'2em'});  
+                        
+                        navActived = false;
+                                            
+                    }else{
+                        $('header.nav-side').stop().animate({'left':'0em'});
+                        $('.main').animate({'paddingLeft':'14em'});
+                        
+                        navActived = true;                    
+                    }
+    
+                });                
+            }            
+            initNav();
+            
+        });
+    </script>

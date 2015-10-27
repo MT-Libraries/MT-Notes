@@ -1,0 +1,32 @@
+<!-- INCLUDE JAVASCRIPT -->
+
+
+	<script src="/public/js-spm/src/utils/retina.js"></script>
+	<script src="/public/js-spm/src/components/retina-config.js"></script>
+
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "//hm.baidu.com/hm.js?2ee60d5dada350d7240f10e172f53944";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+<% if(settings.config.WEB_PRODUCTION){ %>
+
+	<!-- In remote_server use: -->
+	<!--<script src="//cdn.bootcss.com/seajs/2.3.0/sea.js"></script>-->
+	<script src="https://dn-staticfile.qbox.me/seajs/2.3.0/sea.js"></script>
+	<!--<script src="//cdn.bootcss.com/jquery/2.1.1/jquery.js"></script>-->
+	<script src="https://dn-staticfile.qbox.me/jquery/2.1.1/jquery.min.js"></script>
+
+<% }else{ %>
+
+	<!-- In local_server use: -->
+	<script src="/public/js-spm/spm_modules/seajs/2.3.0/dist/sea.js"></script>
+	<script src="/public/js-spm/spm_modules/jquery/2.1.1/jquery.min.js"></script>
+	<script src="/public/js-spm/spm_modules/seajs-wrap/1.0.1/dist/seajs-wrap.js"></script>
+
+<% } %>

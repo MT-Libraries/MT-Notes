@@ -1,0 +1,45 @@
+{{#extend "stylesheets"}}
+    <link rel="stylesheet" href="/public/css/dev/docs-multi.css"/>
+{{/extend}}
+    
+    <div class="docs">
+        <div class="container">            
+			<div class="document">
+
+				{{#if pageContent.render}}
+
+                    <h4 class="title">List For Documents & Directory</h4>
+    
+                    <div class="content">
+    
+                        <ul>
+                            <li>
+                                <a href="/docs/{{pageContent.category}}">..</a>
+                            </li>
+    
+                            {{#each pageContent.content}}
+                                <li>
+                                    <a href="/docs/{{path}}">{{name}}</a>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+
+				{{else}}
+
+                    <p class="title">Can't get ?</p>
+    
+                    <div class="content">
+                        <pre>Something wrong, you may try again.</pre>
+                        {{pageContent.content}}
+                    </div>
+
+				{{/if}}
+
+			</div>
+        </div>
+
+    </div>
+
+{{#extend "scripts"}}
+{{/extend}}

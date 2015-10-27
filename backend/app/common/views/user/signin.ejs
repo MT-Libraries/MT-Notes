@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+
+	<% include ../tmpl/header_meta.ejs %>
+
+	<title><%= pageTitle %> - <%= settings.site.name %></title>
+
+	<% include ../tmpl/header_pub.ejs %>
+
+	<link rel="stylesheet" href="/public/css/css-page/user-signin.min.css">
+
+	<!-- GLOBAL JAVASCRIPT -->
+	<script>
+		JS_PAGE_NAME = 'none';
+	</script>
+
+</head>
+<body>
+
+<div class="wrap">
+
+	<div class="layout">
+
+		<div class="header">
+			<div class="row inner">
+				<div class="col-12 center text-left info">
+					MT.NOTES & Signin
+				</div>
+			</div>
+		</div>
+
+		<div class="row main">
+			<form class="form-login col-8 center" action="/user/signin" method="post">
+
+				<% if ( (message !== undefined) && (message.length > 0) ) { %>
+				<div class="col-12 columns">
+					<span><%= message %></span>
+				</div>
+				<% } %>
+
+				<div class="col-12 columns">
+					<label for="email">Email:</label>
+					<input type="text" name="email"/>
+				</div>
+
+				<div class="col-12 columns">
+					<label for="password">Password:</label>
+					<input type="password" name="password"/>
+				</div>
+
+				<div class="col-12 columns">
+					<button type="submit" class="button right">Submit</button>
+					<button type="reset" class="button right">Reset</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="footer">
+			<div class="row inner">
+				<div class="col-12 center text-right">
+					@GR.TEAM & Arashi Vision.
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<% include ../tmpl/footer_pub.ejs %>
+<% include ../tmpl/footer_sea.ejs %>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+//@import "../less/base";
+@import "../less/color";
+
+*, :after, :before {
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
+html,
+body{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font: 12px "Open Sans", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: @gray;
+}
+
+a {
+    color: @link-color-primary;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.wrap{
+
+    padding: 1em 2em;
+    header{
+        width: 100%;
+    }
+
+    footer{
+        padding: 0;
+        margin-top: 2em;
+        a.button{
+            padding: 0.5em 1em;
+            margin: 0.5em 0;
+            min-width: 7em;
+            display: inline-block;
+            text-align: center;
+            color: #333333;
+            border: 0.1em solid #333333;
+            border-radius: 0.5em;
+            text-decoration: none;
+        }
+    }
+
+}

@@ -1,0 +1,42 @@
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.center{
+    margin: 0 auto !important;
+    float: none !important;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.clearfix{
+    clear: both;
+}
+
+.hidden{
+    display: none;
+}
+
+#utils{
+
+    .clear(){
+
+        &:before{
+            content: ' ';
+            display: table;
+        }
+
+        &:after{
+            content: ' ';
+            display: table;
+            clear: both;
+        }
+    }
+}

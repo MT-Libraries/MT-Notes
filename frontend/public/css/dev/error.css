@@ -1,0 +1,60 @@
+.gray-darker {
+  color: #222222;
+}
+.gray-dark {
+  color: #333333;
+}
+.gray {
+  color: #555555;
+}
+.gray-light {
+  color: #777777;
+}
+.gray-lighter {
+  color: #eeeeee;
+}
+.white {
+  color: #ffffff;
+}
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  word-break: break-word;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font: 12px "Open Sans", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #555555;
+}
+a {
+  color: #749b40;
+  font-weight: bold;
+  text-decoration: none;
+}
+.wrap {
+  padding: 1em 2em;
+}
+.wrap header {
+  width: 100%;
+}
+.wrap footer {
+  padding: 0;
+  margin-top: 2em;
+}
+.wrap footer a.button {
+  padding: 0.5em 1em;
+  margin: 0.5em 0;
+  min-width: 7em;
+  display: inline-block;
+  text-align: center;
+  color: #333333;
+  border: 0.1em solid #333333;
+  border-radius: 0.5em;
+  text-decoration: none;
+}

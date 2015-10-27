@@ -1,0 +1,27 @@
+<div class="header">
+    <div class="inner">
+        {{ title }}
+    </div>
+</div>
+<div class="main">
+
+    <div class="container">
+        <form class="form" name="moodForm" ng-submit="submitMoodForm(moodForm.$valid)" novalidate>
+            <div class="row">
+                <div class="col-12 columns">
+                    <label>Content</label>
+                    <textarea ng-model="mood.content" ng-minlength="20" rows="8" name="content"
+                              placeholder="please enter mood content" required></textarea>
+                    <small class="error" ng-show="moodForm.content.$error.minlength">Content is too short.</small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 columns">
+                    <button type="reset" class="button right">Reset</button>
+                    <button type="submit" class="button right">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

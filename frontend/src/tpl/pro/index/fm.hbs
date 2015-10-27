@@ -1,0 +1,47 @@
+{{#extend "stylesheets"}}
+    <link rel="stylesheet" href="/public/css/pro/index-fm-156d27ba.css"/>
+    
+	<script>
+		PLAYLIST = {{playList}};
+	</script>    
+{{/extend}}
+    
+    <div class="fm">
+        <div class="container">            
+            <div class="row content">
+
+		        <div class="player">
+					<div class="info">
+						<h2 class="title"></h2>
+					</div>
+					<div class="album">
+						<img src="" alt="">
+					</div>
+		            <div class="action">
+		                <a href="#" class="player-play-pause"><i class="fa fa-play"></i><i class="fa fa-pause hidden"></i></a>
+		                <input class="player-seekbar" type="range" min="0" max="10" value="5">
+						<a href="#" class="player-next"><i class="fa fa-forward"></i></a>
+		            </div>
+		            <div class="info">
+		                <span id="music_name"></span><span id="artist"></span>
+		            </div>
+		            <div id="lrc" class="lrc">
+		            </div>
+		        </div>
+
+				<div class="playlist">
+					<ul>
+						<li><a href="/fm/73675872">欲扬先抑,只为那一刻情绪最绚烂的爆发</a></li>
+						<li><a href="/fm/2096362">那些节奏控不得不下载的歌曲</a></li>
+						<li><a href="/fm/43170314">有些人，一别就是一生。</a></li>
+					</ul>
+				</div>
+                                    
+            </div>
+        </div>
+
+    </div>
+
+{{#extend "scripts"}}
+    <script src="/public/js/pro/index-fm-ab218f2e.js"></script>
+{{/extend}}

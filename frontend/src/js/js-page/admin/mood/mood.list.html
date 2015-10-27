@@ -1,0 +1,46 @@
+<div class="header">
+    <div class="inner">
+        {{ title }}
+    </div>
+</div>
+<div class="main">
+    <div class="container">
+
+        <section class="main-section">
+
+            <div class="row posts">
+
+                <!--Post-Content-->
+                <div class="col-12 post" ng-repeat="m in moods">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <a class="rev-post-button right" ui-sref="mood.rev({ mid: m._id })">Revision</a>
+                            <a class="delete-post-button right" href="" ng-click="del(m._id)">Delete</a>
+                        </div>
+                        <div class="panel-body">
+                            <div class="post-content">
+                                {{ m.content }}
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="post-meta">
+                                <div class="inner">
+                                    <span class="post-date left">{{ m.datetime }}</span>
+                                    <span class="post-author right">{{ m.author }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12" ng-show="Pager">
+                    <div class="pager">
+                        <a ng-click="prevPage()" class="prevPage left" href="" ng-show="Prev">&larr; Prev</a>
+                        <a ng-click="nextPage()" class="nextPage right" href="" ng-show="Next">Next &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>

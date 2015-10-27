@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+
+	<% include ../tmpl/header_meta.ejs %>
+
+	<title><%= pageTitle %> - <%= settings.site.name %></title>
+
+	<% include ../tmpl/header_pub.ejs %>
+
+	<link rel="stylesheet" href="/public/css/css-page/index-index.min.css">
+
+	<!-- GLOBAL JAVASCRIPT -->
+	<script>
+		JS_PAGE_NAME = 'index-index';
+	</script>
+
+	<% MENU_ACTIVE = 'Home'; %>
+
+</head>
+<body>
+
+<div class="wrap">
+
+
+	<div class="mask"></div>
+	<div class="layout">
+
+		<% include ../tmpl/layout_header.ejs %>
+
+		<div class="main">
+			<div class="inner">
+				<div class="index">
+					<h4>INDEX.</h4>
+
+					<p>世间万象，始于静，终归于静。</p>
+
+					<p>Time always save the best for last.</p>
+				</div>
+				<div class="info">
+					<a class="button white" href="http://weibo.com/thonatos"><i class="fa fa-weibo">
+							Thonatos</i></a>
+					<a class="button white" href="https://github.com/thonatos"><i
+								class="fa fa-github"> Thonatos.Yang</i></a>
+				</div>
+			</div>
+		</div>
+
+		<% include ../tmpl/layout_footer.ejs %>
+
+	</div>
+
+</div>
+
+<% include ../tmpl/footer_pub.ejs %>
+<% include ../tmpl/footer_sea.ejs %>
+
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+html,
+body {
+  height: 100%;
+}
+.main {
+  height: 100%;
+}
+.main .user {
+  height: 100%;
+}
+.intro,
+.login {
+  height: 100%;
+}
+.intro {
+  background: #53e0c1;
+  display: table;
+}
+.intro .inner {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 4em;
+  color: #ffffff;
+}
+.intro .inner h3 {
+  text-transform: uppercase;
+}
+.login {
+  display: table;
+  background: #ffffff;
+}
+.login .inner {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 2em;
+}
+.login .inner .suggestion {
+  color: #dedede;
+}
+.login .inner .form-login {
+  padding: 1em 0;
+}
+.login .inner .form-login .input-group button {
+  margin-left: 0.2em;
+}

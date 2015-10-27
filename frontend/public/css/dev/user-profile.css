@@ -1,0 +1,22 @@
+ul.side-action {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  bottom: 2em;
+}
+ul.side-action li {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+ul.side-action li a {
+  display: inline-block;
+  margin-bottom: 10px;
+  border-bottom: 1px solid transparent;
+  color: #363636;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9em;
+  line-height: 1em;
+}

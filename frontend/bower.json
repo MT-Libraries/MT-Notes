@@ -1,0 +1,26 @@
+{
+  "name": "mtt-bower",
+  "version": "0.0.1",
+  "authors": [
+    "Thonatos.Yang <thonatos.yang@gmail.com>"
+  ],
+  "description": "MT.T SEED FOR BOWER.",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {},
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "modernizr": "~2.8.3",
+    "normalize.css": "~3.0.3",
+    "font-awesome": "~4..0",
+    "marked": "~0.3.5",
+    "skeleton":"~2.0.4"
+  }
+}

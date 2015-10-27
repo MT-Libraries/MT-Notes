@@ -1,0 +1,18 @@
+{
+  "name"        : "develop.www.thonatos.com",
+  "script"      : "bin/autoload.js",
+  "args"        : [],
+  "log_date_format"  : "YYYY-MM-DD HH:mm Z",
+  "ignoreWatch" : ["[\\/\\\\]\\./", "node_modules"],
+  "watch"       : "./",
+  "watch_options" : {
+    "useFsEvents": false
+  },
+  "node_args"   : "--harmony",
+  "cwd"         : "/Users/thonatos/workspace/localhost_thonatos.com/backend/",
+  "exec_mode": "fork_mode",
+  "env": {
+    "NODE_ENV": "development",
+    "AWESOME_SERVICE_API_TOKEN": ""
+  }
+}

@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "port": 8032,
+        "trust": false,
+        "dev": true,
+        "cdn_lib": "http://192.168.2.221:8090/public/vendors"
+    },
+    "pro": {
+        "port": 8084,
+        "trust": false,
+        "dev": false,
+        "cdn_lib": "http://static.insta360.com/public/vendors"
+    },
+    "test": {
+        "port": 8032,
+        "trust": false,
+        "dev": false,
+        "cdn_lib": "http://192.168.2.221:8090/public/vendors"
+    }
+}
