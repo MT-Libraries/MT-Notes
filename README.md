@@ -3,12 +3,42 @@ Mt.Notes
 
 A blog/documents Site Running on NodeJS Server.
 
+## Structure
+
+- app
+	
+	主程序
+	
+- conf
+	
+	配置信息
+	
+- bin
+	
+	可执行程序
+		
+- public
+
+	公共资源目录
+	
+
 ## Usage
 
 使用文档包含在 docs 目录中，这里只是稍作说明。
 The document is under the directory of docs.
 
+- 本地安装：
+		npm install
+		npm install pm2 -g # 本地依赖pm2负责服务自启动
+        
+### Commands
 
+- npm start 非守护方式启动进程
+- npm run pm2sd 开启pm2进程（开发模式）
+- npm run pm2sp 开启pm2进程（生产模式）
+- npm run pm2dd 停止pm2进程（开发模式）
+- npm run pm2dp 停止pm2进程（生产模式）        
+	
 ## Change
 
 - 2015.10.6
