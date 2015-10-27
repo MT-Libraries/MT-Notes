@@ -57,10 +57,6 @@ body {
 a {
   color: inherit;
 }
-body {
-  background-image: url('../../images/bg/grid.png');
-  background-repeat: repeat;
-}
 header.nav-side {
   position: fixed;
   top: 0;

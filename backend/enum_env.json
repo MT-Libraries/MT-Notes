@@ -3,7 +3,7 @@
         "port": 8032,
         "trust": false,
         "dev": true,
-        "cdn_lib": "http://192.168.2.221:8090/public/vendors"
+        "cdn_lib": "http://localhost:8090/public/vendors"
     },
     "pro": {
         "port": 8084,
