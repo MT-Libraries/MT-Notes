@@ -4,9 +4,6 @@
 
 var init = function () {
 
-    var public = require('./public');
-    public.init();
-
     console.log("\n\n" +
     "这是个电台。\n"+
     "听那些老歌，想念你。\n\n");

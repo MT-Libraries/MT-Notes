@@ -19,11 +19,6 @@ var init = function () {
 
     // Protected Functions
 
-    _protected.initPublic = function () {
-        var public = require('./public');
-        public.init();
-    };
-
     _protected.queryMood = function(cPage,callback){
 
         $.get('/api/moods/gets/'+cPage,function(data) {
@@ -58,7 +53,6 @@ var init = function () {
 
     // Call Protected Methods;
 
-    _protected.initPublic();
     _protected.initTimeline();
 
     _protected.render = function (data) {

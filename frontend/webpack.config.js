@@ -12,9 +12,10 @@
 'use strict';
 
 module.exports = {
-    entry: {
+    entry: {     
         'index-fm': './src/js/js-page/index-fm.js',
-        'index-mood': './src/js/js-page/index-mood.js',        
+        'index-mood': './src/js/js-page/index-mood.js',
+        'public': './src/js/js-page/public.js',                   
         'retina': './src/js/utils/retina.js'
     },
     output: {
