@@ -55,52 +55,6 @@ body {
 a {
   text-decoration: none;
 }
-.panel {
-  margin-top: 1em;
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-}
-.panel .panel-header {
-  padding: .7em 1em;
-  border-bottom: 1px solid #F7F2F2;
-}
-.panel .panel-header:before {
-  content: ' ';
-  display: table;
-}
-.panel .panel-header:after {
-  content: ' ';
-  clear: both;
-  display: table;
-}
-.panel .panel-body {
-  padding: .5em 1em;
-}
-.panel .panel-footer {
-  padding: .7em 1em;
-  border-top: 1px solid #F7F2F2;
-}
-.panel .panel-footer .inner {
-  padding: 0;
-}
-.panel .panel-footer .inner:after {
-  content: ' ';
-  display: table;
-  clear: both;
-}
-.pager {
-  margin: 0.5em 0;
-  padding: 0.5em 0;
-}
-.pager .prevPage,
-.pager .nextPage {
-  color: #507716;
-  display: inline-block;
-  padding: 5px 14px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-}
 .timeline {
   position: relative;
   min-height: 440px;
@@ -138,7 +92,7 @@ a {
   width: 10px;
   height: 10px;
   border-radius: 100%;
-  background-color: rgba(116, 155, 64, 0.94);
+  background-color: #EF9A9A;
   position: absolute;
   top: 3px;
   left: 3px;
@@ -155,7 +109,7 @@ a {
 }
 .timeline .isLeft .corner {
   top: 27px;
-  border-left-color: #fff;
+  border-left-color: rgba(0, 0, 0, 0.03);
   left: 100%;
 }
 .timeline .isLeft .point {
@@ -163,7 +117,7 @@ a {
 }
 .timeline .isRight .corner {
   top: 37px;
-  border-right-color: #fff;
+  border-right-color: rgba(0, 0, 0, 0.03);
   right: 100%;
 }
 .timeline .isRight .point {

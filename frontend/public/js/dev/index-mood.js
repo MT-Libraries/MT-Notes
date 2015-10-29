@@ -134,8 +134,9 @@
 	            var _mood = _moods[i];
 
 	            var _tMood = $cleanItem.clone();
-	            $(_tMood).find('.post-content').html(_mood.content);
-	            $(_tMood).find('.post-date').html(_mood.datetime);
+	            
+	            $(_tMood).find('.card-content').html(_mood.content);
+	            $(_tMood).find('.card-action').html(_mood.datetime);            
 
 	            $('.timeline').append(_tMood);
 

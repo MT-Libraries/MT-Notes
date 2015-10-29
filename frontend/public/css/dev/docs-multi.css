@@ -60,9 +60,13 @@ a {
 }
 .docs .title {
   padding: 1em 0;
+  border-bottom: 1px solid #eee;
 }
 .docs .title i {
   margin-right: 0.5em;
+}
+.docs .dir-ul {
+  border: none;
 }
 .docs .dir-ul a i {
   margin-right: 0.5em;
