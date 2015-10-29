@@ -19,8 +19,9 @@
     "jquery": "~2.1.4",
     "modernizr": "~2.8.3",
     "normalize.css": "~3.0.3",
-    "font-awesome": "~4..0",
-    "marked": "~0.3.5",
-    "skeleton":"~2.0.4"
+    "font-awesome": "~4.4.0",
+    "skeleton": "~2.0.4",
+    "material-design-lite": "~1.0.5",
+    "material-design-icons": "~2.0.0"
   }
 }

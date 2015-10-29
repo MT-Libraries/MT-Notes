@@ -80,7 +80,7 @@ build/Release
 node_modules
 
 # frontend
-# frontend/public/vendors
+frontend/public/vendors/
 
 # backend
 backend/bin/autoload.sh
