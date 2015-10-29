@@ -58,3 +58,12 @@ a {
 .docs {
   padding-top: 1em;
 }
+.docs .title {
+  padding: 1em 0;
+}
+.docs .title i {
+  margin-right: 0.5em;
+}
+.docs .dir-ul a i {
+  margin-right: 0.5em;
+}

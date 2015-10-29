@@ -9,15 +9,15 @@
                 <div class="col s12 m12">
                     {{#if pageContent.render}}
                         
-                        <h5>Document</h5>
-                        <ul class="collection">
+                        <h5 class="title"><i class="fa fa-file"></i>Documents</h5>
+                        <ul class="collection dir-ul">
                             
                             <li class="collection-item">
-                                <a href="/docs/{{pageContent.category}}">..</a>
+                                <a href="/docs/{{pageContent.category}}"><i class="fa fa-file"></i>..</a>
                             </li>            
                             {{#each pageContent.content}}
                                 <li class="collection-item">
-                                    <a href="/docs/{{path}}">{{name}}</a>
+                                    <a href="/docs/{{path}}"><i class="fa fa-file"></i> {{name}}</a>
                                 </li>
                             {{/each}}
                         </ul>   
