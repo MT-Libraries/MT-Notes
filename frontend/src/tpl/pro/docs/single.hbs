@@ -3,37 +3,37 @@
     <link rel="stylesheet" href="/public/css/pro/docs-single-73e9de46.css"/>
 {{/extend}}
     
-    <div class="docs">
-        <div class="container">            
-			{{#if pageContent.render}}
+<div class="docs">
+    <div class="container">            
+        {{#if pageContent.render}}
 
-                <div class="document">
-                    <h4 class="title">{{pageContent.title}}</h4>
-    
-                    <div class="content">
-                        {{{pageContent.content}}}
-                    </div>
-    
-                    <!-- Comments -->
-                    {{> layout_comments}}
-    
+            <div class="document">
+                <h4 class="title">{{pageContent.title}}</h4>
+
+                <div class="content">
+                    {{{pageContent.content}}}
                 </div>
 
-			{{else}}
+                <!-- Comments -->
+                {{> layout_comments}}
 
-                <div class="document">
-                    <h3 class="title">Can't get ?</h3>
-    
-                    <div class="content">
-                        <pre>Something wrong, you may try again.</pre>
-                        {{pageContent.content}}
-                    </div>
+            </div>
+
+        {{else}}
+
+            <div class="document">
+                <h3 class="title">Can't get ?</h3>
+
+                <div class="content">
+                    <pre>Something wrong, you may try again.</pre>
+                    {{pageContent.content}}
                 </div>
+            </div>
 
-			{{/if}}
-        </div>
-
+        {{/if}}
     </div>
+
+</div>
 
 {{#extend "scripts"}}
     <script src="//cdn.bootcss.com/highlight.js/8.8.0/highlight.min.js"></script>

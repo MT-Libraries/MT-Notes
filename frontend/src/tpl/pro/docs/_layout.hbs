@@ -2,21 +2,14 @@
 <html lang="zh">
 <head>
     <!-- META -->
-    {{> meta}}
+    {{> header_meta}}
 
     <title>{{title}} - {{@app.site.name}}</title>
 
     <!-- Public  Stylesheets -->
-    {{#if @app.env.dev}}        
-        <link href="/public/vendors/Materialize/dist/css/materialize.min.css" rel="stylesheet">
-        <link href="/public/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    {{else}}
-        <link href="//cdn.bootcss.com/materialize/0.97.1/css/materialize.min.css" rel="stylesheet">   
-        <link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">        
-    {{/if}}
+    {{> header_pub}}
     
-    <link href='http://fonts.useso.com/icon?family=Material+Icons' rel='stylesheet'>  
-    <link rel="stylesheet" href="/public/css/pro/global-86b4e658.css"/>
+    <link rel="stylesheet" href="/public/css/pro/global-00789276.css"/>
     
     <!-- Private Stylesheets -->
     {{{block "stylesheets"}}}
@@ -27,6 +20,7 @@
     <!-- Header -->
     {{> layout_header}} 
 
+    <!-- Main -->
     <div class="main">
         <!-- Body -->
         {{{body}}}
@@ -47,7 +41,7 @@
         <script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js"></script>
         <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
     {{/if}}
-    
+        
     <!-- Private scripts -->
     {{{block "scripts"}}}
 

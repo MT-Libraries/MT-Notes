@@ -2,44 +2,36 @@
 <html lang="zh">
 <head>
     <!-- META -->
-    {{> meta}}
+    {{> header_meta}}
 
-    <title>{{title}}</title>
+    <title>{{title}} - {{@app.site.name}}</title>
 
     <!-- Public  Stylesheets -->
-    {{#if @app.env.dev}}
-        <link href="/public/vendors/skeleton/css/normalize.css" rel="stylesheet">        
-        <link href="/public/vendors/skeleton/css/skeleton.css" rel="stylesheet">
-        <link href="/public/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    {{else}}
-        <link href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
-        <link href="//cdn.bootcss.com/skeleton/2.0.4/skeleton.min.css" rel="stylesheet">
-        <link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    {{/if}}
+    {{> header_pub}}
     
-    <!--<link rel="stylesheet" href="/public/css/pro/global-86b4e658.css"/>-->
-
+    <link rel="stylesheet" href="/public/css/pro/global-user-ef30cbfd.css"/>
+    
+    <style>
+        html,
+        body{
+            height: 100%;
+        }        
+    </style>    
     <!-- Private Stylesheets -->
     {{{block "stylesheets"}}}
 
 </head>
 <body>
-
-    <!-- Header -->
-    <div class="main">
+   
+    <!-- Main -->
+    <div class="main login-page">
         <!-- Body -->
         {{{body}}}
         
     </div>
 
     <!-- Public  scripts -->
-    {{#if @app.env.dev}}
-        <script src="/public/vendors/modernizr/modernizr.js"></script>
-        <script src="/public/vendors/jquery/dist/jquery.min.js"></script>
-    {{else}}
-        <script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js"></script>
-        <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-    {{/if}}
+    {{> footer_pub}}
 
     <!-- Private scripts -->
     {{{block "scripts"}}}
