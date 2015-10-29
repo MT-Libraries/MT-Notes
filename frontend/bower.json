@@ -18,10 +18,10 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "modernizr": "~2.8.3",
-    "normalize.css": "~3.0.3",
-    "font-awesome": "~4.4.0",
-    "skeleton": "~2.0.4",
-    "material-design-lite": "~1.0.5",
-    "material-design-icons": "~2.0.0"
+    "typed.js": "~1.1.1",
+    "Materialize": "materialize#~0.97.1",
+    "font-awesome": "fontawesome#~4.4.0",
+    "normalize-strings": "normalize#~1.0.4",
+    "skeleton": "~2.0.4"
   }
 }

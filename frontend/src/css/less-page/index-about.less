@@ -1,0 +1,73 @@
+.main{
+    height: 100%;
+    display: table;
+        
+    .index{
+        display: table-cell;
+        vertical-align: middle;
+                
+        .container{
+            
+            .content{
+               ul.social-ul{
+                   padding: 0;
+                   margin: 0 0 2em 0;
+                   
+                   list-style: none;
+                   //text-align: right;
+                   
+                   li{                       
+                       display: inline-block;
+                       padding: 0.5em;
+                       margin: 0;
+                       //border-bottom: 1px dotted #bdbdbd;                       
+                       
+                       a{
+                           color: #bdbdbd;                                                                              
+                       }
+                      
+                   }  
+                    &:first-child{
+                        li{
+                            padding-left: 0;     
+                        }
+                    }
+                                            
+               }
+               
+               .user-info{
+                   
+                   display: inline-block;
+                   padding: 0;                   
+                   text-align: center;
+                    
+                    .user-avatar{
+                        display: block;
+                        margin: 0 auto;
+                        max-height: 10em;  
+                        border-radius: 0.3em;   
+                        box-shadow: 3px 3px 1px rgba(0,0,0,0.3);               
+                    }
+                    .user-name{
+                        margin: 1em 0;
+                        padding: 0; 
+                        
+                        line-height: 2em;                        
+                        border-bottom: 1px dotted #bdbdbd;
+                    }
+               }
+               
+               .user-desc{
+                    margin: 0;
+                    padding: 0;
+                    
+                    height: 9em;
+                    line-height: 1.8em; 
+                    vertical-align: bottom;
+               }                        
+                
+            }
+        }
+    }    
+}
+

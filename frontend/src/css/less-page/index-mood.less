@@ -1,29 +1,39 @@
-// @import "../less/base";
+@import "../less/v2/base";
 @import "../less/compoment/panel";
 @import "../less/compoment/pager";
 @import "../less/compoment/timeline";
 
+.main{
+    margin-top: -64px;
+    padding-top: 64px;
+
+    width: 100%;
+    height: 100%;
+}
+
 .mood{
-    
-    
-  .title {
 
-    margin: 0;
-    padding: 0;
+    padding: 1em 0;
+            
+    .title {
+        margin: 0;
+        padding: 0;
+        
+        color: #626262;
+        
+        font-size: 12px;
+        font-weight: 600;
+        line-height: normal;
+        
+        overflow: hidden;
+        
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+    }
 
-    color: #626262;
-
-    font-size: 12px;
-    font-weight: 600;
-    line-height: normal;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-  }
-      
-  .pager {
-    background-color: #fff;
-  }    
+        
+    .pager {
+        background-color: #fff;        
+        #utils.clear();
+    }    
 }

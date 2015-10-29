@@ -3,40 +3,37 @@
 {{/extend}}
     
     <div class="docs">
-        <div class="container">            
-			<div class="document">
-
-				{{#if pageContent.render}}
-
-                    <h4 class="title">List For Documents & Directory</h4>
-    
-                    <div class="content">
-    
-                        <ul>
-                            <li>
+        <div class="container">  
+            
+            <div class="row">
+                <div class="col s12 m12">
+                    {{#if pageContent.render}}
+                        
+                        <h5>Document Index</h5>
+                        <ul class="collection">
+                            
+                            <li class="collection-item">
                                 <a href="/docs/{{pageContent.category}}">..</a>
-                            </li>
-    
+                            </li>            
                             {{#each pageContent.content}}
-                                <li>
+                                <li class="collection-item">
                                     <a href="/docs/{{path}}">{{name}}</a>
                                 </li>
                             {{/each}}
-                        </ul>
-                    </div>
-
-				{{else}}
-
-                    <p class="title">Can't get ?</p>
-    
-                    <div class="content">
-                        <pre>Something wrong, you may try again.</pre>
-                        {{pageContent.content}}
-                    </div>
-
-				{{/if}}
-
-			</div>
+                        </ul>   
+                    
+                    {{else}}
+                                
+                        <div class="truncate">
+                            <pre>Something wrong, you may try again.</pre>
+                            {{pageContent.content}}
+                        </div>
+            
+                    {{/if}}                    
+                </div>
+            </div>
+            
+                                   
         </div>
 
     </div>

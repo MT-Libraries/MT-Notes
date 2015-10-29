@@ -43,6 +43,11 @@
 * {
   font-family: 'Noto Sans CJK SC', 'Source Han Sans CN', 'Source Han Sans TC', 'Source Han Sans', 'Nimbus Sans L', 'Liberation Sans', 'Hiragino Sans GB', 'Nota Han Sans', 'Microsoft YaHei', 'Droid Sans', 'Droid Sans Fallback', 'Wenquanyi Micro Hei ', 'WenQuanYi Zen Hei', 'ST Heiti', SimHei, 'WenQuanYi Zen Hei Sharp', sans-serif;
 }
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 body {
   font: 14px "Noto Sans CJK SC", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -52,104 +57,33 @@ a {
 }
 html,
 body {
-  height: 100% !important;
+  height: 100%;
 }
 a {
   color: inherit;
 }
-header.nav-side {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: -12em;
-  width: 14em;
-  padding: 3em 2em;
-  z-index: 10;
-  background-color: rgba(244, 244, 244, 0.65);
-  box-shadow: 0px 0 8px rgba(0, 0, 0, 0.5);
+.mt-nav-header {
+  padding: 0 16px;
 }
-header.nav-side .nav-reorder {
-  position: absolute;
-  right: 0.5em;
-  top: 1em;
-  width: 1em;
-  height: 1em;
+.mt-nav-header a {
+  color: #272D4E;
 }
-header.nav-side .nav-brand {
-  display: block;
-  margin: 0 auto;
+.mt-nav-header .brand-logo {
+  max-height: 100%;
+  font-size: 1.2em;
 }
-header.nav-side .nav-brand a.site-logo,
-header.nav-side .nav-brand a.site-name {
-  display: block;
-  font-size: 1em;
-  color: #2d2d2d;
-}
-header.nav-side .nav-brand a.site-logo img,
-header.nav-side .nav-brand a.site-name img {
-  display: block;
-  margin: 0 auto;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 84px;
+.mt-nav-header .brand-logo .mt-logo {
+  display: inline-block;
+  padding: 8px;
+  height: 64px;
   border-radius: 50%;
 }
-header.nav-side .nav-brand p.site-desc {
-  margin: 0;
-  margin: 2em 0;
-  color: #bdbdbd;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 0.78em;
-  line-height: 1.6em;
-}
-header.nav-side ul.nav-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-header.nav-side ul.nav-ul li {
-  padding: 0;
-  margin: 0;
-  display: block;
-}
-header.nav-side ul.nav-ul li a {
+.mt-nav-header .brand-logo .mt-text {
   display: inline-block;
-  margin-bottom: 10px;
-  border-bottom: 1px solid transparent;
-  color: #363636;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.9em;
-  line-height: 1em;
-}
-header.nav-side ul.action-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  bottom: 2em;
-}
-header.nav-side ul.action-ul li {
-  padding: 0;
-  margin: 0;
-  display: block;
-}
-header.nav-side ul.action-ul li a {
-  display: inline-block;
-  margin-bottom: 10px;
-  border-bottom: 1px solid transparent;
-  color: #363636;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.9em;
-  line-height: 1em;
-}
-.main {
-  width: 100%;
-  padding-left: 2em;
-  padding-top: 2em;
+  padding: 14px 0;
+  height: 64px;
+  line-height: 36px;
+  vertical-align: top;
 }
 footer {
   padding: 1em 0;
@@ -159,16 +93,5 @@ footer {
 /* Larger than mobile */
 /* Larger than phablet */
 /* Larger than tablet */
-@media (min-width: 750px) {
-  .nav-reorder {
-    display: none;
-  }
-  header.nav-side {
-    left: 0;
-  }
-  .main {
-    padding-left: 14em;
-  }
-}
 /* Larger than desktop */
 /* Larger than Desktop HD */
