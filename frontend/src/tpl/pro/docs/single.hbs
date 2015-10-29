@@ -1,6 +1,6 @@
 
 {{#extend "stylesheets"}}
-    <link rel="stylesheet" href="/public/css/pro/docs-single-08f51673.css"/>
+    <link rel="stylesheet" href="/public/css/pro/docs-single-4b0ba93d.css"/>
 {{/extend}}
     
     <div class="docs">
@@ -36,4 +36,10 @@
     </div>
 
 {{#extend "scripts"}}
+    <script src="//cdn.bootcss.com/highlight.js/8.8.0/highlight.min.js"></script>
+    <script>
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });        
+    </script>
 {{/extend}}
