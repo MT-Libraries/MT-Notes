@@ -1,4 +1,5 @@
 @import "../less/v2/base";
+@import "../less/component/animation";
 
 .main{    
     background-color: darken(@COLOR_PRIMARY,5%);     
@@ -37,6 +38,10 @@
                     .social-ul{
                         list-style: none;
                         
+                        animation-duration: 3s;
+                        animation-delay: 2s;
+                        animation-iteration-count: initial;
+                                                
                         li{
                             display: inline-block;
                             padding-right: 0.5em;
@@ -46,6 +51,10 @@
                     .user-desc{
                         font-size: 1em;
                         line-height: 1.8em;
+                        
+                        animation-duration: 3s;
+                        animation-delay: 3s;
+                        animation-iteration-count: initial;                        
                     }
                 }                
             }

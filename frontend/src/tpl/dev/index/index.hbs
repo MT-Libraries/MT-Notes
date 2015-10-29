@@ -15,7 +15,7 @@
                         
                         <div class="about-section white-text">
                             
-                            <ul class="social-ul">
+                            <ul class="social-ul fadeInLeftBig">
                                 <li class="weibo">
                                     <a href="http://weibo.com/thonatos">
                                         <i class="fa fa-2x fa-weibo"></i>
@@ -29,7 +29,7 @@
                                 </li>                                 
                             </ul>      
                         
-                            <p class="user-desc">
+                            <p class="user-desc fadeInUpBig">
                                 thonatos.yang@gmail.com <br>
                                 Frontend Developer / 前端汪 <br>
                                 09/2011-06/2015 B. C., Department of Remote sensing science and technology, NUIST, NanJing
@@ -47,6 +47,9 @@
     <script src="//cdn.bootcss.com/typed.js/1.1.1/typed.min.js"></script>
     <script>
         $(function(){
+                
+                $('.user-desc, .social-ul').addClass('animated');
+                
                 $(".typed").typed({
                     strings: [
                         "Another frontend developer,", 
