@@ -1,0 +1,36 @@
+<header class="nav-side">
+    
+    <div class="nav-brand">
+        {{#if @app.site.logo}}
+            <a href="#" class="site-logo">
+                <img src="{{@app.site.logo}}" alt="logo">
+            </a>
+        {{else}}
+            <a href="#" class="site-name">
+                {{@app.site.name}}
+            </a>
+        {{/if}}
+        
+        <p class="site-desc">{{@app.site.desc}}</p>
+    </div>
+
+    
+    <ul class="nav-ul">
+        {{#each @app.menu}}
+            <li><a href="{{link}}">{{name}}</a></li>
+        {{/each}}
+    </ul>
+    
+    <ul class="action-ul">
+        {{#if pageContent.isAdministrator}}
+        <li>
+            <a href="/user/admin#/mood">Mood Manager</a>
+        </li>
+        {{/if}}
+
+        <li>
+            <a href="/user/signout">Signout</a>
+        </li>
+    </ul>        
+
+</header>

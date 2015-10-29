@@ -20,8 +20,6 @@
     "modernizr": "~2.8.3",
     "typed.js": "~1.1.1",
     "Materialize": "materialize#~0.97.1",
-    "font-awesome": "fontawesome#~4.4.0",
-    "normalize-strings": "normalize#~1.0.4",
-    "skeleton": "~2.0.4"
+    "font-awesome": "fontawesome#~4.4.0"
   }
 }

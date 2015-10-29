@@ -2,83 +2,34 @@
 <html lang="zh">
 <head>
     <!-- META -->
-    {{> meta}}
+    {{> header_meta}}
 
-    <title>{{title}}</title>
+    <title>{{title}} - {{@app.site.name}}</title>
 
     <!-- Public  Stylesheets -->
-    {{#if @app.env.dev}}
-        <link href="/public/vendors/skeleton/css/normalize.css" rel="stylesheet">  
-        <link href="/public/vendors/skeleton/css/skeleton.css" rel="stylesheet">
-        <link href="/public/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    {{else}}
-        <link href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
-        <link href="//cdn.bootcss.com/skeleton/2.0.4/skeleton.min.css" rel="stylesheet">
-        <link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    {{/if}}
+    {{> header_pub}}
     
-    <link rel="stylesheet" href="/public/css/dev/global.css"/>
-
+    <link rel="stylesheet" href="/public/css/dev/global-user.css"/>
+    
     <!-- Private Stylesheets -->
     {{{block "stylesheets"}}}
+    
 
 </head>
 <body>
 
-    <!-- Header -->
-    <header class="nav-side">
-        
-        <div class="nav-brand">
-            {{#if @app.site.logo}}
-                <a href="#" class="site-logo">
-                    <img src="{{@app.site.logo}}" alt="logo">
-                </a>
-            {{else}}
-                <a href="#" class="site-name">
-                    {{@app.site.name}}
-                </a>
-            {{/if}}
-            
-            <p class="site-desc">{{@app.site.desc}}</p>
-        </div>
+    <!-- Sider -->
+    {{> layout_sider}}
 
-        
-        <ul class="nav-ul">
-            {{#each @app.menu}}
-                <li><a href="{{link}}">{{name}}</a></li>
-            {{/each}}
-        </ul>
-        
-        <ul class="action-ul">
-            {{#if pageContent.isAdministrator}}
-            <li>
-                <a href="/user/admin#/mood">Mood Manager</a>
-            </li>
-            {{/if}}
-
-            <li>
-                <a href="/user/signout">Signout</a>
-            </li>
-        </ul>        
-    
-    </header>
-
-    <div class="main">
+    <!-- Main -->
+    <div class="main dash-page">
         <!-- Body -->
         {{{body}}}
         
     </div>
 
     <!-- Public  scripts -->
-    {{#if @app.env.dev}}
-        <script src="/public/vendors/modernizr/modernizr.js"></script>
-        <script src="/public/vendors/jquery/dist/jquery.min.js"></script>
-    {{else}}
-        <script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js"></script>
-        <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-    {{/if}}
-
-    {{> layout_footer_js_nav}}
+    {{> footer_pub}}
     
     <!-- Private scripts -->
     {{{block "scripts"}}}
