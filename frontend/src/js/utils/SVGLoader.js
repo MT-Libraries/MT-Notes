@@ -88,7 +88,7 @@ SVGLoader.prototype.hide = function () {
     this._animateSVG('out', function () {
         // reset path
         self.path.attr('d', self.initialPath);
-        classie.removeClass(self.el, 'show');
+        classie.removeClass(self.el, 'show');  
         self.isAnimating = false;
     });
 }

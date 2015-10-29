@@ -200,6 +200,11 @@ a {
   -webkit-animation-duration: .75s;
           animation-duration: .75s;
 }
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
 .main {
   background-color: #1f233d;
 }

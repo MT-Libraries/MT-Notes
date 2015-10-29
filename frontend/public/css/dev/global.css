@@ -141,10 +141,6 @@ a {
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
-html,
-body {
-  height: 100%;
-}
 a {
   color: inherit;
 }
