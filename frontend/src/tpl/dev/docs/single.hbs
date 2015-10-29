@@ -36,4 +36,10 @@
     </div>
 
 {{#extend "scripts"}}
+    <script src="//cdn.bootcss.com/highlight.js/8.8.0/highlight.min.js"></script>
+    <script>
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });        
+    </script>
 {{/extend}}
