@@ -51,7 +51,6 @@
 	var init = function () {
 
 	    var _protected = {};
-
 	    var blogTimeLine = {};
 
 	    // For timeline items(DOM) & mood items(Json);
@@ -60,8 +59,8 @@
 	        pageCount = 1;
 
 	    var $cleanItem = $('.item');
-	    var $queryMoreBtn = $('.query-more');
-
+	    var $queryNextBtn = $('.query-next');
+	    var $queryPrevBtn = $('.query-prev');
 
 	    // Protected Functions
 
@@ -105,17 +104,27 @@
 
 	        currentPage = data.currentPage;
 	        pageCount = data.pageCount;
-	        var showMoreBtn = pageCount > currentPage;
+	        var showNextBtn = pageCount > currentPage;
+	        var showPrevBtn = currentPage > 1;
 
-	        if(showMoreBtn){
+	        if(showNextBtn){
 	            // show nextPage btn;
-	            $queryMoreBtn.show();
+	            $queryNextBtn.show();
 
 	        }else{
 	            // hide nextPage btn;
-	            $queryMoreBtn.hide();
+	            $queryNextBtn.hide();
 	        }
+	        
+	        if(showPrevBtn){
+	            // show prevPage btn;
+	            $queryPrevBtn.show();
 
+	        }else{
+	            // hide prevPage btn;
+	            $queryPrevBtn.hide();
+	        }        
+	                
 	        if(currentPage === 1){
 	            $('.item').remove();
 	        }
@@ -141,7 +150,7 @@
 
 	    _protected.queryMood(currentPage, _protected.render);
 
-	    $queryMoreBtn.click(function(e){
+	    $queryNextBtn.click(function(e){
 	        e.preventDefault();
 
 	        if(pageCount > currentPage){
@@ -150,6 +159,16 @@
 	            alert('No more to load...');
 	        }
 
+	    });
+	    
+	    $queryPrevBtn.click(function(e){
+	        e.preventDefault();
+
+	        if(currentPage > 1){
+	            _protected.queryMood(parseInt(currentPage-1),_protected.render);
+	        }else{
+	            alert('No Prev to load...');
+	        }        
 	    });
 
 	};

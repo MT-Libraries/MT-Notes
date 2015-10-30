@@ -23,11 +23,15 @@ $(document).ready(function(){
         $('#loader').hide();        
     } else {
         loader = new SVGLoader(document.getElementById('loader'), { speedIn: 300, easingIn: mina.easeinout });
-        loader.show();
-        
-        setTimeout(function(){
-                loader.hide();
-        },2000);
+        loader.show();      
     } 
-    
+        
 });
+
+$(window).load(function() {
+    
+    setTimeout(function() {
+        loader.hide();
+    },2000);    
+        
+});  

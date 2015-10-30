@@ -144,6 +144,9 @@ body {
 .mood .pager {
   background-color: #fff;
 }
+.mood .pager btn {
+  margin-left: 0.5em;
+}
 .mood .pager:before {
   content: ' ';
   display: table;
