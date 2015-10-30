@@ -46,18 +46,17 @@
 {{#extend "scripts"}}
     <script src="//cdn.bootcss.com/typed.js/1.1.1/typed.min.js"></script>
     <script>
-        $(function(){
-                
-                $('.user-desc, .social-ul').addClass('animated');
-                
-                $(".typed").typed({
-                    strings: [
-                        "Another frontend developer,", 
-                        "Javascript is the best programming language in the world,",
-                        "I'm Thonatos.Yang. who are you ?"
-                    ],
-                    typeSpeed: 200
-                });
-        });        
+        $(window).load(function(){
+            $('.user-desc, .social-ul').addClass('animated');
+            
+            $(".typed").typed({
+                strings: [
+                    "Another frontend developer,", 
+                    "Javascript is the best programming language in the world,",
+                    "I'm Thonatos.Yang. who are you ?"
+                ],
+                typeSpeed: 200
+            });                    
+        });      
     </script>
 {{/extend}}
