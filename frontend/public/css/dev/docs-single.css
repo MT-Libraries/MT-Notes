@@ -68,6 +68,9 @@ body {
 }
 .docs .document .content {
   padding: 1em 0;
+  font-family: "source-han-sans-simplified-c", sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 .docs .document .comments {
   padding: 1em 0;
