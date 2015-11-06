@@ -17,23 +17,20 @@
 .hidden {
   display: none;
 }
-.gray-darker {
-  color: #222222;
+.gray-text {
+  color: #818190 !important;
 }
-.gray-dark {
-  color: #333333;
+.green-text {
+  color: #57B382 !important;
 }
-.gray {
-  color: #555555;
+.green-light-bg {
+  background-color: #EDF1F7 !important;
 }
-.gray-light {
-  color: #777777;
+.green-clear-bg {
+  background-color: #57b382 !important;
 }
-.gray-lighter {
-  color: #eeeeee;
-}
-.white {
-  color: #ffffff;
+.gray-light-bg {
+  background-color: #F2F2F2 !important;
 }
 *,
 :after,
@@ -61,12 +58,17 @@ a {
 .docs .title {
   padding: 1em 0;
   border-bottom: 1px solid #eee;
+  color: #818190;
+  font-weight: bold;
 }
 .docs .title i {
   margin-right: 0.5em;
 }
 .docs .dir-ul {
   border: none;
+}
+.docs .dir-ul a {
+  color: #818190;
 }
 .docs .dir-ul a i {
   margin-right: 0.5em;

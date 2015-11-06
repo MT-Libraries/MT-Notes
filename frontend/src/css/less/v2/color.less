@@ -1,50 +1,30 @@
 // Color
 
 @COLOR_PRIMARY: #272D4E;
+@COLOR_INDEX:   #43455C;
+@COLOR_GRAY:    #818190;
+@COLOR_GREEN:   #57B382;
+@COLOR_GREEN_CLEAR: #57b382;
+@COLOR_GREEN_LIGHT: #EDF1F7;
+@COLOR_GRAY_LIGHT:#F2F2F2;
 
-// Color for inner
-@gray-base:              #000;
-@gray-darker:            lighten(@gray-base, 13.5%); // #222
-@gray-dark:              lighten(@gray-base, 20%);   // #333
-@gray:                   lighten(@gray-base, 33.5%); // #555
-@gray-light:             lighten(@gray-base, 46.7%); // #777
-@gray-lighter:           lighten(@gray-base, 59.9%); // #eee
-@gray-lightest:           lighten(@gray-base, 93.5%); // #eee
-@white:                  lighten(@gray-base, 100%); //  #fff
-
-@link-color-primary:     rgb(116, 155, 64);
-
-// Links
-@green-light:            #507716;
-
-
-// Header
-@header-bg:              rgba(116, 155, 64,0.94);
-@header-txt:             #fff;
-@header-link:            #fff;
-
-// Color for outer
-.gray-darker {
-    color: lighten(@gray-base, 13.5%);
+.gray-text{
+    color: @COLOR_GRAY !important;
 }
 
-.gray-dark {
-    color: lighten(@gray-base, 20%);
+.green-text{
+    color: @COLOR_GREEN !important;
 }
 
-.gray {
-    color: lighten(@gray-base, 33.5%);
+.green-light-bg{
+    background-color: @COLOR_GREEN_LIGHT !important;
 }
 
-.gray-light {
-    color: lighten(@gray-base, 46.7%);
+.green-clear-bg{
+    background-color: @COLOR_GREEN_CLEAR !important;
 }
 
-.gray-lighter {
-    color: lighten(@gray-base, 93.5%);
-}
-
-.white {
-    color: lighten(@gray-base, 100%);
+.gray-light-bg{
+    background-color: @COLOR_GRAY_LIGHT !important;
 }
 

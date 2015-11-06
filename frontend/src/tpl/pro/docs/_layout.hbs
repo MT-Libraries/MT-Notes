@@ -9,7 +9,7 @@
     <!-- Public  Stylesheets -->
     {{> header_pub}}
     
-    <link rel="stylesheet" href="/public/css/pro/global-2a9c6018.css"/>
+    <link rel="stylesheet" href="/public/css/pro/global-88cb6e42.css"/>
     
     <!-- Private Stylesheets -->
     {{{block "stylesheets"}}}
@@ -34,13 +34,7 @@
     </div>
 
     <!-- Public  scripts -->
-    {{#if @app.env.dev}}
-        <script src="/public/vendors/modernizr/modernizr.js"></script>
-        <script src="/public/vendors/jquery/dist/jquery.min.js"></script>
-    {{else}}
-        <script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js"></script>
-        <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-    {{/if}}
+    {{> footer_pub}}
         
     <!-- Private scripts -->
     {{{block "scripts"}}}

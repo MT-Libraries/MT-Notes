@@ -1,20 +1,17 @@
-.gray-darker {
-  color: #222222;
+.gray-text {
+  color: #818190 !important;
 }
-.gray-dark {
-  color: #333333;
+.green-text {
+  color: #57B382 !important;
 }
-.gray {
-  color: #555555;
+.green-light-bg {
+  background-color: #EDF1F7 !important;
 }
-.gray-light {
-  color: #777777;
+.green-clear-bg {
+  background-color: #57b382 !important;
 }
-.gray-lighter {
-  color: #eeeeee;
-}
-.white {
-  color: #ffffff;
+.gray-light-bg {
+  background-color: #F2F2F2 !important;
 }
 *,
 :after,
@@ -30,10 +27,10 @@ body {
 body {
   font: 12px "Open Sans", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  color: #555555;
+  color: #F2F2F2;
 }
 a {
-  color: #749b40;
+  color: #272D4E;
   font-weight: bold;
   text-decoration: none;
 }

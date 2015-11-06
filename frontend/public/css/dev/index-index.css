@@ -17,23 +17,20 @@
 .hidden {
   display: none;
 }
-.gray-darker {
-  color: #222222;
+.gray-text {
+  color: #818190 !important;
 }
-.gray-dark {
-  color: #333333;
+.green-text {
+  color: #57B382 !important;
 }
-.gray {
-  color: #555555;
+.green-light-bg {
+  background-color: #EDF1F7 !important;
 }
-.gray-light {
-  color: #777777;
+.green-clear-bg {
+  background-color: #57b382 !important;
 }
-.gray-lighter {
-  color: #eeeeee;
-}
-.white {
-  color: #ffffff;
+.gray-light-bg {
+  background-color: #F2F2F2 !important;
 }
 *,
 :after,
@@ -206,7 +203,7 @@ body {
   overflow: hidden;
 }
 .main {
-  background-color: #1f233d;
+  background-color: #ffffff;
 }
 .index {
   width: 100%;
@@ -250,6 +247,9 @@ body {
   padding-right: 0.5em;
 }
 .index .container .inner-box .vertical-box .about-section .user-desc {
+  font-family: "source-han-sans-simplified-c", sans-serif;
+  font-style: normal;
+  font-weight: 300;
   font-size: 1em;
   line-height: 1.8em;
   -webkit-animation-duration: 3s;

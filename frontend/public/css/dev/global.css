@@ -17,23 +17,20 @@
 .hidden {
   display: none;
 }
-.gray-darker {
-  color: #222222;
+.gray-text {
+  color: #818190 !important;
 }
-.gray-dark {
-  color: #333333;
+.green-text {
+  color: #57B382 !important;
 }
-.gray {
-  color: #555555;
+.green-light-bg {
+  background-color: #EDF1F7 !important;
 }
-.gray-light {
-  color: #777777;
+.green-clear-bg {
+  background-color: #57b382 !important;
 }
-.gray-lighter {
-  color: #eeeeee;
-}
-.white {
-  color: #ffffff;
+.gray-light-bg {
+  background-color: #F2F2F2 !important;
 }
 *,
 :after,
@@ -97,7 +94,7 @@ a {
   transition: opacity 0.15s, visibility 0s 0.15s;
 }
 .pageload-overlay::after {
-  background: #6975b4;
+  background: #8ccba9;
   -webkit-transform: translateX(-20px);
   -ms-transform: translateX(-20px);
       transform: translateX(-20px);
@@ -105,7 +102,7 @@ a {
   animation: moveRight 0.6s linear infinite alternate;
 }
 .pageload-overlay::before {
-  background: #6975b4;
+  background: #8ccba9;
   -webkit-transform: translateX(20px);
   -ms-transform: translateX(20px);
       transform: translateX(20px);
@@ -148,7 +145,10 @@ a {
   padding: 0 16px;
 }
 .mt-nav-header a {
-  color: #272D4E;
+  color: #57B382;
+  font-family: "source-han-sans-simplified-c", sans-serif;
+  font-style: normal;
+  font-weight: 600;
 }
 .mt-nav-header .brand-logo {
   max-height: 100%;
@@ -163,13 +163,16 @@ a {
 .mt-nav-header .brand-logo .mt-text {
   display: inline-block;
   padding: 12px 0;
+  font-family: "source-han-sans-simplified-c", sans-serif;
+  font-style: normal;
+  font-weight: 500;
   height: 56px;
   line-height: 32px;
   vertical-align: top;
 }
 footer {
   padding: 1em 0;
-  color: #2d2d2d;
+  color: #818190;
 }
 .main {
   margin-top: -56px;
