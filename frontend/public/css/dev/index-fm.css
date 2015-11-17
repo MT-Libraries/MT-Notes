@@ -79,11 +79,17 @@ body {
 .fm .container .inner-box .vertical-box .player {
   width: 340px;
   margin: 0 auto;
+  font-family: "source-han-sans-simplified-c", sans-serif;
+  font-style: normal;
+  font-weight: 600;
 }
 .fm .container .inner-box .vertical-box .player .info {
   width: 100% ;
   color: #e5e5e5;
   text-align: center;
+}
+.fm .container .inner-box .vertical-box .player .info .title {
+  font-size: 1.4em;
 }
 .fm .container .inner-box .vertical-box .player .album {
   margin: 20px auto;
@@ -115,6 +121,7 @@ body {
   -webkit-appearance: none;
   width: 78% ;
   margin: 2.05px 0;
+  border: none;
 }
 .fm .container .inner-box .vertical-box .player .action input[type=range].player-seekbar:focus {
   outline: none;
@@ -213,5 +220,6 @@ body {
 }
 .fm .container .inner-box .vertical-box .playlist ul li a {
   color: #ffffff;
-  line-height: 1em;
+  line-height: 0.8em;
+  font-size: 0.8em;
 }
