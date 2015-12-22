@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="x5-orientation"content="portrait">
+    <meta name="screen-orientation"content="portrait">
+    
+    <title>Live Flash - Insta360</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        html,
+        body,
+        #flashContent{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        
+    </style>
+    
+    <script src="dist/swfobject.js"></script>
+        
+    <!-- GLOBAL JAVASCRIPT -->
+	<script>
+		JS_PAGE_NAME = 'index-v1';
+
+        var flashvars = {};
+        flashvars.url = "url=http://cdn-dl.insta360.com/hls/live.m3u8";
+        flashvars.loadingEnable = "true";
+        var params = {};
+        params.play = "true";
+        params.loop = "true";
+        params.menu = "true";
+        params.quality = "high";
+        params.scale = "showall";
+        params.wmode = "transparent";
+        params.bgcolor = "#ffffff";
+        params.devicefont = "false";
+        params.allowfullscreen = "true";
+        params.allowscriptaccess = "always";
+        var attributes = {};
+        attributes.id = "ThreeDPlayer";
+        attributes.align = "middle";
+
+        swfobject.registerObject("index-player", "9.0.0", "dist/ThreeDPlayer2.swf");
+        
+	</script>
+
+</head>
+
+<body>
+    
+    <div id="flashContent">
+    
+        <object type="application/x-shockwave-flash" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+                codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+                width="100%" height="100%" id="index-player" align="middle">
+            <param name="allowScriptAccess" value="always">
+            <param name="movie" value="dist/ThreeDPlayer2.swf">
+            <param name="quality" value="high">
+            <param name="wmode" value="direct">
+            <param name="flashVars" value="url=http://cdn-dl.insta360.com/hls/live.m3u8">
+            <param name="allowFullScreen" value="true">
+            <embed src="dist/ThreeDPlayer2.swf"
+                   name="index-player"
+                   quality="high"
+                   allowscriptaccess="always"
+                   allowfullscreen="true"
+                   wmode="direct"
+                   flashvars="url=http://cdn-dl.insta360.com/hls/live.m3u8"
+                   swliveconnect="true"
+                   pluginspage="http://www.macromedia.com/go/getflashplayer"
+                   type="application/x-shockwave-flash"
+                   width="100%"
+                   height="100%">
+        </object>
+    
+    </div>
+    
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "//hm.baidu.com/hm.js?e1fb46347aad0870ac2fac644e9c5c59";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+</body>
+</html>
