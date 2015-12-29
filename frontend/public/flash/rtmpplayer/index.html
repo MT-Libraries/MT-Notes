@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <title>ThreeDPlayer - Insta360</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">    
+    <style type="text/css" media="screen">
+    
+		* {
+		    font-family: 'Helvetica Neue',
+		    Helvetica,
+		    Arial,
+		    'Source Han Sans TC',
+		    'Source Han Sans',
+		    'Nimbus Sans L',
+		    'Liberation Sans',
+		    'Hiragino Sans GB',
+		    'Nota Han Sans',
+		    'Microsoft YaHei',
+		    'Droid Sans',
+		    'Droid Sans Fallback',
+		    'Wenquanyi Micro Hei ',
+		    'WenQuanYi Zen Hei',
+		    'ST Heiti',
+		    SimHei,
+		    'WenQuanYi Zen Hei Sharp',
+		    sans-serif;
+		}    
+
+        html,
+        body {
+            height: 100%;
+            background-color: #2d2d2d;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        #flashContent {
+            width: 100%;
+            height: 100%;
+        }
+
+        .err{
+        	display: block;
+        	margin: 4em auto;
+        	text-align: center;
+
+        	text-decoration: none;
+        }
+
+        .err p{
+        	color: #fff;
+    		font-size: 14px;
+    		line-height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+	<!-- Wrap -->
+	<div class="wrap">
+
+		<!-- 播放器 -->
+	    <div id="flashContent">
+
+
+			<!-- 错误信息 -->
+	        <a href="http://www.adobe.com/go/getflash" class="err">
+	            	           
+	            <p>貌似禁用或者未正常安装,<br>
+	            Flash Player Plugin,<br>
+	            请安装以体验全景播放功能
+	            </p>
+
+	        </a>       
+	    </div>		
+	</div>
+
+    
+    <!-- Library -->
+	<script type="text/javascript" src="http://static.insta360.com/public/vendors/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="http://static.insta360.com/public/vendors/swfobject/swfobject/swfobject.js"></script>
+
+	<!-- Init -->
+	<script>
+		$(document).ready(function(){
+
+			/**
+			 *
+			 * ThreeDPlayer for insta360
+			 * 
+			 * 这里我们使用hash获取当前页面的相关参数，并由此定义了几个相关的字段
+			 * 
+			 * @type	mediaType	mp4|m3u8
+			 * @event	eventName	insta360
+			 * @post	postName	index
+			 * @name 	fileName	index
+			 * @size	videoSize	1200x600|1440x720
+			 * @bt 		biteRate	3M|1M
+			 *
+			 * @example:
+			 * 		http://localhost:8091/tmpl/ThreeDPlayer/#type=m3u8&event=insta360&post=index&name=landing-page&size=2048x1024&bt=3M
+			 */
+
+
+			/**
+			 * [queryHash query key-value based on hash]
+			 * @param  {[string]} query [key]
+			 * @return {[string]}       [value]
+			 */
+			function queryHash(query) {
+			    query = query.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+			    var expr = "[\\?#&]" + query + "=([^&#]*)";
+			    var regex = new RegExp(expr);
+			    var results = regex.exec(window.location.href);
+			    if (results !== null) {
+			        return results[1];
+			    } else {
+			        return false;
+			    }
+			}
+
+			/**
+			 * [init init flashPlayer]
+			 * @return {[void]} [void]
+			 */
+			function init(){
+
+                // dom                      
+                var flashContent = document.getElementById('flashContent');
+
+                // param
+				var params = {};
+                params.play = "true";
+                params.loop = "true";
+                params.menu = "true";
+                params.quality = "high";
+                params.scale = "showall";
+                params.wmode = "direct";
+                params.devicefont = "false";
+                params.allowfullscreen = "true";
+                params.allowscriptaccess = "always";
+
+                // attr
+                var attributes = {};
+                attributes.id = "landing-page-player";
+                attributes.align = "middle";
+
+                // flash var
+                var flashvars = {};
+                flashvars.url = '';
+                flashvars.loadingEnable = "true";                
+
+                // video url
+                var videoUrl = decodeURIComponent(queryHash('rtmp'));
+                var offset = decodeURIComponent(queryHash('offset'));
+                
+                if(videoUrl){
+                	flashvars.url =  videoUrl + '&isPlay=true&layerOneButton&layerTwoButton' + '&offset=' + offset;
+                	swfobject.embedSWF("rtmpPanoPlayer.swf", flashContent, "100%", "100%", 13, "", flashvars, params, attributes);	
+                }else{
+
+                }
+			}
+
+			// init
+			init();
+
+		});
+	</script>
+
+</body>
+
+</html>
