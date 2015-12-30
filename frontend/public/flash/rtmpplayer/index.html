@@ -169,7 +169,8 @@
                 var offset = decodeURIComponent(queryHash('offset'));
                 
                 if(videoUrl){
-                	flashvars.url =  videoUrl + '&isPlay=true&layerOneButton&layerTwoButton' + '&offset=' + offset;
+                	flashvars.url =  videoUrl + '&isPlay=true' + '&offset=' + offset;
+                	console.log(flashvars.url);
                 	swfobject.embedSWF("rtmpPanoPlayer.swf", flashContent, "100%", "100%", 13, "", flashvars, params, attributes);	
                 }else{
 
