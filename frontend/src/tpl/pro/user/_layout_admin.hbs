@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <!-- META -->
+    {{> header_meta}}
+
+    <title>{{title}} - {{@app.site.name}}</title>
+
+    <!-- Public  Stylesheets -->
+    {{> header_pub}}
+    
+    <link rel="stylesheet" href="/public/css/pro/global-user-e86765d6.css"/>
+    
+    <!-- Private Stylesheets -->
+    {{{block "stylesheets"}}}
+    
+
+</head>
+<body>
+
+    <!-- Sider -->
+    {{> layout_sider}}
+
+    <!-- Main -->
+    <div class="main dash-page">
+        <!-- Body -->
+        {{{body}}}
+        
+    </div>
+
+    <!-- Public  scripts -->
+    {{> footer_pub}}
+    
+    <!-- Private scripts -->
+    {{{block "scripts"}}}
+
+</body>
+</html>
