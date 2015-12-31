@@ -85,7 +85,7 @@ module.exports = function (app,passport) {
                         user.local.email = email;
                         user.local.password = user.generateHash(password); // use the generateHash function in our user model
 
-                        if (email === app.get('administrator_email')) {
+                        if (email === app.get('founder')) {
                             user.local.role = 'administrator';
                         }else{
                             user.local.role = _defaultRole;
@@ -105,7 +105,7 @@ module.exports = function (app,passport) {
                         newUser.local.email = email;
                         newUser.local.password = newUser.generateHash(password); // use the generateHash function in our user model
 
-                        if (email === app.get('administrator_email')) {
+                        if (email === app.get('founder')) {
                             newUser.local.role = 'administrator';
                         }else{
                             newUser.local.role = _defaultRole;
