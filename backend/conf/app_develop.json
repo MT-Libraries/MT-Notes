@@ -2,19 +2,7 @@
   "site": {
     "name": "MT.NOTES",
     "desc": "A blog/documents Site Running on NodeJS Server",
-    "logo":"/public/images/other/kira.png",
-    "docRepo": {
-      "github": {
-        "doc_user": "thonatos",
-        "doc_project": "Mt.Notes.And.Documents",
-        "access_token":""
-      },
-      "coding": {
-        "doc_user": "thonatos",
-        "doc_project": "Mt.Notes.And.Documents"
-      },
-      "GC": "C"
-    }
+    "logo":"/public/images/other/kira.png"
   },
   "auth": {
     "cookie": {
