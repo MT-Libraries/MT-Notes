@@ -13,7 +13,7 @@ module.exports = function (app, passport) {
 
     app.use('/', index);
     app.use('/crossdomain.xml',function(req,res){
-        res.set('Content-Type', 'text/xml');
+        res.set('Content-Type', 'application/xml');
         res.send('<?xml version="1.0"?><cross-domain-policy><allow-access-from domain="*"/><allow-http-request-headers-from domain="*" headers="*"/></cross-domain-policy>');        
     });    
     app.use('/user', user(passport));
