@@ -48,15 +48,20 @@
 	 * Created by thonatos on 15/1/18.
 	 */
 
+	var updateBrowser = __webpack_require__(2).create('',false);
+	var SVGLoader = __webpack_require__(3);
 	var loader;
-	var SVGLoader = __webpack_require__(2);
-	var updateBrowser = __webpack_require__(4).create('',false);
 	    
-	$(document).ready(function(){  
-	      
+	$(document).ready(function(){
+
+	    console.log("\n\n" +
+	        "%c面朝大海,春暖花开。\n\n"+
+	        "%c遇到你,真的很开心,(づ｡◕‿‿◕｡)づ\n\n"+
+	        "秀恩爱的正确姿势是怎样?——当然就是酱紫喽!\n\n"
+	    ,"color:#ff2d00","color:#57B382;");
 	    // 浏览版本检测    
 	    updateBrowser.init();
-	    
+
 	    // 浏览器版本是否低于IE8    
 	    var lessThenIE = function () {
 	        var UA = navigator.userAgent,
@@ -75,240 +80,14 @@
 	});
 
 	$(window).load(function() {
-	    
 	    setTimeout(function() {
 	        loader.hide();
-	    },2000);    
-	        
+	    },2000);
 	});  
 
 /***/ },
 /* 1 */,
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 *
-	 * SVGLoader.
-	 *
-	 * @project     localhost_insta360
-	 * @datetime    17:51 - 15/9/4
-	 * @author      Thonatos.Yang <thonatos.yang@gmail.com>
-	 * @copyright   Thonatos.Yang <https://www.thonatos.com>
-	 *
-	 */
-
-	/**
-	 * svgLoader.js v1.0.0
-	 * http://www.codrops.com
-	 *
-	 * Licensed under the MIT license.
-	 * http://www.opensource.org/licenses/mit-license.php
-	 *
-	 * Copyright 2014, Codrops
-	 * http://www.codrops.com
-	 */
-
-	'use strict';
-
-	var classie = __webpack_require__(3);
-
-	function extend(a, b) {
-	    for (var key in b) {
-	        if (b.hasOwnProperty(key)) {
-	            a[key] = b[key];
-	        }
-	    }
-	    return a;
-	}
-
-	function SVGLoader(el, options) {
-	    this.el = el;
-	    this.options = extend({}, this.options);
-	    extend(this.options, options);
-	    this._init();
-	}
-
-	SVGLoader.prototype.options = {
-	    speedIn: 500,
-	    easingIn: mina.linear
-	}
-
-	SVGLoader.prototype._init = function () {
-	    var s = Snap(this.el.querySelector('svg'));
-	    this.path = s.select('path');
-	    this.initialPath = this.path.attr('d');
-
-	    var openingStepsStr = this.el.getAttribute('data-opening');
-	    this.openingSteps = openingStepsStr ? openingStepsStr.split(';') : '';
-	    this.openingStepsTotal = openingStepsStr ? this.openingSteps.length : 0;
-	    if (this.openingStepsTotal === 0) return;
-
-	    // if data-closing is not defined then the path will animate to its original shape
-	    var closingStepsStr = this.el.getAttribute('data-closing') ? this.el.getAttribute('data-closing') : this.initialPath;
-	    this.closingSteps = closingStepsStr ? closingStepsStr.split(';') : '';
-	    this.closingStepsTotal = closingStepsStr ? this.closingSteps.length : 0;
-
-	    this.isAnimating = false;
-
-	    if (!this.options.speedOut) {
-	        this.options.speedOut = this.options.speedIn;
-	    }
-	    if (!this.options.easingOut) {
-	        this.options.easingOut = this.options.easingIn;
-	    }
-	}
-
-	SVGLoader.prototype.show = function () {
-	    if (this.isAnimating) return false;
-	    this.isAnimating = true;
-	    // animate svg
-	    var self = this,
-	        onEndAnimation = function () {
-	            classie.addClass(self.el, 'pageload-loading');
-	        };
-	    this._animateSVG('in', onEndAnimation);
-	    classie.add(this.el, 'show');
-	}
-
-	SVGLoader.prototype.hide = function () {
-	    var self = this;
-	    classie.removeClass(this.el, 'pageload-loading');
-	    this._animateSVG('out', function () {
-	        // reset path
-	        self.path.attr('d', self.initialPath);
-	        classie.removeClass(self.el, 'show');  
-	        self.isAnimating = false;
-	    });
-	}
-
-	SVGLoader.prototype._animateSVG = function (dir, callback) {
-	    var self = this,
-	        pos = 0,
-	        steps = dir === 'out' ? this.closingSteps : this.openingSteps,
-	        stepsTotal = dir === 'out' ? this.closingStepsTotal : this.openingStepsTotal,
-	        speed = dir === 'out' ? self.options.speedOut : self.options.speedIn,
-	        easing = dir === 'out' ? self.options.easingOut : self.options.easingIn,
-	        nextStep = function (pos) {
-	            if (pos > stepsTotal - 1) {
-	                if (callback && typeof callback == 'function') {
-	                    callback();
-	                }
-	                return;
-	            }
-	            self.path.animate({'path': steps[pos]}, speed, easing, function () {
-	                nextStep(pos);
-	            });
-	            pos++;
-	        };
-
-	    nextStep(pos);
-	}
-
-
-	module.exports = SVGLoader;
-
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
-	 *
-	 * classie.
-	 *
-	 * @project     localhost_insta360
-	 * @datetime    17:59 - 15/9/4
-	 * @author      Thonatos.Yang <thonatos.yang@gmail.com>
-	 * @copyright   Thonatos.Yang <https://www.thonatos.com>
-	 *
-	 */
-
-	/*!
-	 * classie - class helper functions
-	 * from bonzo https://github.com/ded/bonzo
-	 *
-	 * classie.has( elem, 'my-class' ) -> true/false
-	 * classie.add( elem, 'my-new-class' )
-	 * classie.remove( elem, 'my-unwanted-class' )
-	 * classie.toggle( elem, 'my-class' )
-	 */
-
-	/*jshint browser: true, strict: true, undef: true */
-	/*global define: false */
-
-	( function( window ) {
-
-	    'use strict';
-
-	// class helper functions from bonzo https://github.com/ded/bonzo
-
-	    function classReg( className ) {
-	        return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
-	    }
-
-	// classList support for class management
-	// altho to be fair, the api sucks because it won't accept multiple classes at once
-	    var hasClass, addClass, removeClass;
-
-	    if ( 'classList' in document.documentElement ) {
-	        hasClass = function( elem, c ) {
-	            return elem.classList.contains( c );
-	        };
-	        addClass = function( elem, c ) {
-	            elem.classList.add( c );
-	        };
-	        removeClass = function( elem, c ) {
-	            elem.classList.remove( c );
-	        };
-	    }
-	    else {
-	        hasClass = function( elem, c ) {
-	            return classReg( c ).test( elem.className );
-	        };
-	        addClass = function( elem, c ) {
-	            if ( !hasClass( elem, c ) ) {
-	                elem.className = elem.className + ' ' + c;
-	            }
-	        };
-	        removeClass = function( elem, c ) {
-	            elem.className = elem.className.replace( classReg( c ), ' ' );
-	        };
-	    }
-
-	    function toggleClass( elem, c ) {
-	        var fn = hasClass( elem, c ) ? removeClass : addClass;
-	        fn( elem, c );
-	    }
-
-	    var classie = {
-	        // full names
-	        hasClass: hasClass,
-	        addClass: addClass,
-	        removeClass: removeClass,
-	        toggleClass: toggleClass,
-	        // short names
-	        has: hasClass,
-	        add: addClass,
-	        remove: removeClass,
-	        toggle: toggleClass
-	    };
-
-	// transport
-	    if ( true ) {
-	        // AMD
-	        !(__WEBPACK_AMD_DEFINE_FACTORY__ = (classie), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	    } else if (typeof module != 'undefined' && module.exports) {
-	        module.exports = classie;
-	    }else {
-	        // browser global
-	        window.classie = classie;
-	    }
-
-	})( window );
-
-/***/ },
-/* 4 */
 /***/ function(module, exports) {
 
 	/**
@@ -506,6 +285,230 @@
 
 	exports.create = updateBrowser.create;
 
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 *
+	 * SVGLoader.
+	 *
+	 * @project     localhost_insta360
+	 * @datetime    17:51 - 15/9/4
+	 * @author      Thonatos.Yang <thonatos.yang@gmail.com>
+	 * @copyright   Thonatos.Yang <https://www.thonatos.com>
+	 *
+	 */
+
+	/**
+	 * svgLoader.js v1.0.0
+	 * http://www.codrops.com
+	 *
+	 * Licensed under the MIT license.
+	 * http://www.opensource.org/licenses/mit-license.php
+	 *
+	 * Copyright 2014, Codrops
+	 * http://www.codrops.com
+	 */
+
+	'use strict';
+
+	var classie = __webpack_require__(4);
+
+	function extend(a, b) {
+	    for (var key in b) {
+	        if (b.hasOwnProperty(key)) {
+	            a[key] = b[key];
+	        }
+	    }
+	    return a;
+	}
+
+	function SVGLoader(el, options) {
+	    this.el = el;
+	    this.options = extend({}, this.options);
+	    extend(this.options, options);
+	    this._init();
+	}
+
+	SVGLoader.prototype.options = {
+	    speedIn: 500,
+	    easingIn: mina.linear
+	}
+
+	SVGLoader.prototype._init = function () {
+	    var s = Snap(this.el.querySelector('svg'));
+	    this.path = s.select('path');
+	    this.initialPath = this.path.attr('d');
+
+	    var openingStepsStr = this.el.getAttribute('data-opening');
+	    this.openingSteps = openingStepsStr ? openingStepsStr.split(';') : '';
+	    this.openingStepsTotal = openingStepsStr ? this.openingSteps.length : 0;
+	    if (this.openingStepsTotal === 0) return;
+
+	    // if data-closing is not defined then the path will animate to its original shape
+	    var closingStepsStr = this.el.getAttribute('data-closing') ? this.el.getAttribute('data-closing') : this.initialPath;
+	    this.closingSteps = closingStepsStr ? closingStepsStr.split(';') : '';
+	    this.closingStepsTotal = closingStepsStr ? this.closingSteps.length : 0;
+
+	    this.isAnimating = false;
+
+	    if (!this.options.speedOut) {
+	        this.options.speedOut = this.options.speedIn;
+	    }
+	    if (!this.options.easingOut) {
+	        this.options.easingOut = this.options.easingIn;
+	    }
+	}
+
+	SVGLoader.prototype.show = function () {
+	    if (this.isAnimating) return false;
+	    this.isAnimating = true;
+	    // animate svg
+	    var self = this,
+	        onEndAnimation = function () {
+	            classie.addClass(self.el, 'pageload-loading');
+	        };
+	    this._animateSVG('in', onEndAnimation);
+	    classie.add(this.el, 'show');
+	}
+
+	SVGLoader.prototype.hide = function () {
+	    var self = this;
+	    classie.removeClass(this.el, 'pageload-loading');
+	    this._animateSVG('out', function () {
+	        // reset path
+	        self.path.attr('d', self.initialPath);
+	        classie.removeClass(self.el, 'show');  
+	        self.isAnimating = false;
+	    });
+	}
+
+	SVGLoader.prototype._animateSVG = function (dir, callback) {
+	    var self = this,
+	        pos = 0,
+	        steps = dir === 'out' ? this.closingSteps : this.openingSteps,
+	        stepsTotal = dir === 'out' ? this.closingStepsTotal : this.openingStepsTotal,
+	        speed = dir === 'out' ? self.options.speedOut : self.options.speedIn,
+	        easing = dir === 'out' ? self.options.easingOut : self.options.easingIn,
+	        nextStep = function (pos) {
+	            if (pos > stepsTotal - 1) {
+	                if (callback && typeof callback == 'function') {
+	                    callback();
+	                }
+	                return;
+	            }
+	            self.path.animate({'path': steps[pos]}, speed, easing, function () {
+	                nextStep(pos);
+	            });
+	            pos++;
+	        };
+
+	    nextStep(pos);
+	}
+
+
+	module.exports = SVGLoader;
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
+	 *
+	 * classie.
+	 *
+	 * @project     localhost_insta360
+	 * @datetime    17:59 - 15/9/4
+	 * @author      Thonatos.Yang <thonatos.yang@gmail.com>
+	 * @copyright   Thonatos.Yang <https://www.thonatos.com>
+	 *
+	 */
+
+	/*!
+	 * classie - class helper functions
+	 * from bonzo https://github.com/ded/bonzo
+	 *
+	 * classie.has( elem, 'my-class' ) -> true/false
+	 * classie.add( elem, 'my-new-class' )
+	 * classie.remove( elem, 'my-unwanted-class' )
+	 * classie.toggle( elem, 'my-class' )
+	 */
+
+	/*jshint browser: true, strict: true, undef: true */
+	/*global define: false */
+
+	( function( window ) {
+
+	    'use strict';
+
+	// class helper functions from bonzo https://github.com/ded/bonzo
+
+	    function classReg( className ) {
+	        return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+	    }
+
+	// classList support for class management
+	// altho to be fair, the api sucks because it won't accept multiple classes at once
+	    var hasClass, addClass, removeClass;
+
+	    if ( 'classList' in document.documentElement ) {
+	        hasClass = function( elem, c ) {
+	            return elem.classList.contains( c );
+	        };
+	        addClass = function( elem, c ) {
+	            elem.classList.add( c );
+	        };
+	        removeClass = function( elem, c ) {
+	            elem.classList.remove( c );
+	        };
+	    }
+	    else {
+	        hasClass = function( elem, c ) {
+	            return classReg( c ).test( elem.className );
+	        };
+	        addClass = function( elem, c ) {
+	            if ( !hasClass( elem, c ) ) {
+	                elem.className = elem.className + ' ' + c;
+	            }
+	        };
+	        removeClass = function( elem, c ) {
+	            elem.className = elem.className.replace( classReg( c ), ' ' );
+	        };
+	    }
+
+	    function toggleClass( elem, c ) {
+	        var fn = hasClass( elem, c ) ? removeClass : addClass;
+	        fn( elem, c );
+	    }
+
+	    var classie = {
+	        // full names
+	        hasClass: hasClass,
+	        addClass: addClass,
+	        removeClass: removeClass,
+	        toggleClass: toggleClass,
+	        // short names
+	        has: hasClass,
+	        add: addClass,
+	        remove: removeClass,
+	        toggle: toggleClass
+	    };
+
+	// transport
+	    if ( true ) {
+	        // AMD
+	        !(__WEBPACK_AMD_DEFINE_FACTORY__ = (classie), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    } else if (typeof module != 'undefined' && module.exports) {
+	        module.exports = classie;
+	    }else {
+	        // browser global
+	        window.classie = classie;
+	    }
+
+	})( window );
 
 /***/ }
 /******/ ]);

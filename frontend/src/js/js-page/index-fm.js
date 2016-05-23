@@ -3,10 +3,6 @@
  */
 
 var init = function () {
-
-    console.log("\n\n" +
-    "这是个电台。\n"+
-    "听那些老歌，想念你。\n\n");
 	
 	var audio,
 		musicList,
@@ -35,7 +31,7 @@ var init = function () {
 		audio = document.createElement('audio');
 		$.get('/api/fm/playlist/'+PLAYLIST,function(data) {
 			if(data && data.code === 200){
-				console.log(data);
+				//console.log(data);
 				musicList = data.result.tracks;
 				
 				load(musicList[currentIndex]);
@@ -49,7 +45,7 @@ var init = function () {
 
 		if(audio && audio.src!==''){
 			audio.volume = $volumeRange.value / 10;
-		};
+		}
 	};
 
 	// next

@@ -13,9 +13,6 @@ router.route('/')
 router.route('/mood')
     .get(indexController.mood);
 
-router.route('/about')
-    .get(indexController.about);
-
 router.route('/fm')
     .get(indexController.fm);
     
