@@ -15,6 +15,7 @@ module.exports = {
     entry: {     
         'index-fm': './src/js/js-page/index-fm.js',
         'index-mood': './src/js/js-page/index-mood.js',
+        'user-admin': './src/js/js-page/user-admin.js',
         'public': './src/js/js-page/public.js',                   
         'retina': './src/js/utils/retina.js'
     },

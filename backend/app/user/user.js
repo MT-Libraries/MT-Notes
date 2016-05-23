@@ -50,9 +50,7 @@ module.exports = function (passport) {
 
     router.route('/profile')
         .get(isSignedIn, function (req, res) {
-
             var isAdministrator = req.user.local.role === 'administrator';
-
             res.locals.layout = 'user/_layout_admin';
             res.render('user/profile', {
                 title: 'Profile',
@@ -64,6 +62,7 @@ module.exports = function (passport) {
 
     router.route('/admin')
         .get(isAdministrator, function (req, res) {
+            res.locals.layout = 'user/_layout_admin';
             res.render('user/admin', {
                 title: 'Admin'
             });

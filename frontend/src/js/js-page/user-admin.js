@@ -1,36 +1,54 @@
 /**
- * Created by thonatos on 14/12/15.
+ *
+ * user-admin.
+ *
+ * @project     localhost_thonatos.com
+ * @datetime    23:14 - 16/5/23
+ * @author      Thonatos.Yang <thonatos.yang@gmail.com>
+ * @copyright   Thonatos.Yang <https://www.thonatos.com>
+ *
  */
 
-var BASE_URL = '/user/admin/';
+Vue.config.delimiters = ['${', '}'];
 
-var init = function () {
-
-    // SET BASE_TAG
-    var util = require('../utils/common');
-    util.addBaseTag(BASE_URL);
-
-    //docCookies = require('../utils/cookie');
-    //
-    //console.log(docCookies.getItem("MT.User"));
-
-    // SET ANGULAR
-    var AngularSeedSpm = angular.module('ASS', [
-        'ui.router',
-        'ASS.blog',
-        'ASS.mood',
-        'ASS.service'
-    ]);
-
-    var blog = require("./admin/blog/blog");
-    var mood = require("./admin/mood/mood");
-    var service = require('./admin/components/services/service');
-
-    AngularSeedSpm.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/blog');
-    }]);
-
-    angular.bootstrap(document, ['ASS']);
+var data = {
+    mood: ''
 };
 
-exports.init = init;
+var vm = new Vue({
+    el: '#mood-add',
+    data: data,
+    methods: {
+        postMood: function (e) {
+            e.preventDefault();
+            vm.$log();
+
+            $.post('/api/moods/mood', data)
+                .success(function (response) {
+                    console.log(response);
+                    if(response.errors) {
+                        alert(response.message);
+                        return;
+                    }
+
+                    if(response.code === "600"){
+                        alert(response.msg);
+                        return;
+                    }
+
+                    data.mood = '';
+                    alert('add release success');
+                })
+                .fail(function() {
+                    alert('net work error or server error');
+                })
+
+        },
+        load: function() {
+        }
+    }
+});
+
+$(document).ready(function () {
+    console.log(vm);
+});

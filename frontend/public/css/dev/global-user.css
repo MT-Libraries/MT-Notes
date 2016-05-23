@@ -149,6 +149,7 @@ header.nav-side ul.action-ul li a {
 .main.dash-page {
   width: 100%;
   padding-left: 240px;
+  padding-top: 4em;
 }
 .main.login-page {
   height: 100%;

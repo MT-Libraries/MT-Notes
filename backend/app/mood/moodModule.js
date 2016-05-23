@@ -32,9 +32,10 @@ exports.Api = {
     },
     add: function (req, res) {
 
+
         var mood = {
             datetime: new Date(),
-            author: req.body.author,
+            author: req.user.local.email || req.body.author,
             content: req.body.content
         };
 
@@ -49,7 +50,7 @@ exports.Api = {
 
         var mood = {
             datetime: new Date(),
-            author: req.body.author,
+            author: req.user.local.email || req.body.author,
             content: req.body.content
         };
 

@@ -27,7 +27,7 @@ exports.moodService = {
                     data: {
                         req: '/mood',
                         res: 'success',
-                        msg: mood._id + " Added."
+                        msg: _mood._id + " Added."
                     }
                 }
             });
@@ -136,7 +136,7 @@ exports.moodService = {
                 });
             }
 
-            Mood.find().skip(( currentPage - 1 ) * perPageNum).limit(perPageNum).sort('-date').exec(function (err, moods) {
+            Mood.find().skip(( currentPage - 1 ) * perPageNum).limit(perPageNum).sort('-datetime').exec(function (err, moods) {
 
                 if (err) {
                     callback({

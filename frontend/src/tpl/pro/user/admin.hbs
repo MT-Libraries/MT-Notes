@@ -1,7 +1,24 @@
 {{#extend "stylesheets"}}
 {{/extend}}
-    
-comming soon.
+
+<div class="container">
+    <form id="mood-add" class="col s12" action="#" method="post" @submit="postMood">
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="mood-content" class="materialize-textarea" v-model="content"></textarea>
+                <label for="mood-content">Mood Content</label>
+            </div>
+
+            <div class="input-field col s12">
+                <button class="btn waves-effect waves-light pull-right" type="submit" name="action">Submit
+                </button>
+            </div>
+
+        </div>
+    </form>
+</div>
 
 {{#extend "scripts"}}
+    <script src="//cdn.bootcss.com/vue/1.0.24/vue.min.js"></script>
+    <script src="/public/js/pro/user-admin-7c5b43cf.js"></script>
 {{/extend}}
