@@ -94,3 +94,7 @@ var init = function () {
 };
 
 init();
+
+
+$('.mt-nav-header').removeClass('white');
+$('.mt-nav-header').addClass('nav-fm');

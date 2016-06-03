@@ -170,6 +170,12 @@ a {
   line-height: 32px;
   vertical-align: top;
 }
+.mt-nav-header.nav-fm {
+  background-color: rgba(87, 179, 130, 0.85);
+}
+.mt-nav-header.nav-fm a {
+  color: #fff;
+}
 footer {
   padding: 1em 0;
   color: #818190;

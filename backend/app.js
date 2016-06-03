@@ -3,7 +3,6 @@ var path = require('path');
 var hbs = require('hbs');
 var morgan = require('morgan');
 var express = require('express');
-var index = require('serve-index');
 var favicon = require('serve-favicon');
 var session = require('express-session');
 
@@ -121,11 +120,6 @@ Initialize.prototype.init = function () {
         threshold: 512 // Compression middleware (should be placed before express.static)
     }));
     app.use('/public', express.static(path.join(__dirname, '../frontend/public')));
-    app.use('/static', express.static(path.join(__dirname, 'static')));
-    app.use('/static', index(path.join(__dirname, 'static'),{
-        stylesheet:path.join(__dirname,'../frontend/public/css/dev/static.css'),
-        view:'details'
-    }));    
     app.use(favicon(path.join(__dirname,'../frontend/public/favicon.ico')));            
     
     app.use(morgan('tiny'));
